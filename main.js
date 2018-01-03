@@ -18,6 +18,8 @@ function update(data){
 
   //remove work with no startYear
   data = data.filter(d => d.startYear != null && d.endYear != null)
+  data.forEach((p,i) => { if ( p.startYear == p.endYear ){p.endYear ++}})
+  data.sort((a,b) => a.startYear - b.startYear)
   let domainExtent = [d3.min(data,d=>d.startYear),d3.max(data,d=>d.endYear)]
   //define el domino de x
   x.domain(domainExtent);
@@ -27,19 +29,31 @@ function update(data){
      .attr("class", "axis axis--x")
      .call(d3.axisTop(x).tickFormat(d3.format('04')).ticks());
 
-  var y = d3.scalePoint()
-    .domain([0,1,2,3,4,5,6,8,9,10])
-    .range([0, height/4])
 
-  let block = g.selectAll('rect')
+  let rowHeight = 10
+  let rows  = [domainExtent[0]]
+
+  let blocks = g.selectAll('rect')
     .data(data)
     .enter()
       .append('rect')
       .attr('id',d => d.id )
-      .attr('x' ,d => x(d.startYear))
-      .attr('y' , d=> y(d3.randomUniform(10)() | 0))
-      .attr('width', d => x(d.endYear) -  x(d.startYear))
-      .attr('height', 10)
+      .attr('x' ,d => x(d.startYear) + 1)
+      .attr('y' ,
+        function(d){
+          let i = 0
+          while(i < rows.length && rows[i] > d.startYear){
+            i ++
+          }
+          if(rows[i] > d.startYear){
+            rows.push(0)
+            i ++
+          }
+          rows[i] = d.endYear
+          return i * rowHeight + 5
+        })
+      .attr('width', d => x(d.endYear) -  x(d.startYear) - 1 )
+      .attr('height', rowHeight - 1)
 
 
 }
