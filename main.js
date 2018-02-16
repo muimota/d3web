@@ -24,20 +24,27 @@ var personTip = g.append("text")
 var everybody
 var links
 
-d3.json("projects_web.json",update)
+d3.json("export.json",update)
 
+//on load
 function update(data){
+
   console.log(data);
 
+  let projects = d3.values(data.projects)
   //remove work with no startYear
-  data = data.filter(d => d.startYear != null && d.endYear != null)
+  projects = projects.filter(d => d.hasOwnProperty('startYear') &&
+              d.hasOwnProperty('endYear') && d.startYear != null && d.endYear != null
+            && d.startYear > 0 && d.endYear > 0)
   //team {member:[projectIds ..]}
   let team = {}
   //project with same startDate endDate add a year so it has 1 year duration
-  data.forEach((p,i) => {
+  projects.forEach((p,i) => {
     if ( p.startYear == p.endYear ){
       p.endYear ++
     }
+
+    console.log(`${p.id} ${p.startYear} ${p.endYear}`)
 
     let projectTeam = []
     for (let department in p.team){
@@ -61,8 +68,8 @@ function update(data){
   })
   everybody.sort()
   //console.log(everybody);
-  data.sort((a,b) => a.startYear - b.startYear)
-  let domainExtent = [d3.min(data,d=>d.startYear),d3.max(data,d=>d.endYear)]
+  projects.sort((a,b) => a.startYear - b.startYear)
+  let domainExtent = [d3.min(projects,d=>d.startYear),d3.max(projects,d=>d.endYear)]
   //define el domino de x
   yearX.domain(domainExtent);
 
@@ -76,8 +83,9 @@ function update(data){
   let rows  = [domainExtent[0]]
 
   let blocks = g.selectAll('rect')
-    .data(data)
+    .data(projects)
     .enter()
+
       .append('rect')
       .attr('id',d => d.id )
       .attr('x' ,d => yearX(d.startYear) + 1)
