@@ -1,0 +1,2734 @@
+{
+  "references": {
+    "REF-15": {
+      "shortname": "Terra petjades",
+      "type": "fontdearquitectura",
+      "id": "REF-15",
+      "name": "Terra petjades",
+      "tags": [
+        "tierra",
+        "mineral",
+        "pisadas"
+      ]
+    },
+    "REF-14": {
+      "shortname": "Terra Esquerdada",
+      "type": "fontdearquitectura",
+      "id": "REF-14",
+      "name": "Terra Esquerdada",
+      "tags": [
+        "tierra",
+        "mineral",
+        "grieta"
+      ]
+    },
+    "REF-17": {
+      "shortname": "Corteza",
+      "type": "fontdearquitectura",
+      "id": "REF-17",
+      "name": "Corteza",
+      "tags": [
+        "tierra",
+        "vegetal",
+        "árbol"
+      ]
+    },
+    "REF-16": {
+      "shortname": "Esplanada, gel",
+      "type": "fontdearquitectura",
+      "id": "REF-16",
+      "name": "Esplanada, gel",
+      "tags": [
+        "tierra",
+        "mineral",
+        "grieta",
+        "horizonte"
+      ]
+    },
+    "REF-11": {
+      "shortname": "Sorra humida",
+      "type": "fontdearquitectura",
+      "id": "REF-11",
+      "name": "Sorra humida",
+      "tags": [
+        "tierra",
+        "mineral",
+        "arena",
+        "agua"
+      ]
+    },
+    "REF-10": {
+      "shortname": "Volcá Croscat",
+      "type": "fontdearquitectura",
+      "id": "REF-10",
+      "name": "Volcá Croscat",
+      "tags": [
+        "tierra",
+        "mineral",
+        "volcán"
+      ]
+    },
+    "REF-13": {
+      "shortname": "Desert",
+      "type": "fontdearquitectura",
+      "id": "REF-13",
+      "name": "Desert",
+      "tags": [
+        "tierra",
+        "mineral",
+        "desierto",
+        "sol"
+      ]
+    },
+    "REF-12": {
+      "shortname": "Bodega Bay Mud ",
+      "type": "fontdearquitectura",
+      "id": "REF-12",
+      "name": "Bodega Bay Mud ",
+      "tags": [
+        "tierra",
+        "mineral",
+        "grieta"
+      ]
+    },
+    "REF-19": {
+      "shortname": "Estrias de un tronco",
+      "type": "fontdearquitectura",
+      "id": "REF-19",
+      "name": "Estrias de un tronco",
+      "tags": [
+        "vegetal",
+        "estrias"
+      ]
+    },
+    "REF-18": {
+      "shortname": "Corteza platanero",
+      "type": "fontdearquitectura",
+      "id": "REF-18",
+      "name": "Corteza platanero",
+      "tags": [
+        "tierra",
+        "vegetal",
+        "árbol"
+      ]
+    },
+    "REF-5": {
+      "shortname": "Piedra",
+      "type": "fontdearquitectura",
+      "id": "REF-5",
+      "name": "Piedra",
+      "tags": [
+        "tierra",
+        "paisaje"
+      ]
+    },
+    "REF-4": {
+      "shortname": "La cabaña de Heidegger's. un lugar para pensar",
+      "type": "bibliografía",
+      "id": "REF-4",
+      "name": "La cabaña de Heidegger's. un lugar para pensar",
+      "tags": [
+        "intimidad",
+        "introspectiva",
+        "límites",
+        "cabaña",
+        "refugio"
+      ]
+    },
+    "REF-7": {
+      "shortname": "Detalle Cimentación",
+      "type": "fontdearquitectura",
+      "id": "REF-7",
+      "name": "Detalle Cimentación",
+      "tags": [
+        "hormigón",
+        "subterráneo"
+      ]
+    },
+    "REF-6": {
+      "shortname": "Tierra ",
+      "type": "fontdearquitectura",
+      "id": "REF-6",
+      "name": "Tierra ",
+      "tags": [
+        "olot",
+        "piedra",
+        "basalto"
+      ]
+    },
+    "REF-1": {
+      "shortname": "Algunos pasos para una pequeña teoría de lo visible. John Berger",
+      "type": "bibliografía",
+      "id": "REF-1",
+      "name": "Algunos pasos para una pequeña teoría de lo visible. John Berger",
+      "tags": [
+        "vacío"
+      ]
+    },
+    "REF-3": {
+      "shortname": "Colección de imágenes sobre el vacío",
+      "type": "fotografía",
+      "id": "REF-3",
+      "name": "Colección de imágenes sobre el vacío",
+      "tags": [
+        "vacío"
+      ]
+    },
+    "REF-2": {
+      "shortname": "Conference Carlos Ferrater. The void",
+      "type": "eventos",
+      "id": "REF-2",
+      "name": "Conference Carlos Ferrater. The void",
+      "tags": [
+        "vacío"
+      ]
+    },
+    "REF-9": {
+      "shortname": "Blue Mussels",
+      "type": "fontdearquitectura",
+      "id": "REF-9",
+      "name": "Blue Mussels",
+      "tags": [
+        "tierra",
+        "animal"
+      ]
+    },
+    "REF-8": {
+      "shortname": "Mampara de lamas de acero",
+      "type": "fontdearquitectura",
+      "id": "REF-8",
+      "name": "Mampara de lamas de acero",
+      "tags": [
+        "hierro",
+        "filtros"
+      ]
+    },
+    "REF-20": {
+      "shortname": "Corazón del tronco",
+      "type": "fontdearquitectura",
+      "id": "REF-20",
+      "name": "Corazón del tronco",
+      "tags": [
+        "vegetal",
+        "tronco"
+      ]
+    },
+    "REF-21": {
+      "shortname": "La casa de Zaratrusta de Iñaki Ábalos",
+      "type": "biblografía",
+      "id": "REF-21",
+      "name": "La casa de Zaratrusta de Iñaki Ábalos",
+      "tags": [
+        "intimidad",
+        "introspectiva",
+        "refugio"
+      ]
+    },
+    "REF-22": {
+      "shortname": "Cabanas no Rio",
+      "type": "obras",
+      "id": "REF-22",
+      "name": "Cabanas no Rio",
+      "tags": [
+        "aislamiento"
+      ]
+    },
+    "REF-23": {
+      "shortname": "Pavellón de Gran Bretaña en Shanghai",
+      "type": "obras",
+      "id": "REF-23",
+      "name": "Pavellón de Gran Bretaña en Shanghai",
+      "tags": [
+        "inmaterialidad"
+      ]
+    },
+    "REF-24": {
+      "shortname": "Casa Azuma ",
+      "type": "obras",
+      "id": "REF-24",
+      "name": "Casa Azuma ",
+      "tags": [
+        "cristal"
+      ]
+    },
+    "REF-25": {
+      "shortname": "Casa Wavi",
+      "type": "obras",
+      "id": "REF-25",
+      "name": "Casa Wavi",
+      "tags": [
+        "dispersión"
+      ]
+    }
+  },
+  "data": {
+    "I-24": {
+      "memory": "Casa Margarida es una vivienda unifamiliar de primera residencia que nace de la voluntad de definirse a partir de la peculiaridad del lugar y de las solicitaciones que el entorno propone. Los aspectos que caracterizan el área del proyecto son dos: la orientación faborable sobre el lado de la calle y la fuerte pendiente de ésta última. "
+    },
+    "II-104": {
+      "memory": "Descubrir una reserva del Parque Natural de la Zona Volcánica de la Garrotxa que se recupera, limpia y reconoce y se prepara un acceso que sirva de introducción a la belleza natural -producto de la naturaleza y de los hombres- que vas a visitar."
+    },
+    "II-74": {
+      "memory": "Esta casa mira un paisaje cuya belleza y luz cambia a cada momento. Se levanta del terreno para dejar entrar la luz a los espacios inferiores y se presenta como una gran ventana que produce transversalidades que suceden lleno-vacío, interior-exterior."
+    },
+    "II-103": {
+      "memory": "La forma y la posición de la casa responde a la forma y orientación de la parcela. Cerrada a la calle, se abre al sol. Al abrirse aparecen rendijas, pero el interior es continuo, como si estuviésemos dentro de un animal, cuya piel y estructura nos envuelve en su suave giro. Este animal, levantado del suelo, levita y deja que de su panceta otro cuerpo se encuentre arraigado en la tierra y le suministre lo que necesita para vivir."
+    },
+    "REF-23": {
+      "description": "Thomas Heatherwick"
+    },
+    "II-95": {
+      "memory": "Hogar y actividad en la casa. Un espacio cubierto pero abierto, es el espacio semipúblico de la casa que da acceso a la peluqueria del vecindario. En el nivel superior, el hogar de la família, agrupado entorno al salón, que emmarca el lejano paisaje."
+    },
+    "II-97": {
+      "memory": "Desde la oscuridad de los tiempos inmemoriales siempre ha habido una luz, un referente, una bola de fuego. De dia y de noche con luz potente o con luz ténue. El hombre, aprendiendo de la realidad natural, desde mucho tiempo atrás, ha situado un fuego al lado del mar, una bola de luz, una luna a medida, un sol en la noche. En una relación que no ha cambiado, a despecho del progreso. Constatarlo, demuestra la esencialidad de un hecho, su autenticidad y nos acerca a su intemporalidad. Por todo ello, la baliza del puerto de Palamós no puede ser otra cosa que una esfera de luz, un sólido platónico, la luna cautiva que promete una tierra segura."
+    },
+    "06-56": {
+      "memory": "falta fechas"
+    },
+    "II-91": {
+      "memory": "Esta facultad se situa en un campus cuya abrupta topografia contrasta con la ortogonalidad de las calles y la dimensión de las parcelas. El edificio se cierra a su entorno y abre espacios de relación, patios, y encuentros inesperados, en su interior."
+    },
+    "II-90": {
+      "memory": "Este edificio se muestra como una gran pieza que abre, recoje y protege el patio y el aulario, que mucho más levantado, se sitúa detrás. Hay una pureza en las formas y una contundencia que contrasta con la amabilidad en la escala del espacio vivido."
+    },
+    "IV-169": {
+      "memory": "Una caja de lápices de colores que los niños, cual Gulliver, pueden penetrar en su interior. Por el exterior al pasar su mano resiguiéndolos, éstos giran, el edificio establece una comunicación. Y las luces de estos lápices dinamizan también su interior."
+    },
+    "REF-15": {
+      "description": ""
+    },
+    "REF-14": {
+      "description": ""
+    },
+    "V-190": {
+      "memory": "Una escuela que mira un idílico paisaje de montaña para edades variadas. Se establece una \"calle\" intermedia que las comunica y busca en su sección una adaptación topográfica al terreno, así como en la solución de sus distintas cubiertas."
+    },
+    "IV-164": {
+      "memory": "Paraguas o parasoles para un día de fiesta. Paraguas chapoteando, parasoles refrescándose, sobre una lámina de agua. La unidad y el conjunto, las partes y el todo. Una construcción afacetada que resuelve de un trazo la estructura, el cerramiento y el acabado y se impregna de luces y sombras vibrando unitaria y conjuntamente."
+    },
+    "IV-175B": {
+      "memory": "Se recupera el alma de la casa de campo en una masía existente abandonada que se desnuda para convertirse en la exploración de los sentidos, en una acentuada relación con el exterior. El aire está presente en el baño, en la sala con su chimenea abierta al cielo, su cocina, su obrador, su sala de arte… En una actuación sin apenas proyecto y límite en sus mínimos de intervención para reforzar la relación primigenia del refugio con la naturaleza."
+    },
+    "REF-10": {
+      "description": ""
+    },
+    "REF-13": {
+      "description": ""
+    },
+    "V-188": {},
+    "01-5": {
+      "memory": "pepito"
+    },
+    "REF-19": {
+      "description": ""
+    },
+    "IV-172": {
+      "memory": "Construir una arquitectura para oficinas siguiendo fielmente el planeamiento urbanístico y buscar que la estructura exterior permita liberar un interior donde el aire y el encuadre de vistas permita visiones transversales o ritmar la sucesión de espacios."
+    },
+    "REF-21": {
+      "description": "Texto sobre las casas individuales sin cliente con patio de Mies van der Rohe."
+    },
+    "III-137": {
+      "memory": "Deporte y ocio, casa y residencia. Tener una lámina de agua donde nadar, jugar, refrescarse... en un entorno natural. Se ofrece la imagen del estamque que recoje agua que emana de la tierra y la deja discurrir por el canal para llevarla hacia el río."
+    },
+    "REF-4": {
+      "description": "\"He claimed an intellectual and emotional intimacy with the building and its surroundings, and even suggested that the landscape expressed itself through him, almost without agency.\""
+    },
+    "REF-7": {
+      "description": ""
+    },
+    "REF-6": {
+      "description": ""
+    },
+    "REF-1": {
+      "description": "“La hermana de David Hockney, según dice el propio Hockney, cree que Dios es el aire, el espacio entre las cosas. De este modo, todo está enraizado o moviéndose en Dios. Es una idea muy cercana a la percepción de los pintores. No porque los pintores sean necesariamente creyentes, sino porque el espacio invisible es el que siempre están intentando pintar.” "
+    },
+    "III-132": {
+      "memory": "Construir una casa en el vaso seco del estanque, que se recupera, de un molino y conseguir que se convierta en el engarce entre éste y la construcción agrícola sobre el campo que se cultiva, es su primera razón de ser. Este brazo, sobre el agua, juega a crear un espacio de superficie ondulante, con profundidades y reflejos. La delimitación del espacio, por tanto su ser perceptivo, es un continuo de cerramientos horizontal y vertical donde lo tangible y lo intangible funden sus límites, por lo cual se crea una atmósfera bañada por una luz siempre cambiante que permite conseguir, sobre una plataforma lineal perfectamente definida, la creación de una percepción espacial siempre mutante."
+    },
+    "REF-3": {
+      "description": "Selección de imágenes recopilada por los participantes del workshop 2018 de Audiovisual y fotografía sobre el vaío."
+    },
+    "REF-2": {
+      "description": "“Frente a cada nueva experiencia y cuando la disciplina aprendida se muestra insuficiente, y el instrumental adquirido escaso” Carlos Ferrater* propone “proceder a la búsqueda de nuevas herramientas con las que experimentar”. La GEOMETRÍA se constituye entonces como una “nueva” herramienta capaz de ser utilizada “como medio de aproximación al paisaje y a la forma urbana”, capaz de generar un orden intrínseco del proyecto."
+    },
+    "REF-17": {
+      "description": ""
+    },
+    "REF-9": {
+      "description": ""
+    },
+    "REF-8": {
+      "description": ""
+    },
+    "REF-18": {
+      "description": ""
+    },
+    "V-215B": {},
+    "REF-22": {
+      "description": "Aires Mateus arquitetos"
+    },
+    "II-60": {
+      "memory": "Un jardín escenifica con leyes propias fragmentos de naturaleza en un espacio delimitado y mesurable. En un retal de terreno producto de la historia, entre el viejo camino para carros de antaño que permitía ir de Olot a Sta. Pau y la nueva carretera para coches que cubre el mismo trayecto, se proyecta la zona de acogida y acceso a la Fageda de Jordà -un bosque de hayas situado a una cota excepcional (500-600 m.) sobre el nivel del mar debido a una orografía particular y al subsuelo volcánico- en pleno Parque Natural de la Zona Volcánica de la Garrotxa. Una zona de aparcamiento, un bosque como zona de recreo, un punto de encuentro y el jardín volcánico: un conjunto de terrazas de escoria volcánica de distinto color y tamaño descendiendo como la lava, desde un punto culminante de dominio sobre la Fageda, laberinto de luces y sombras. El dintel-cubierta se suspende sobre dos elementos que se abren y cierran para acoger unos servicios, un bar, un almacén y un punto de información. Dos materiales, madera y acero, cubiertos de óxido y negro como masas de escoria tendidos sobre un suelo pétreo, casi basáltico. "
+    },
+    "III-111": {
+      "memory": "Este parque urbano dibuja una ágora central para juegos y actividades, un espacio circular a cota posible, al cual llegan o emanan taludes florales y caminos que se conectan a la ciudad y al torrente que discurre a su lado, con un edificio de servicios."
+    },
+    "II-96": {
+      "memory": "Tres niveles, dos saltos. Calle, parcela y campo, de la calle a la parcela y de la parcela al campo de arriba. Un emplazamiento muy determinante para una casa que tiene vistas y que quiere porche para estar. Alargada y escalonada, encuentra en cada nivel su específica relación con el exterior. La comunicación vertical es una espina que ofrece espacios a ambos lados y disfruta de la calle en el acceso, del jardín al sol en la planta intermedia y de las vistas del paisaje en la planta superior."
+    },
+    "REF-12": {
+      "description": "@Charlie B."
+    },
+    "II-86": {
+      "memory": "Este edificio se muestra como una gran pieza que abre, recoje y protege el patio y el aulario, que mucho más levantado, se sitúa detrás. Hay una pureza en las formas y una contundencia que contrasta con la amabilidad en la escala del espacio vivido."
+    },
+    "II-82": {
+      "memory": "Es un edificio polivalente para las actividades culturales y lúdicas del pueblo: fiestas, educación física, exposiciones, con presencia contrapuesta a la Iglesia del pueblo, creando una plaza de acceso y fachada a la zona de campos de juego posterior.\t"
+    },
+    "REF-20": {
+      "description": ""
+    },
+    "III-143": {
+      "memory": "5 estancias donde pasar la noche a solas consigo mismo. Una experiencia que busca en la ingravidez, la oscuridad, los reflejos, la poza, el patio y el cielo... recrear la abstracción de un mundo natural donde el hombre encuentre un sosiego."
+    },
+    "IV-171": {
+      "memory": "\tEs un edificio que coloniza su entorno y busca en los recorridos perimetrales, un lugar de encuentro para los familiares y amigos que participan en la misma ceremonia, sin adscripción a ningún culto, junto a una lámina de agua que refleja el cielo."
+    },
+    "III-141": {
+      "memory": "La riqueza espacial en una vivienda en altura para las buenas vistas, en la empinada ladera de un volcán, no puede venir sólo de la fluída relación de la estructura bidimensional del espacio. Gran parte de su riqueza se establece en la estructura tridimensional y en su relación con el panorama o en su contacto con la ladera. El vacío se identifica y positiva como parte espacial y esencial de la vivienda y su parcela. Reservar el máximo suelo posible para disfrutar de un jardín o de un bosque cuyos límites urbano-natural desaparecen. El cobijo por entre, o a través, o debajo de, aparece y desaparece y también se intercambia con el dominio de la visión placentera de un mundo lejano a sus piés."
+    },
+    "V-185": {
+      "memory": "La recuperación de las ruinas del antiguo castillo con fines culturales vinculados al mundo de la cocina es el escenario para activar un patio donde el vacío, lo construído, la actividad, la cultura y el tiempo se fusionan en un marco incomparable."
+    },
+    "III-147": {
+      "memory": "La biblioteca, como puerta y espacio chill-out de lectura, el hogar de jubilados, como fachada de espacio público, y el interior de manzana como jardín de juegos para niños con riqueza espacial y de relaciones para un conjunto urbano socialmente dinámico.\t"
+    },
+    "IV-158": {
+      "memory": "Rehabilitar una antigua fundición en taller de arquitectura y espacio expositivo. Dejar que la atmósfera de antaño nos envuelva y añadir nuestra huella a la historia de este espacio. Y materializar un sueño de aromas y silencios."
+    },
+    "IV-156": {
+      "memory": "Una plaza cubierta en un casco urbano, en el solar de un antiguo teatro, frente al río. Se construye una pasarela para unir las dos riberas y el entramado que cubre paredes y techo dibuja luces y sombras en este nuevo espacio urbano."
+    },
+    "IV-157": {
+      "memory": "Es una \"promenade\" al mundo subterráneo del vino desde un camino que resigue el bosque y enlaza edificaciones. Su interior ofrece reposo, penumbra, peso de la tierra. También el aire y la lluvia en la sala de catas y la sorpresa de un pequeño auditorio."
+    },
+    "IV-154": {
+      "memory": "Una masía en un enclave único. Elevada, mirando al mar, entre pinos. Una larga historia. Con intervenciones distintas a lo largo de los años. Una piscina, un estanque, huertos… un torreón… Pero la masía sigue mostrando sus tres crujías, sus dos plantas a nivel del terreno en orientaciones opuestas. Esta última intervención quiere convertir la masía en punto de encuentro de una familia dispersa por el mundo. Vendrán unidades independientes para cada miembro, pero la masía contendrá los espacios comunes para todos. En el nivel inferior los salones, el comedor, el porche y un cenador exterior con vistas al mar, a cuyos se adosa, a través de un patio, la cocina, el garaje y los elementos de servicio. En el nivel superior, la habitación principal accediendo a través de una escalera empinada, central, y un espacio de baño en el torreón. Toda la intervención quiere dejar al desnudo la construcción tradicional de la masía, sus vigas de madera, sus paredes de piedra, las piezas cerámicas... y coloca en acero, cual muebles de poca altura, exentos, las piezas de soporte. Hay una ambigüedad en el ambiente entre la austeridad y el confort, entre la historia y el presente, entre la intimidad y la reunión, entre la penumbra y el aire, para, finalmente, dotar a los espacios de una ambigüedad entre la estaticidad y la fluidez. "
+    },
+    "IV-152": {},
+    "REF-5": {
+      "description": ""
+    },
+    "III-125": {
+      "memory": "Desde la calle una valla, desde el espacio de la zona deportiva, un porticado. Es la estructura que marca un ritmo de luz a la piscina cubierta y organiza su fachada. Un cuerpo simple que ayuda a resolver el desnivel de la calle y la zona deportiva."
+    },
+    "III-127": {
+      "memory": "Los niños juegan en la guarderia, es su mundo, a su escala, en su patio al que acceden desde sus clases. Éstas tienen iluminación cruzada, la que proviene del patio y la que proviene del pasillo con un lucernario central y paredes de metacrilato de color."
+    },
+    "III-120": {
+      "memory": "Esta casa se sitúa en el borde un talud natural al final de un campo de cultivo. Toma todo el ancho y se divide en volúmenes que enmarcan el paisaje y lo dejan traspasar transversalmente, con una fuerte presencia por este lado y muy mínima por el otro."
+    },
+    "III-121": {
+      "memory": "Un volumen prefabricado para una casa que se puede entender como un espacio único o como la suma de tres espacios distintos gracias a las perforaciones en forma de patio que la cortan. El muro posterior contiene baños y cocina de manera integrada."
+    },
+    "IV-179": {
+      "memory": " \tLugar de celebraciones recreando un claro en el bosque. El ritmo de patios estrechos con árboles divide el espacio y permite ocuparlo según el número de personas. La cubierta toma forma de catenaria de acuerdo con el propio peso de la estructura."
+    },
+    "REF-16": {
+      "description": ""
+    },
+    "1-05": {
+      "memory": "Una cocina abierta a un patio que te recibe a un interior donde los filtros, las luces, la mesa para todos, te envuelven en una atmósfera especial. En la planta baja de una masia altiva con cientos de años de historia, el restaurante es su último eslabón."
+    },
+    "V-182": {
+      "memory": "Museo y paisaje se nutren mutuamente, fundidos en una unidad, como la del pintor y su obra, mostrando una riqueza de relaciones donde ya nada pueda ser sustraído porque todo lo que pertenece a este nuevo mundo creado es consustancial."
+    },
+    "I-43": {
+      "memory": "El estadio de atletismo presenta las características de correr en plena naturaleza como en el espíritu de los primeros juegos olímpicos griegos. Los filtros, las ondulaciones de las terrazas y las lámparas contribuyen a la magia del espacio."
+    },
+    "REF-24": {
+      "description": "De Tadao Ando"
+    },
+    "REF-11": {
+      "description": ""
+    },
+    "REF-25": {
+      "description": "De Tadao Ando"
+    }
+  },
+  "projects": {
+    "IV-167": {
+      "name": " PGA Golf de Catalunya, Caldes de Malavella. Girona",
+      "startYear": "",
+      "endYear": "",
+      "team": [
+        "T.Otto",
+        "M.Subiràs",
+        "R.Rodrigues",
+        "R.Rodriguez",
+        "C.Kuczynski"
+      ],
+      "shortname": "PGA Golf de Catalunya",
+      "type": "RCR",
+      "id": "IV-167"
+    },
+    "IV-164": {
+      "atmosphere": [
+        "unidad"
+      ],
+      "name": "Espacios de sombra Lotus Blau, Santa Coloma de Farners. Girona",
+      "startYear": 2004,
+      "space": [
+        "espacio",
+        "geometría",
+        "exteior",
+        "urbano"
+      ],
+      "materiality": [
+        "agua",
+        "estructura",
+        "acero cortén"
+      ],
+      "typology": "restaurante",
+      "endYear": 2004,
+      "references": [
+        "REF-8"
+      ],
+      "team": [
+        "Y.Kobanawa",
+        "K.Fujii",
+        "G.Puigvert",
+        "A.Schmidt",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-164",
+      "shortname": "Espacios de sombra Lotus Blau",
+      "type": "RCR",
+      "id": "IV-164"
+    },
+    "IV-163": {
+      "name": " Indoor pool, in Taradell. Barcelona",
+      "startYear": 2005,
+      "endYear": 2007,
+      "team": [
+        "M.Sellés",
+        "D.Leikina",
+        "G.Puigvert",
+        "I.García",
+        "M.Ortega",
+        "Aribau70 SL",
+        "C.Kuczynski",
+        "A.Schmid",
+        "H.Payà",
+        "C.Wittenbeck",
+        "M.Tàpies",
+        "D.Breathnach",
+        "Grau-Del Pozo enginyers SC.",
+        "Blázquez-Guanter arquitectes",
+        "G.Szücs"
+      ],
+      "shortname": "Indoor pool",
+      "type": "RCR",
+      "id": "IV-163"
+    },
+    "IV-161": {
+      "startYear": 2004,
+      "endYear": 2005,
+      "team": [
+        "D.Riou",
+        "Maquet 3",
+        "C. Kuczynski",
+        "Blázquez-Guanter Arquitectes",
+        "M.Ruck",
+        "M.Tàpies",
+        "A.Paulicelli",
+        "J.Morawska",
+        "A.Schmid",
+        "Master Ingeniería y Arquitectura"
+      ],
+      "shortname": "Termal Spa and Hotel",
+      "type": "RCR",
+      "id": "IV-161"
+    },
+    "IV-160": {
+      "name": " New Sants station complex, Barcelona",
+      "startYear": 2005,
+      "endYear": 2010,
+      "shortname": "New Sants station complex",
+      "type": "RCR",
+      "id": "IV-160"
+    },
+    "IV-159": {
+      "name": " Bikini, Les Corts' district. Barcelona",
+      "startYear": 2005,
+      "endYear": 2006,
+      "team": [
+        "X.Vilagran",
+        "A.Lippmann",
+        "S.Ribeiro"
+      ],
+      "shortname": "Bikini",
+      "type": "RCR",
+      "id": "IV-159"
+    },
+    "IV-169": {
+      "atmosphere": [
+        "interior",
+        "exterioir",
+        "ambigüedad",
+        "sin límites",
+        "luz",
+        "filtros"
+      ],
+      "name": "Guardería 'El Petit Comte', Besalú. Girona",
+      "startYear": 2005,
+      "space": [
+        "espacio",
+        "polivalente",
+        "infantil"
+      ],
+      "materiality": [
+        "colores"
+      ],
+      "typology": "educativo",
+      "endYear": 2006,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-169",
+      "team": [
+        "M.Ortega",
+        "A.Clemente",
+        "Blázquez-Guanter arquitectes",
+        "A.Schmid",
+        "Plana-Hurtós enginyers",
+        "J.Puigcorbé",
+        "P.Alves Ferreira",
+        "P.Bourgade",
+        "I.De Azevedo",
+        "E.Klasen",
+        "L.Bjerregaard"
+      ],
+      "shortname": "Guardería 'El Petit Comte'",
+      "type": "RCR",
+      "id": "IV-169"
+    },
+    "IV-168": {
+      "name": " Wind-break House, Pals. Girona",
+      "startYear": 2005,
+      "endYear": 2006,
+      "team": [
+        "A.Schmid",
+        "M.Subiràs",
+        "S.Figueras",
+        "M.Thompson",
+        "L.Bjerregaard"
+      ],
+      "shortname": "Wind-break House",
+      "type": "RCR",
+      "id": "IV-168"
+    },
+    "IV-175B": {
+      "atmosphere": [
+        "exterior",
+        "aire"
+      ],
+      "name": "Mas Salvà, Palamós. Girona",
+      "startYear": "",
+      "space": [
+        "espacio",
+        "común",
+        "sucesión",
+        "lugar",
+        "topografía",
+        "exterior",
+        "relaciónes luz",
+        "aire",
+        "huella",
+        "historia"
+      ],
+      "materiality": [
+        "sentir",
+        "sentidos",
+        "vivir"
+      ],
+      "typology": "viviendas",
+      "endYear": "",
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-175A",
+      "team": [
+        "I.Garcia",
+        "M.Cottone",
+        "G.Puigvert",
+        "L.Mortier"
+      ],
+      "shortname": "Mas Salvà",
+      "type": "RCR",
+      "id": "IV-175B"
+    },
+    "IV-175A": {
+      "name": " Mas Salvà Stables for people and horses, in Palamós. Girona",
+      "startYear": "2006",
+      "endYear": 2009,
+      "team": [
+        "X.Loureiro",
+        "J.Tüchsen",
+        "C.Murta",
+        "G.Giuseppe",
+        "A.Lippmann",
+        "D.Breathnach",
+        "D.Leikina T.Minagawa"
+      ],
+      "shortname": "Mas Salvà Stables for people and horses",
+      "type": "RCR",
+      "id": "IV-175A"
+    },
+    "II-98": {
+      "name": " House for an editor, Esplugues de Llobregat. Barcelona",
+      "startYear": 1997,
+      "endYear": 2000,
+      "team": [
+        "P.Rifà",
+        "A.Sáez",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "House for an editor",
+      "type": "RCR",
+      "id": "II-98"
+    },
+    "III-111": {
+      "atmosphere": [
+        "relaciones",
+        "bisagra",
+        "ágora",
+        "caminos"
+      ],
+      "name": "Parque de la arboleda, Begur. Girona",
+      "startYear": 1998,
+      "space": [
+        "naturaleza",
+        "encontrarse",
+        "topografía",
+        "espacio"
+      ],
+      "materiality": [
+        "acero corténegetación",
+        "sablón",
+        "acero cortén"
+      ],
+      "typology": "espacio público",
+      "endYear": 2001,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=III-111",
+      "team": [
+        "N.Portugal",
+        "W.Schührer",
+        "G.Puigvert",
+        "F.Gomes",
+        "Blàzquez-Guanter arquitectes",
+        "I.De Vasconcelos",
+        "Grau-Del Pozo enginyers SC"
+      ],
+      "shortname": "Parque de la arboleda",
+      "type": "RCR",
+      "id": "III-111"
+    },
+    "III-114": {
+      "name": " Glow worm House, Olot. Girona",
+      "startYear": 1999,
+      "endYear": 1999,
+      "team": [
+        "M.Tàpies",
+        "A.Planagumà",
+        "M.Subiràs",
+        "A.Sáez"
+      ],
+      "shortname": "Glow worm House",
+      "type": "RCR",
+      "id": "III-114"
+    },
+    "III-109-H": {
+      "name": " Two houses for two brothers, Begur. Girona",
+      "startYear": 1998,
+      "endYear": 2000,
+      "team": [
+        "M.Tàpies",
+        "A.Planagumà",
+        "A.Sáez",
+        "M.Subiràs"
+      ],
+      "shortname": "Two houses for two brothers",
+      "type": "RCR",
+      "id": "III-109-H"
+    },
+    "III-109-A": {
+      "name": " Two houses for two brothers, Begur. Girona",
+      "startYear": 1998,
+      "endYear": 2000,
+      "team": [
+        "M.Tàpies",
+        "A.Planagumà",
+        "A.Sáez",
+        "M.Subiràs"
+      ],
+      "shortname": "Two houses for two brothers",
+      "type": "RCR",
+      "id": "III-109-A"
+    },
+    "V-182": {
+      "atmosphere": [
+        "relaciones",
+        "riqueza",
+        "luz",
+        "pintura"
+      ],
+      "name": "Museo Soulages, Rodez. Francia",
+      "startYear": 2008,
+      "space": [
+        "lugar",
+        "entorno",
+        "topografía",
+        "paisaje"
+      ],
+      "materiality": [
+        "acero cortén",
+        "cristal"
+      ],
+      "typology": "cultural",
+      "endYear": 2011,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=V-182",
+      "shortname": "Museo Soulages",
+      "type": "RCR",
+      "id": "V-182"
+    },
+    "V-185": {
+      "atmosphere": [
+        "vacío",
+        "filtros"
+      ],
+      "name": "Centro de Arte La Cuisine, Château Negrepelisse. Francia",
+      "startYear": 2009,
+      "space": [
+        "patio",
+        "ruina",
+        "huella",
+        "historia"
+      ],
+      "materiality": [
+        "acero cortén"
+      ],
+      "typology": "cultural",
+      "endYear": 2012,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=V-185",
+      "team": [
+        "M.Merce",
+        "C.Medina",
+        "R.Kobayashi",
+        "J.Choi",
+        "P. Morizet",
+        "O.Gábor",
+        "P.Bolinches.",
+        "A.Sáez",
+        "P.Morizet",
+        "P. Laugier",
+        "A. Sanz",
+        "I.Garcia",
+        "S.Tarradas",
+        "T.Coelho",
+        "L.Ricardo",
+        "M.Tàpies",
+        "S.Figueras",
+        "E.Klasen",
+        "M.Casas",
+        "G.Trégouët",
+        "Thibault Marca Architecte"
+      ],
+      "shortname": "Centro de Arte La Cuisine",
+      "type": "RCR",
+      "id": "V-185"
+    },
+    "V-187": {
+      "name": " Province Courts, Barcelona",
+      "startYear": 2010,
+      "endYear": 2010,
+      "team": [
+        "S.Tarradas",
+        "R.Kobayashi",
+        "P.Bougarde",
+        "Artec3 Studio",
+        "M.Rodríguez. PBA: C.Torio",
+        "M.Casas",
+        "A.Sáez",
+        "Tecnics-G3",
+        "L.Cazala",
+        "J.Feijó",
+        "Encaix comunicació visual SL",
+        "P.Rodríguez",
+        "JG Grup",
+        "PBA: C.Torio",
+        "M.Kielian",
+        "A.Lippmann",
+        "U.Roselund",
+        "D.Delarue",
+        "Blázquez-Guanter arquitectes",
+        "G.Puigvert"
+      ],
+      "shortname": "Province Courts",
+      "type": "RCR",
+      "id": "V-187"
+    },
+    "V-186": {
+      "name": " Malecaze House, in Vieille-Toulouse. France",
+      "startYear": 2009,
+      "endYear": 2010,
+      "team": [
+        "A.Moura",
+        "I.Garcia",
+        "S.Figueras. \u0080 Blázquez-Guanter arquitectes",
+        "K.Fujii",
+        "D.Breathnack",
+        "A.Saez"
+      ],
+      "shortname": "Malecaze House",
+      "type": "RCR",
+      "id": "V-186"
+    },
+    "V-188": {
+      "atmosphere": [
+        "interior",
+        "relaciones",
+        "visuales",
+        "entre",
+        "medianeras",
+        "filtro",
+        "estructura",
+        "aire",
+        "abierto",
+        "intimidad"
+      ],
+      "name": "Casa Entremurs, Olot. Girona",
+      "startYear": 2009,
+      "space": [
+        "espacio",
+        "vaciar",
+        "huella",
+        "historia"
+      ],
+      "materiality": [
+        "sentir"
+      ],
+      "typology": "viviendas",
+      "endYear": 2009,
+      "team": [
+        "X.Loureiro",
+        "D.Leikina",
+        "Artec3 Studio",
+        "RCR",
+        "M.Houille",
+        "A.Lippmann",
+        "R.Muñoz de León",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Casa Entremurs",
+      "type": "RCR",
+      "id": "V-188"
+    },
+    "08-48": {
+      "name": " Showroom Lagares, in Fornells de la Selva. Girona",
+      "startYear": "",
+      "tags": [
+        "shop",
+        "showroom",
+        "industrial",
+        "concrete",
+        "corian",
+        "atmosphere",
+        "weightlessness"
+      ],
+      "endYear": "",
+      "references": [
+        "REF-8"
+      ],
+      "shortname": "Showroom Lagares",
+      "type": "RCR",
+      "id": "08-48"
+    },
+    "II-74": {
+      "atmosphere": [
+        "vacío",
+        "interiores",
+        "exteriores",
+        "remansos",
+        "soleado"
+      ],
+      "name": "Casa Mirador, Olot. Girona",
+      "startYear": 1994,
+      "space": [
+        "espacio",
+        "paisaje"
+      ],
+      "materiality": [
+        "entre (se accede por)",
+        "soleado"
+      ],
+      "typology": "viviendas",
+      "endYear": 1994,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-74",
+      "team": [
+        "J.Margui"
+      ],
+      "shortname": "Casa Mirador",
+      "type": "RCR",
+      "id": "II-74"
+    },
+    "V-193": {
+      "name": " Waalse krook Mediatheque, in Ghent. Belgium",
+      "startYear": 2010,
+      "endYear": 2013,
+      "team": [
+        "N.Lopes",
+        "S.Tarradas",
+        "V.Van Roy",
+        "T.Deltour",
+        "H.Pires",
+        "J.Feijó",
+        "C.Garric",
+        "J.De Schepper",
+        "VK Engineering",
+        "G.De Vriese",
+        "SECO",
+        "J.Geens",
+        "A.Lippmann",
+        "M.Rodríguez",
+        "D. Delarue",
+        "Encaix comunicació visual SL",
+        "M.Casas",
+        "C.Onisiforou",
+        "CVBA Mouton",
+        "TV Aries-Advisers",
+        "A.Moura",
+        "K.Van Nieuwenhuyze",
+        "L.Cazala",
+        "E.Verstraete",
+        "P.Rodríguez",
+        "Digipoli",
+        "G.De Cock",
+        "L.De Groote",
+        "O.Gábor",
+        "Evolta.  ABO",
+        "F.Verschueren",
+        "D.Delarue",
+        "R.Kobayashi",
+        "C.Torio",
+        "SBDA.   S.Tarradas",
+        "A.Dalmasas",
+        "I.Temmerman",
+        "M.Kielian",
+        "A.Vicente-Arche",
+        "F.Faustino",
+        "R.Bouciqué",
+        "G.Puigvert",
+        "E.Geens",
+        "Artec3 Studio",
+        "G&V",
+        "bbba",
+        "Raum&Akustik",
+        "J.Pailleux"
+      ],
+      "shortname": "Waalse krook Mediatheque",
+      "type": "RCR",
+      "id": "V-193"
+    },
+    "V-190": {
+      "atmosphere": [
+        "interior",
+        "calle",
+        "luz",
+        "luminoso",
+        "claro",
+        "sol",
+        "ambiente"
+      ],
+      "name": "Grupo escolar 'Ecole du solei', Font Romeu. Francia",
+      "startYear": 2011,
+      "space": [
+        "paisaje",
+        "montaña",
+        "topografía"
+      ],
+      "materiality": [
+        "granito",
+        "cristal"
+      ],
+      "typology": "educativo",
+      "endYear": 2012,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=V-190",
+      "team": [
+        "X.Loureiro",
+        "S.Tarradas",
+        "R.Kobayashi",
+        "Artec3 Studio",
+        "A.Moura",
+        "A.Chabanne",
+        "I.Garcia",
+        "D.Breathnach",
+        "Blázquez-Guanter arquitectes",
+        "M.Kielian",
+        "HQE: ERF",
+        "I.De Azevedo",
+        "CH.Onisiforou",
+        "S.Abig",
+        "Clean Energy"
+      ],
+      "shortname": "Grupo escolar 'Ecole du solei'",
+      "type": "RCR",
+      "id": "V-190"
+    },
+    "V-191": {
+      "name": " Michel Bras restaurant, in Rodez. France",
+      "startYear": "",
+      "endYear": "",
+      "team": [
+        "S.Tarradas",
+        "A.Moura",
+        "G.Le Guevel",
+        "M.Kielian",
+        "D.Breathnach",
+        "S.Figueras"
+      ],
+      "shortname": "Michel Bras restaurant",
+      "type": "RCR",
+      "id": "V-191"
+    },
+    "08-37": {
+      "name": " Bab Al Jinan Hotel, in Bawadi. Dubai",
+      "startYear": 2008,
+      "tags": [
+        "hotel",
+        "noise",
+        "void",
+        "silence",
+        "horizontality",
+        "sandstone",
+        "inertia",
+        "mass"
+      ],
+      "surface": 114688,
+      "endYear": 2008,
+      "references": [
+        "REF-4",
+        "REF-9"
+      ],
+      "team": [
+        "M.Merce",
+        "R.Kobayashi",
+        "A.Moura",
+        "I.Garcia",
+        "P.Morizet",
+        "F.Neves",
+        "L.Ricardo",
+        "P.Bourgade",
+        "D.Breathnach",
+        "D.Delarue",
+        "E.Klasen",
+        "A.Porosnicu",
+        "T. Castro"
+      ],
+      "shortname": "Bab Al Jinan Hotel",
+      "type": "RCR",
+      "id": "08-37"
+    },
+    "V-195": {
+      "name": " La Fosca INN, in Palamós. Girona",
+      "startYear": 2010,
+      "endYear": 0,
+      "team": [
+        "O.Gábor",
+        "Y.Kobanawa",
+        "J.Feijó",
+        "K.Fujii",
+        "M.Kielian",
+        "T.Minagawa",
+        "C.Kuczynski"
+      ],
+      "shortname": "La Fosca INN",
+      "type": "RCR",
+      "id": "V-195"
+    },
+    "V-198": {
+      "name": " Condal linear park, in Barcelona",
+      "startYear": 2012,
+      "endYear": 2014,
+      "team": [
+        "D.Leikina",
+        "A.Moura",
+        "V.Vitoriano",
+        "M.Casas",
+        "B.Fernández",
+        "J.Sánchez",
+        "I.De Azevedo",
+        "S.Figueras",
+        "D.Breatnach"
+      ],
+      "shortname": "Condal linear park",
+      "type": "RCR",
+      "id": "V-198"
+    },
+    "IV-180": {
+      "name": " The Edge, in Dubai Business Bay. Dubai",
+      "startYear": 2008,
+      "endYear": 2008,
+      "team": [
+        "G.Szücs",
+        "C.Kuczynski",
+        "T.Ferreira de Oliveira",
+        "F.De Bruyn",
+        "M.Cottone. COUSSÉE&GORIS;: E.Verstraete",
+        "A.Paulicelli",
+        "K.Fujii",
+        "J.Puigcorbé",
+        "A.Schmidt",
+        "S.Piecha",
+        "E.Subirah",
+        "D.Delarue",
+        "A.Sabença",
+        "N.Baldayo"
+      ],
+      "shortname": "The Edge",
+      "type": "RCR",
+      "id": "IV-180"
+    },
+    "12-44": {
+      "name": " Gallery, atelier and house, in Bordeaux",
+      "startYear": 2013,
+      "surface": "825",
+      "endYear": 2016,
+      "team": [
+        "G.Macedo",
+        "A.Moura",
+        "J.Pérez",
+        "Enric",
+        "Blázquez-Guanter Arquitectes",
+        "I.DeAzevedo",
+        "ARTOTEC: P.Ibarra",
+        "A.Navarro"
+      ],
+      "shortname": "Gallery",
+      "type": "RCR",
+      "id": "12-44"
+    },
+    "II-60": {
+      "atmosphere": [
+        "laberinto",
+        "luces",
+        "sombras"
+      ],
+      "name": "Pabellón de acceso a la Fageda de Jordà, Zona Volcànica de la Garrotxa. Girona",
+      "startYear": 1993,
+      "space": [
+        "espacio",
+        "delimitado",
+        "mesurable",
+        "naturaleza",
+        "volcánico",
+        "subsuelo",
+        "jardín",
+        "escoria"
+      ],
+      "materiality": [
+        "madera",
+        "acero cortén",
+        "negro",
+        "basalto"
+      ],
+      "typology": "pabellón",
+      "endYear": 1993,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-60",
+      "team": [
+        "M.Tàpies",
+        "A.Sáez",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Pabellón de acceso a la Fageda de Jordà",
+      "type": "RCR",
+      "id": "II-60"
+    },
+    "11-17": {
+      "name": " WC IN Lagares",
+      "startYear": "",
+      "endYear": "",
+      "shortname": "WC IN Lagares",
+      "type": "RCR",
+      "id": "11-17"
+    },
+    "V-204": {
+      "name": " Abbaye Des Capucins Hotel, in Montauban",
+      "startYear": "",
+      "endYear": "",
+      "shortname": "Abbaye Des Capucins Hotel",
+      "type": "RCR",
+      "id": "V-204"
+    },
+    "I-43A": {
+      "name": " Tossols Basil Athletics Track Equipment, Olot. Girona",
+      "startYear": 2009,
+      "surface": 865,
+      "endYear": 2009,
+      "team": [
+        "M.Tàpies",
+        "A.Schmid",
+        "Plana-Hurtós Enginyers",
+        "Blázquez-Guanter arquitectes",
+        "G.Puigvert"
+      ],
+      "shortname": "Tossols Basil Athletics Track Equipment",
+      "type": "RCR",
+      "id": "I-43A"
+    },
+    "VI-226": {
+      "name": " Le Jardin Suspendu, in Lormont",
+      "startYear": 2014,
+      "endYear": 2014,
+      "team": [
+        "D.Ferré",
+        "M.Panni",
+        "C.Lobianco",
+        "A.Conway",
+        "N.Baldayo",
+        "A.Moura",
+        "Grontmij",
+        "D.Delarue",
+        "P.Navarro",
+        "S.Martínez",
+        "F.Muscuso",
+        "ARTOTEC: A.Giraud",
+        "D.Baló",
+        "ARTOTEC: P.Ibarra",
+        "S.Prattes",
+        "Blázquez-Guanter Arquitectes",
+        "A.Romanet ARTOTEC: P.Ibarra"
+      ],
+      "shortname": "Le Jardin Suspendu",
+      "type": "RCR",
+      "id": "VI-226"
+    },
+    "VI-225": {
+      "name": " 'L'ilot plaza' Mixed-use Building, in Mérignac",
+      "startYear": 2014,
+      "endYear": 0,
+      "shortname": "'L'ilot plaza' Mixed-use Building",
+      "type": "RCR",
+      "id": "VI-225"
+    },
+    "III-117": {
+      "name": " House between two walls, Jaca. Huesca",
+      "startYear": 1999,
+      "endYear": 2000,
+      "team": [
+        "M.Tàpies",
+        "A.Sáez",
+        "H.Neto",
+        "M.Subiràs",
+        "J.Sánchez-Cruzat"
+      ],
+      "shortname": "House between two walls",
+      "type": "RCR",
+      "id": "III-117"
+    },
+    "VI-228": {
+      "name": " Adequacy of the faculty of Arts Santa Monica",
+      "startYear": "",
+      "endYear": "",
+      "shortname": "Adequacy of the faculty of Arts Santa Monica",
+      "type": "RCR",
+      "id": "VI-228"
+    },
+    "15-61": {
+      "name": " Al Aryam Pavilion at NAS Zoo Safari, in Dubai",
+      "startYear": "",
+      "endYear": "",
+      "shortname": "Al Aryam Pavilion at NAS Zoo Safari",
+      "type": "RCR",
+      "id": "15-61"
+    },
+    "II-104": {
+      "atmosphere": [
+        "rugosidad",
+        "claros"
+      ],
+      "name": "Parque de Piedra Tosca, Les Preses. Girona",
+      "startYear": 1998,
+      "space": [
+        "espacio",
+        "lugar especial",
+        "naturaleza",
+        "paisaje",
+        "volcean",
+        "colada",
+        "basalto",
+        "tierra"
+      ],
+      "materiality": [
+        "instante",
+        "percepción",
+        "descubrimiento",
+        "visión",
+        "acero"
+      ],
+      "typology": "espacio público",
+      "endYear": 2002,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-104",
+      "team": [
+        "M.Tàpies",
+        "P.Llimona",
+        "G.Puigvert",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Parque de Piedra Tosca",
+      "type": "RCR",
+      "id": "II-104"
+    },
+    "II-103": {
+      "atmosphere": [
+        "orientación",
+        "interior",
+        "sol",
+        "apertura"
+      ],
+      "name": "Casa Fuelle, Les Preses. Girona",
+      "startYear": 1997,
+      "space": [
+        "parcela"
+      ],
+      "surface": "260.56",
+      "typology": "viviendas",
+      "endYear": 1998,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-103",
+      "materiality": [
+        "vivir",
+        "levitar",
+        "piel",
+        "estrcutura"
+      ],
+      "team": [
+        "M.Tàpies",
+        "P.Rifà",
+        "M.Subiràs",
+        "A.Sáez"
+      ],
+      "shortname": "Casa Fuelle",
+      "type": "RCR",
+      "id": "II-103"
+    },
+    "II-95": {
+      "atmosphere": [
+        "entre",
+        "dos puntos",
+        "transparentes",
+        "luz",
+        "sol",
+        "simplicidad"
+      ],
+      "name": "Casa para un herrero y una peluquera, La Canya. Girona",
+      "startYear": 1996,
+      "space": [
+        "espacio",
+        "paisaje",
+        "panorámico"
+      ],
+      "materiality": [
+        "acero",
+        "cristal",
+        "piedra"
+      ],
+      "typology": "viviendas",
+      "endYear": 1998,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-95",
+      "team": [
+        "P.Rifà",
+        "M.Subiràs",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Casa para un herrero y una peluquera",
+      "type": "RCR",
+      "id": "II-95"
+    },
+    "II-97": {
+      "atmosphere": [
+        "relación",
+        "luz",
+        "sol",
+        "nocturno",
+        "esencialidad"
+      ],
+      "name": "Esfera de la luz, Puerto de Palamós. Girona",
+      "startYear": 1996,
+      "space": [
+        "naturaleza"
+      ],
+      "materiality": [
+        "tiempo",
+        "inmemoriables",
+        "tiempo atrás",
+        "intemporalidad",
+        "acero",
+        "cristal",
+        "piedra"
+      ],
+      "typology": "espacio público",
+      "endYear": 2000,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-97",
+      "team": [
+        "M.Tàpies",
+        "A.Sáez",
+        "Blázquez-Guanter arquitectes",
+        "J.Viñas"
+      ],
+      "shortname": "Esfera de la luz",
+      "type": "RCR",
+      "id": "II-97"
+    },
+    "II-96": {
+      "atmosphere": [
+        "experior",
+        "relacion",
+        "sol"
+      ],
+      "name": "Casa Roser, Sant Privat d’en Bas. Girona",
+      "startYear": 1998,
+      "space": [
+        "espacio",
+        "paisaje",
+        "vistas",
+        "calle",
+        "parecela",
+        "campo"
+      ],
+      "materiality": [
+        "blanco"
+      ],
+      "typology": "viviendas",
+      "endYear": 2000,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-96",
+      "team": [
+        "P.Rifà",
+        "M.Subiràs",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Casa Roser",
+      "type": "RCR",
+      "id": "II-96"
+    },
+    "II-91": {
+      "atmosphere": [
+        "relacionarse",
+        "relación",
+        "fluidez",
+        "luz",
+        "sol"
+      ],
+      "name": "Facultad de Ciencias Jurídicas, Universdad de Girona. Girona",
+      "startYear": 1995,
+      "space": [
+        "espacio",
+        "lugar",
+        "abierto"
+      ],
+      "materiality": [
+        "viviencia",
+        "piedra",
+        "cristal"
+      ],
+      "typology": "educativo",
+      "endYear": 1996,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-91",
+      "team": [
+        "F.Wien",
+        "A.Sáez",
+        "P.Rifà. J.M.Oller",
+        "Pro-Arq arquitectes",
+        "J.Viñas",
+        "M.Tàpies",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Facultad de Ciencias Jurídicas",
+      "type": "RCR",
+      "id": "II-91"
+    },
+    "II-90": {
+      "atmosphere": [
+        "pureza",
+        "contundencia"
+      ],
+      "name": "IES Vilartagues, Sant Feliu de Guíxols. Girona",
+      "startYear": 1995,
+      "space": [
+        "lugar",
+        "espacio"
+      ],
+      "materiality": [
+        "sentidos",
+        "experiencia",
+        "vivencia",
+        "piedra"
+      ],
+      "typology": "educativo",
+      "endYear": 1997,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-90",
+      "team": [
+        "A.Sáez",
+        "J.Viñas",
+        "M.Tàpies",
+        "P.Rifà",
+        "Gerc Inartur",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "IES Vilartagues",
+      "type": "RCR",
+      "id": "II-90"
+    },
+    "VI-234": {
+      "name": " Enigma Space, in Barcelona",
+      "startYear": 2014,
+      "surface": "51478",
+      "endYear": 2015,
+      "team": [
+        "Nos-Altres Arquitectures",
+        "P.Llimona: V.Vazquez",
+        "PGI Ingeniería",
+        "C.Roure",
+        "RCR",
+        "N.Sintes",
+        "V.Vazquez.  Artec3",
+        "SGA Arquitectos"
+      ],
+      "shortname": "Enigma Space",
+      "type": "RCR",
+      "id": "VI-234"
+    },
+    "II-86": {
+      "atmosphere": [
+        "fluir",
+        "proporción"
+      ],
+      "name": "Pabellón del Baño Tossols Basil, Olot. Girona",
+      "startYear": 1995,
+      "space": [
+        "río",
+        "naturaleza"
+      ],
+      "materiality": [
+        "acero cortén",
+        "hormigón",
+        "colorante"
+      ],
+      "typology": "pabellón",
+      "endYear": 1995,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-86",
+      "team": [
+        "A.Sáez",
+        "Blázquez-Guanter arquitectes",
+        "M.Subiràs"
+      ],
+      "shortname": "Pabellón del Baño Tossols Basil",
+      "type": "RCR",
+      "id": "II-86"
+    },
+    "II-82": {
+      "atmosphere": [
+        "conectar",
+        "horizontal"
+      ],
+      "name": "Espacio para el ocio y la cultura, Riudaura. Girona",
+      "startYear": 1994,
+      "space": [
+        "espacio",
+        "expositivo",
+        "público",
+        "entorno",
+        "paisajistico",
+        "social"
+      ],
+      "materiality": [
+        "flexible",
+        "fluido",
+        "luz"
+      ],
+      "typology": "cultural, deportivo",
+      "endYear": 1996,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=II-82",
+      "team": [
+        "P.Rifà",
+        "A.Sáez",
+        "M.Subiràs",
+        "A.Sáez. Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Espacio para el ocio y la cultura",
+      "type": "RCR",
+      "id": "II-82"
+    },
+    "III-143": {
+      "atmosphere": [
+        "vacío",
+        "entremuros",
+        "transparencia",
+        "reflejos",
+        "esencial",
+        "protagonismo",
+        "sosiego"
+      ],
+      "name": "Les Cols Pabellones, Olot. Girona",
+      "startYear": 2002,
+      "tags": [
+        "sd"
+      ],
+      "space": [
+        "espacio",
+        "lugar",
+        "naturaleza"
+      ],
+      "materiality": [
+        "visión",
+        "cielo",
+        "nocturno",
+        "sentir",
+        "vivir",
+        "acero",
+        "cristal",
+        "hierro"
+      ],
+      "typology": "pabellón",
+      "endYear": 2005,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=III-143",
+      "team": [
+        "I.De Vasconcelos",
+        "M.Subiràs",
+        "V.Hannotin",
+        "A.Sáez",
+        "F.Spratley"
+      ],
+      "shortname": "Les Cols Pabellones",
+      "type": "RCR",
+      "id": "III-143"
+    },
+    "III-141": {
+      "atmosphere": [
+        "vacío",
+        "límites",
+        "urbano",
+        "natural",
+        "relación",
+        "panorama",
+        "flujos",
+        "entre",
+        "circulaciones",
+        "esencial"
+      ],
+      "name": "Casa para un carpintero, Olot. Girona",
+      "startYear": 2003,
+      "space": [
+        "espacio",
+        "espacial",
+        "riqueza",
+        "casa",
+        "naturales",
+        "límites",
+        "urbano",
+        "volcán"
+      ],
+      "materiality": [
+        "visión",
+        "placer",
+        "mundolejano"
+      ],
+      "typology": "viviendas",
+      "endYear": 2004,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=III-141",
+      "team": [
+        "M.Venâncio",
+        "A.Franco",
+        "M.Ortega",
+        "H.Neto",
+        "M.Subiràs",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Casa para un carpintero",
+      "type": "RCR",
+      "id": "III-141"
+    },
+    "III-147": {
+      "atmosphere": [
+        "interior",
+        "relación",
+        "niños",
+        "mayores",
+        "entre",
+        "laterales",
+        "luz",
+        "fliltros"
+      ],
+      "name": "Biblioteca Sant Antoni - Joan Oliver, Casal d’avis i Jardins Cándida Pérez, Barri de Sant Antoni. Barcelona",
+      "startYear": 2002,
+      "space": [
+        "espacio",
+        "interior",
+        "público",
+        "gradas"
+      ],
+      "materiality": [
+        "reposo",
+        "penumbra"
+      ],
+      "typology": "cultural",
+      "endYear": 2004,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-164",
+      "team": [
+        "G.Tregouët",
+        "GPO: C.Carrasco",
+        "A.Sáez",
+        "M.M.Guaragna",
+        "M.Braga",
+        "Grau-Del Pozo enginyers SC",
+        "G.Tregouët. C.Marzo . [DO]  G.Tregouët",
+        "Blázquez-Guanter arquitectes",
+        "O.Gallez"
+      ],
+      "shortname": "Biblioteca Sant Antoni - Joan Oliver",
+      "type": "RCR",
+      "id": "III-147"
+    },
+    "IV-158": {
+      "atmosphere": [
+        "jardín",
+        "humo"
+      ],
+      "name": "Espacio Barberi, Olot. Girona",
+      "startYear": 2004,
+      "space": [
+        "espacio",
+        "huella",
+        "historia"
+      ],
+      "materiality": [
+        "bronce",
+        "tierra",
+        "fuego",
+        "compartir",
+        "trabajar"
+      ],
+      "typology": "actividades",
+      "endYear": 2006,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-158",
+      "team": [
+        "A.Sáez",
+        "S.Yoshida",
+        "D.Delarue",
+        "G.Puigvert",
+        "K.Fujii"
+      ],
+      "shortname": "Espacio Barberi",
+      "type": "RCR",
+      "id": "IV-158"
+    },
+    "III-145": {
+      "name": " Meteorological radar station, Creu del Vent of Montmaneu. Barcelona",
+      "startYear": 2002,
+      "surface": 198.5,
+      "endYear": 2003,
+      "team": [
+        "M.Tàpies",
+        "M.Tàpies. D.Ivovich",
+        "Blàzquez-Guanter arquitectes"
+      ],
+      "shortname": "Meteorological radar station",
+      "type": "RCR",
+      "id": "III-145"
+    },
+    "IV-156": {
+      "atmosphere": [
+        "vacío",
+        "interior",
+        "exterior"
+      ],
+      "name": "Espacio público teatro La Lira, Ripoll. Girona",
+      "startYear": 2004,
+      "space": [
+        "espacio",
+        "público",
+        "lugar",
+        "urbano"
+      ],
+      "materiality": [
+        "acero cortén"
+      ],
+      "typology": "espacio público",
+      "endYear": 2005,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-156",
+      "team": [
+        "M.Ortega",
+        "RCR",
+        "PGI",
+        "J.Puigcorbé",
+        "E.Subirah",
+        "K.Norrinder",
+        "A.Malaspina",
+        "Blázquez-Guanter arquitectes",
+        "J.Puigcorbé / K.Fujii",
+        "J.Puigcorbé / RCR"
+      ],
+      "shortname": "Espacio público teatro La Lira",
+      "type": "RCR",
+      "id": "IV-156"
+    },
+    "IV-157": {
+      "atmosphere": [
+        "subterráneo",
+        "tierra",
+        "aire"
+      ],
+      "name": "Bodegas Bell-lloc, Palamós. Girona",
+      "startYear": 2004,
+      "space": [
+        "espacio",
+        "riqueza",
+        "geometría",
+        "singular",
+        "escavado",
+        "tierra"
+      ],
+      "materiality": [
+        "percepción",
+        "singular",
+        "sentir",
+        "tiempo",
+        "degustar",
+        "reposo",
+        "penumbra",
+        "acero cortén",
+        "piedra"
+      ],
+      "typology": "actividades",
+      "endYear": 2005,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-157",
+      "team": [
+        "G.Puigvert",
+        "M.Ortega",
+        "BT",
+        "A.Lippmann",
+        "Enginyeria",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Bodegas Bell-lloc",
+      "type": "RCR",
+      "id": "IV-157"
+    },
+    "IV-154": {
+      "atmosphere": [
+        "exterior",
+        "fluidez",
+        "ambugüedad",
+        "austeridad",
+        "confort",
+        "historia",
+        "presente",
+        "intimidad",
+        "reunión",
+        "penumbra",
+        "aire",
+        "elasticidad",
+        "fluidez"
+      ],
+      "name": "Punto de encuentro en Mas El Vent, La Fosca de Palamós. Girona",
+      "startYear": 2004,
+      "space": [
+        "común",
+        "espacio",
+        "ambiguos",
+        "historia"
+      ],
+      "materiality": [
+        "piedra",
+        "madera",
+        "cerámica",
+        "acero"
+      ],
+      "typology": "viviendas",
+      "endYear": 2005,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-154",
+      "team": [
+        "J.Carvalho",
+        "M.Thompson",
+        "S.Ribeiro",
+        "G.Puigvert",
+        "A.Moura",
+        "M.Ortega",
+        "E.Darup",
+        "BT Enginyeria",
+        "D.Breathnach",
+        "A.Csécsei",
+        "A.Malaspina",
+        "K.Norrinder",
+        "I.Becker",
+        "P.Bolinches",
+        "A.Lippmann",
+        "E.Serrano",
+        "M.Cottone",
+        "Blázquez-Guanter arquitectes",
+        "M.Casas"
+      ],
+      "shortname": "Punto de encuentro en Mas El Vent",
+      "type": "RCR",
+      "id": "IV-154"
+    },
+    "IV-155": {
+      "name": " Winery, Perelada. Girona",
+      "startYear": 2003,
+      "surface": 18528.19,
+      "endYear": 2003,
+      "team": [
+        "J.Carvalho",
+        "M.Venâncio",
+        "A.Schmid",
+        "A.Schmidt",
+        "M.Tàpies",
+        "G.Indelicato",
+        "G.Rodrigues",
+        "A.Paulicelli",
+        "L.Bjerregaard"
+      ],
+      "shortname": "Winery",
+      "type": "RCR",
+      "id": "IV-155"
+    },
+    "IV-152": {
+      "atmosphere": [
+        "interior",
+        "volcan"
+      ],
+      "name": "Espai urbà volcànic, Olot. Girona",
+      "space": [
+        "espacio",
+        "topografía",
+        "volcán",
+        "lava"
+      ],
+      "id": "IV-152",
+      "shortname": "Espai urbà volcànic",
+      "typology": "espacio público"
+    },
+    "VI-223": {
+      "name": " Muraba, in Jumeirah Palm. Dubai",
+      "startYear": 2013,
+      "surface": "18500",
+      "endYear": 2014,
+      "team": [
+        "N.Baldayo",
+        "I.García",
+        "V.Geller",
+        "B.Fernández",
+        "F.Hallundbaek",
+        "C.Franco",
+        "Exedra",
+        "R.Fuentes",
+        " South Landscape Consultants "
+      ],
+      "shortname": "Muraba",
+      "type": "RCR",
+      "id": "VI-223"
+    },
+    "05-74": {
+      "name": " House for an architect, in Gent. Belgium",
+      "startYear": 2005,
+      "tags": [
+        "house",
+        "simplicity",
+        "spirit",
+        "wood",
+        "structure",
+        "frame",
+        "panoramic",
+        "sobre",
+        "nature"
+      ],
+      "surface": 0,
+      "endYear": 2005,
+      "references": [
+        "REF-6"
+      ],
+      "team": [
+        "R.Kobayashi",
+        "N.Baldayo",
+        "A.Moura"
+      ],
+      "shortname": "House for an architect",
+      "type": "RCR",
+      "id": "05-74"
+    },
+    "I-45": {
+      "name": " Can Cardenal, Volcanic Zone of the Garrotxa. Girona",
+      "startYear": 1991,
+      "endYear": 1992,
+      "team": [
+        "M.Tàpies",
+        "A.Sáez"
+      ],
+      "shortname": "Can Cardenal",
+      "type": "RCR",
+      "id": "I-45"
+    },
+    "I-43": {
+      "atmosphere": [
+        "interrelación",
+        "entre",
+        "relaciones",
+        "filtro",
+        "urbano/naturaleza"
+      ],
+      "name": "Estadio de Tossols Basil, Olot. Girona",
+      "startYear": 1991,
+      "space": [
+        "naturaleza",
+        "entorno"
+      ],
+      "materiality": [
+        "acero cortén"
+      ],
+      "typology": "deportivo",
+      "endYear": 1991,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=I-43",
+      "team": [
+        "Obiol",
+        "A.Sáez. M.Bordas",
+        "Moya",
+        "Brufau",
+        "G.Rodriguez",
+        "M.Tàpies",
+        "P.Rifà"
+      ],
+      "shortname": "Estadio de Tossols Basil",
+      "type": "RCR",
+      "id": "I-43"
+    },
+    "I-24": {
+      "atmosphere": [
+        "interior",
+        "relacionar",
+        "transparencias",
+        "luz",
+        "sol",
+        "abierto",
+        "privacidad",
+        "intimidad"
+      ],
+      "name": "Casa Margarida, Olot. Girona",
+      "startYear": 1988,
+      "space": [
+        "luz"
+      ],
+      "materiality": [
+        "entrever",
+        "contemplar",
+        "esencial",
+        "color",
+        "contraste",
+        "volcáncio"
+      ],
+      "typology": "viviendas",
+      "endYear": 1989,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=I-24",
+      "surface": "438",
+      "team": [
+        "M.Tàpies",
+        "A.Sáez. R.Brufau",
+        "L.Moya"
+      ],
+      "shortname": "Casa Margarida",
+      "type": "RCR",
+      "id": "I-24"
+    },
+    "06-56": {
+      "name": " House for a photographer, Sant Esteve de Llémena. Girona",
+      "startYear": 0,
+      "endYear": 0,
+      "team": [
+        "Maquet3",
+        "D.Delarue",
+        "J.Puigcorbé",
+        "N.Baldayo"
+      ],
+      "shortname": "House for a photographer",
+      "type": "RCR",
+      "id": "06-56"
+    },
+    "01-6": {
+      "name": " Electronics Workshop, Sant Joan les Fonts. Girona",
+      "startYear": 2001,
+      "tags": [
+        "shop",
+        "divide",
+        "fence",
+        "curtains"
+      ],
+      "surface": 389.2,
+      "endYear": 2002,
+      "team": [
+        "A. Sáez",
+        "M.Subiràs",
+        "H.Neto",
+        "M.Linares",
+        "S.Marques"
+      ],
+      "shortname": "Electronics Workshop",
+      "type": "RCR",
+      "id": "01-6"
+    },
+    "01-5": {
+      "name": "Restaurante Les Cols , Olot. Girona",
+      "startYear": 2001,
+      "tags": [
+        "restaurant",
+        "evoke",
+        "future",
+        "curtains",
+        "time",
+        "materiality",
+        "momen",
+        "self sufficiency",
+        "open air",
+        "sensuality",
+        "vegetal",
+        "mistery"
+      ],
+      "surface": 225.34,
+      "endYear": 2002,
+      "team": [
+        "M.Subiràs",
+        "Blázquez-Guanter arquitectes",
+        "J.Padrosa"
+      ],
+      "shortname": "Restaurante Les Cols ",
+      "type": "RCR",
+      "id": "01-5"
+    },
+    "III-137": {
+      "atmosphere": [
+        "interior",
+        "límites",
+        "vínculos",
+        "topografía"
+      ],
+      "name": "Alberca de 'La Vila' de Trincheria, La Vall de Bianya. Girona",
+      "startYear": 2002,
+      "space": [
+        "exterior",
+        "rural",
+        "inmediato",
+        "general",
+        "topografía"
+      ],
+      "materiality": [
+        "agua",
+        "pendiente",
+        "acero cortén",
+        "hormigón"
+      ],
+      "typology": "espacio público",
+      "endYear": 2002,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=III-137",
+      "team": [
+        "D.Dammasch",
+        "P.Llimona",
+        "S.Marques"
+      ],
+      "shortname": "Alberca de 'La Vila' de Trincheria",
+      "type": "RCR",
+      "id": "III-137"
+    },
+    "III-136": {
+      "name": " Rest Pavillon, Natural Park of the Volcanic Zone of the Garrotxa. Girona",
+      "startYear": "",
+      "endYear": "",
+      "team": [
+        "A.Sáez",
+        "D.Delarue",
+        "K.Fujii",
+        "Isidre Pigem",
+        "Josefina Barceló"
+      ],
+      "shortname": "Rest Pavillon",
+      "type": "RCR",
+      "id": "III-136"
+    },
+    "III-132": {
+      "atmosphere": [
+        "límites",
+        "engarce",
+        "mutante",
+        "entre",
+        "percepción",
+        "luz",
+        "reflejos",
+        "atmósfera"
+      ],
+      "name": "Pabellón en el estanque, Llagostera. Girona",
+      "startYear": 2001,
+      "space": [
+        "espacio",
+        "exterior/interior",
+        "percepción"
+      ],
+      "materiality": [
+        "tangible",
+        "espacial",
+        "intangible"
+      ],
+      "typology": "espacio público",
+      "endYear": 2004,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=III-132",
+      "team": [
+        "M.Venâncio",
+        "M.Ortega",
+        "RCR",
+        "C.Wendler",
+        "M.Subiràs",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Pabellón en el estanque",
+      "type": "RCR",
+      "id": "III-132"
+    },
+    "V-215B": {
+      "name": "Espacio del Gredal del Montsacopa, Olot. Girona",
+      "startYear": "",
+      "space": [
+        "privilegiado",
+        "volcán"
+      ],
+      "typology": "espacio público",
+      "endYear": "",
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=V-215B",
+      "shortname": "Espacio del Gredal del Montsacopa",
+      "type": "RCR",
+      "id": "V-215B"
+    },
+    "13-75": {
+      "name": " Two one, Down Town district. Dubai",
+      "startYear": "",
+      "endYear": "",
+      "shortname": "Two one",
+      "type": "RCR",
+      "id": "13-75"
+    },
+    "I-30": {
+      "name": " Lighthouse, Punta Aldea. Gran Canaria",
+      "startYear": 1989,
+      "surface": "277.20",
+      "endYear": 1990,
+      "shortname": "Lighthouse",
+      "type": "RCR",
+      "id": "I-30"
+    },
+    "IV-179": {
+      "atmosphere": [
+        "exterior",
+        "transparente",
+        "membrana",
+        "aire",
+        "libertad",
+        "esencialidad"
+      ],
+      "name": "Carpa en el Restaurant Les Cols, Olot. Girona",
+      "startYear": 2007,
+      "space": [
+        "lugar",
+        "exterioir"
+      ],
+      "materiality": [
+        "vida",
+        "tiempo",
+        "evocar",
+        "contemporáneas",
+        "respuestas"
+      ],
+      "typology": "restaurante",
+      "endYear": 2009,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-179",
+      "team": [
+        "J.Choi",
+        "M.Venâncio",
+        "V.Vitoriano",
+        "M.Ortega",
+        "Arte3 Studio",
+        "D.Breathnach",
+        "D.Aubert",
+        "A.Moura",
+        "M.Rodríguez",
+        "A.Lippmann",
+        "I2A",
+        "M.Subiràs",
+        "Plana Hurtós enginyers",
+        "F.Fluvià",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Carpa en el Restaurant Les Cols",
+      "type": "RCR",
+      "id": "IV-179"
+    },
+    "IV-170": {
+      "name": " Access Pavilion to the Ullastret historical monument, in Ullastret. Girona",
+      "startYear": 2006,
+      "endYear": 2006,
+      "team": [
+        "F.Da Costa Leite",
+        "D.Delarue",
+        "V.Centellas",
+        "E.Subirah"
+      ],
+      "shortname": "Access Pavilion to the Ullastret historical monument",
+      "type": "RCR",
+      "id": "IV-170"
+    },
+    "IV-171": {
+      "atmosphere": [
+        "recoridos"
+      ],
+      "name": "Crematorio de Hofheide. Bélgica",
+      "startYear": 2006,
+      "space": [
+        "espacio",
+        "naturaleza",
+        "paisaje"
+      ],
+      "materiality": [
+        "sentimientos",
+        "agua",
+        "acero cortén",
+        "filtros"
+      ],
+      "typology": "actividades",
+      "endYear": 2008,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-171",
+      "team": [
+        "K.Fujii",
+        "Maquet3",
+        "H.Vojtová",
+        "CVBA Mouton",
+        "C.Wittenbech /  M.DeWaele",
+        "D.Vens",
+        "Raum+Akustik.  Philip van Isacker",
+        "F.DeBruyn",
+        "E.Verstraete",
+        "A.Heck /  F.DeBruyn",
+        "M.DeWaele",
+        "VK Engineering",
+        "G.Ollivier",
+        "K.Van Nieuwenhuyse / G&V;: E.Geens",
+        "F.Faustino",
+        "D.Delarue",
+        "M.Cottone",
+        "K.VanNieuwenhuyze",
+        "L.Bjerregaard"
+      ],
+      "shortname": "Crematorio de Hofheide",
+      "type": "RCR",
+      "id": "IV-171"
+    },
+    "IV-172": {
+      "atmosphere": [
+        "interior",
+        "exterior",
+        "capturar",
+        "entre",
+        "marcos",
+        "transparente",
+        "imagen",
+        "aire",
+        "articulación",
+        "esencial"
+      ],
+      "name": "Edifico de oficinas Plaça Europa 31, L’Hospitalet de Llobregat. Barcelona",
+      "startYear": 2006,
+      "space": [
+        "espacio",
+        "común",
+        "oficinas"
+      ],
+      "materiality": [
+        "visión",
+        "ángulo"
+      ],
+      "typology": "actividades",
+      "endYear": 2011,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-172",
+      "team": [
+        "PBA Arquitectes",
+        "PGIGRUP",
+        "M.Venâncio",
+        "O.Gábor",
+        "Y.Kobanawa",
+        "A.Alós",
+        "ERF",
+        "G.Indelicato",
+        "R.Rodrigues",
+        "Blázquez-Guanter Arquitectes",
+        "X.Molina",
+        "B.Goller"
+      ],
+      "shortname": "Edifico de oficinas Plaça Europa 31",
+      "type": "RCR",
+      "id": "IV-172"
+    },
+    "IV-173": {
+      "name": " Meditel head-quarters, in Casablanca. Morocco",
+      "startYear": 2006,
+      "endYear": 2006,
+      "team": [
+        "Maquet3",
+        "C.Torio",
+        "K.Fujii",
+        "J.Puigcorbé",
+        "Congoritme: B.Goller",
+        "D.Delarue",
+        "L.Bjerregaard"
+      ],
+      "shortname": "Meditel head-quarters",
+      "type": "RCR",
+      "id": "IV-173"
+    },
+    "IV-174": {
+      "name": " Hammershoi on the light of Dreyer, at the C.C.C.B. Barcelona 26. 01. 2007 - 01. 05. 2007",
+      "startYear": "",
+      "surface": "3460",
+      "endYear": "",
+      "shortname": "Hammershoi on the light of Dreyer",
+      "type": "RCR",
+      "id": "IV-174"
+    },
+    "IV-176": {
+      "name": " Habitacles a la Fosca de Palamós. Girona",
+      "startYear": "",
+      "endYear": "",
+      "team": [
+        "Y.Kobanawa",
+        "M.Subiràs",
+        "T.Otto"
+      ],
+      "shortname": "Habitacles a la Fosca de Palamós",
+      "type": "RCR",
+      "id": "IV-176"
+    },
+    "IV-177": {
+      "name": " Rest Area Roman Road. Girona",
+      "startYear": 2007,
+      "endYear": 2008,
+      "team": [
+        "M.Palomo",
+        "G.Puigvert",
+        "A.Lips",
+        "A.Lippmann",
+        "I.De Azevedo",
+        "D.Delarue"
+      ],
+      "shortname": "Rest Area Roman Road",
+      "type": "RCR",
+      "id": "IV-177"
+    },
+    "III-125": {
+      "atmosphere": [
+        "ritmo",
+        "mirador"
+      ],
+      "name": "Piscina cubierta, Taradell. Barcelona",
+      "startYear": 2001,
+      "space": [
+        "espacio",
+        "exterior",
+        "deportivo",
+        "topografía"
+      ],
+      "materiality": [
+        "eco"
+      ],
+      "typology": "deportivo",
+      "endYear": 2002,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=IV-163",
+      "team": [
+        "N.Portugal",
+        "X.Vilagran",
+        "K.Fujii",
+        "G.Rodriguez",
+        "Grau-Del Pozo",
+        "Blázquez-Guanter arquitectes"
+      ],
+      "shortname": "Piscina cubierta",
+      "type": "RCR",
+      "id": "III-125"
+    },
+    "III-127": {
+      "atmosphere": [
+        "límites",
+        "vínculos",
+        "topografía"
+      ],
+      "name": "Guardería Els Colors, Manlleu. Barcelona",
+      "startYear": 2002,
+      "space": [
+        "percepción",
+        "ubicación",
+        "orientación"
+      ],
+      "materiality": [
+        "cristal",
+        "color"
+      ],
+      "typology": "educativo",
+      "endYear": 2002,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=III-127",
+      "team": [
+        "M.Braga",
+        "M.Linares. J.Torrents",
+        "G.Rodriguez",
+        "Grau-Del Pozo enginyers SC",
+        "M.Tàpies",
+        "M.Subiràs",
+        "Blázquez-Guanter arquitectes",
+        "F.Spratley"
+      ],
+      "shortname": "Guardería Els Colors",
+      "type": "RCR",
+      "id": "III-127"
+    },
+    "III-120": {
+      "atmosphere": [
+        "borde",
+        "entre",
+        "independencia",
+        "vistas",
+        "dos cotas",
+        "intimidad"
+      ],
+      "name": "Casa Horizonte, La Vall de Bianya. Girona",
+      "startYear": 2000,
+      "space": [
+        "espacio",
+        "casa",
+        "privado",
+        "lugar",
+        "orientaciones",
+        "naturaleza",
+        "paisaje",
+        "valores"
+      ],
+      "materiality": [
+        "acero cortén"
+      ],
+      "typology": "viviendas",
+      "endYear": 2004,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=III-120",
+      "team": [
+        "MM.Venâncio",
+        "A.Franco",
+        "A.Sáez",
+        "T.Otto",
+        "G.Rodriguez",
+        "M.Subiràs",
+        "P.Llimona",
+        "M.Venâncio"
+      ],
+      "shortname": "Casa Horizonte",
+      "type": "RCR",
+      "id": "III-120"
+    },
+    "III-121": {
+      "atmosphere": [
+        "vacío",
+        "relación",
+        "vacío/lleno",
+        "interior/exterior",
+        "aire",
+        "simple",
+        "prefabricado"
+      ],
+      "name": "Casa M-Lidia, Montagut. Girona",
+      "startYear": 2000,
+      "space": [
+        "espacio",
+        "interior",
+        "tripartito"
+      ],
+      "surface": "174.54",
+      "typology": "viviendas",
+      "endYear": 2000,
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=III-121",
+      "materiality": [
+        "percepción",
+        "espacio",
+        "metal",
+        "cristal."
+      ],
+      "team": [
+        "M.Sánchez",
+        "A.Planagumà",
+        "M.Subiràs",
+        "A.Sáez"
+      ],
+      "shortname": "Casa M-Lidia",
+      "type": "RCR",
+      "id": "III-121"
+    },
+    "99-9": {
+      "name": " 2x1 Tossols-Basil Pavilion, Olot. Girona",
+      "startYear": 1999,
+      "surface": 0,
+      "endYear": 2000,
+      "team": [
+        "M.Tàpies",
+        "M.Sánchez",
+        "A.Sáez"
+      ],
+      "shortname": "2x1 Tossols-Basil Pavilion",
+      "type": "RCR",
+      "id": "99-9"
+    },
+    "III-129": {
+      "name": " Nova Mar Bella Park, Barcelona",
+      "startYear": 2001,
+      "endYear": 2002,
+      "team": [
+        "F.Racana",
+        "G.Puigvert",
+        "Blàzquez-Guanter arquitectes",
+        "A.Lippmann",
+        "G.Indelicato",
+        "A.Heck",
+        "A.Paulicelli"
+      ],
+      "shortname": "Nova Mar Bella Park",
+      "type": "RCR",
+      "id": "III-129"
+    },
+    "1-05": {
+      "atmosphere": [
+        "filtros",
+        "insinuantes",
+        "aire",
+        "aire libre"
+      ],
+      "name": "Restaurante Les Cols, Olot. Girona",
+      "space": [
+        "rural",
+        "casa"
+      ],
+      "materiality": [
+        "tiempo",
+        "pasado",
+        "futuro",
+        "acero",
+        "lacado",
+        "inosidable",
+        "natural"
+      ],
+      "id": "1-05",
+      "link": "http://www.rcrarquitectes.es/projectes/verifica.php?projecte=01-5",
+      "shortname": "Restaurante Les Cols",
+      "typology": "restaurante"
+    }
+  }
+}
