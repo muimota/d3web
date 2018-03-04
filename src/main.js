@@ -1,6 +1,7 @@
 'use strict'
 
 import * as d3 from 'd3'
+import {getTags,createTagElems} from './tagUtils.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
@@ -113,7 +114,6 @@ function update(data){
 
     //add tags and links
     links = g.append('g')
-    tags  = g.append('g')
 
     let people = g.selectAll('circle')
       .data(everybody)
@@ -123,54 +123,25 @@ function update(data){
         .attr('cx',(d,i) => peopleX(i))
         .attr('cy',(d,i) => 10 + (i % 3) * 6 )
 
-    links = g.append('g')
 
-    //tags from JSON
-    function getTags(tagName){
-      let tagArray = []
-      projects.filter( p => p.hasOwnProperty(tagName)).map(p => tagArray = tagArray.concat(p[tagName]))
-      return Array.from(new Set(tagArray)).sort()
-    }
 
     //generate SVG tags
-    let space = getTags('space')
-    let atmosphere = getTags('atmosphere')
-    let materiality = getTags('materiality')
+
+    let space = getTags('space',projects)
+    let atmosphere = getTags('atmosphere',projects)
+    let materiality = getTags('materiality',projects)
 
     console.log(space);
     console.log(atmosphere);
     console.log(materiality);
 
-    let offX = 30;
-    let offY = 280;
-    let posY = [];
+    let spaceTags  = g.append('g')
+    let atmosTags  = g.append('g')
+    let materTags  = g.append('g')
 
-    let tagsSpace =  tags.selectAll('text')
-      .data(atmosphere)
-      .enter()
-        .append('text')
-        .attr('class','tag')
-        .text((s)=>s)
-        .attr('x',function(s,i){
-
-          let textWidth = this.getComputedTextLength()
-
-          if(offX + textWidth < width){
-            offX += (i == 0) ? textWidth : textWidth + 10
-          }else{
-            offX = 30 + textWidth
-            offY += 13
-          }
-
-          posY.push(offY)
-
-          console.log(s+'-'+textWidth+'-'+offX);
-          return offX - textWidth
-
-        })
-
-        .attr('y',(s,i) => posY[i])
-
+    createTagElems(spaceTags,space,300)
+    createTagElems(atmosTags,atmosphere,420)
+    createTagElems(materTags,materiality,590)
 
     //projTip
     blocks.on('mouseover', function(d){
