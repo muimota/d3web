@@ -5,9 +5,13 @@
   font-size: 12px ;
   pointer-events: none;
 }
+circle{
+  cursor: pointer;
+}
 
 .tag{
   font-family:'Helvetica';
+  font-size: 12px;
   fill:blue;
   text-anchor:start;
   cursor: pointer;

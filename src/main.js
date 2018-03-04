@@ -1,4 +1,6 @@
 'use strict'
+
+import * as d3 from 'd3'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
@@ -85,7 +87,6 @@ function update(data){
 
   //projects blocks
 
-
   let blocks = g.selectAll('rect')
     .data(projects)
     .enter()
@@ -128,13 +129,11 @@ function update(data){
     function getTags(tagName){
       let tagArray = []
       projects.filter( p => p.hasOwnProperty(tagName)).map(p => tagArray = tagArray.concat(p[tagName]))
-      return Array.from(new Set(tagArray))
+      return Array.from(new Set(tagArray)).sort()
     }
 
     //generate SVG tags
-
-
-    let space = getTags('space').sort()
+    let space = getTags('space')
     let atmosphere = getTags('atmosphere')
     let materiality = getTags('materiality')
 
@@ -142,17 +141,12 @@ function update(data){
     console.log(atmosphere);
     console.log(materiality);
 
-    let ticks = 2
-    var spaceX = d3.scaleQuantize().range(d3.ticks(30,width,ticks))
-    spaceX.domain([0,ticks])
-
-
     let offX = 30;
     let offY = 280;
     let posY = [];
 
     let tagsSpace =  tags.selectAll('text')
-      .data(space)
+      .data(atmosphere)
       .enter()
         .append('text')
         .attr('class','tag')
@@ -165,7 +159,7 @@ function update(data){
             offX += (i == 0) ? textWidth : textWidth + 10
           }else{
             offX = 30 + textWidth
-            offY += 20
+            offY += 13
           }
 
           posY.push(offY)
