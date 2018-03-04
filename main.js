@@ -22,9 +22,9 @@ var personTip = g.append("text")
 
 
 var everybody
-var links
+var links, tags
 
-d3.json("export.json",update)
+d3.json("data_merger.json",update)
 
 //on load
 function update(data){
@@ -44,13 +44,11 @@ function update(data){
       p.endYear ++
     }
 
-    console.log(`${p.id} ${p.startYear} ${p.endYear}`)
-
     let projectTeam = []
     for (let department in p.team){
       projectTeam = projectTeam.concat(p.team[department])
     }
-    //remove duplicates
+    //remove duplicates in team
     projectTeam = Array.from(new Set(projectTeam))
     p.people = projectTeam
 
@@ -67,25 +65,30 @@ function update(data){
     everybody = Object.keys(team)
   })
   everybody.sort()
-  //console.log(everybody);
+
   projects.sort((a,b) => a.startYear - b.startYear)
   let domainExtent = [d3.min(projects,d=>d.startYear),d3.max(projects,d=>d.endYear)]
+
   //define el domino de x
   yearX.domain(domainExtent);
 
   //dibuja la linea inferior
   g.append("g")
      .attr("class", "axis axis--x")
-     .call(d3.axisTop(yearX).tickFormat(d3.format('04')).ticks());
+     .attr("transform", "translate(0,150)")
+     .call(d3.axisTop(yearX).tickFormat(d3.format('04')).ticks(domainExtent[1]-domainExtent[0]));
 
 
   let rowHeight = 10
+  let yoffset  = 150
   let rows  = [domainExtent[0]]
+
+  //projects blocks
+
 
   let blocks = g.selectAll('rect')
     .data(projects)
     .enter()
-
       .append('rect')
       .attr('id',d => d.id )
       .attr('x' ,d => yearX(d.startYear) + 1)
@@ -100,14 +103,16 @@ function update(data){
             i ++
           }
           rows[i] = d.endYear
-          return i * rowHeight + 5
+          return i * rowHeight + 5 + yoffset
         })
       .attr('width', d => yearX(d.endYear) -  yearX(d.startYear) - 1 )
       .attr('height', rowHeight - 1)
 
     peopleX.domain([0,everybody.length])
 
+    //add tags and links
     links = g.append('g')
+    tags  = g.append('g')
 
     let people = g.selectAll('circle')
       .data(everybody)
@@ -115,9 +120,63 @@ function update(data){
         .append('circle')
         .attr('r', d => 3)
         .attr('cx',(d,i) => peopleX(i))
-        .attr('cy',(d,i) => 150 + (i % 3) * 6 )
+        .attr('cy',(d,i) => 10 + (i % 3) * 6 )
 
     links = g.append('g')
+
+    //tags from JSON
+    function getTags(tagName){
+      let tagArray = []
+      projects.filter( p => p.hasOwnProperty(tagName)).map(p => tagArray = tagArray.concat(p[tagName]))
+      return Array.from(new Set(tagArray))
+    }
+
+    //generate SVG tags
+
+
+    let space = getTags('space').sort()
+    let atmosphere = getTags('atmosphere')
+    let materiality = getTags('materiality')
+
+    console.log(space);
+    console.log(atmosphere);
+    console.log(materiality);
+
+    let ticks = 2
+    var spaceX = d3.scaleQuantize().range(d3.ticks(30,width,ticks))
+    spaceX.domain([0,ticks])
+
+
+    let offX = 30;
+    let offY = 280;
+    let posY = [];
+
+    let tagsSpace =  tags.selectAll('text')
+      .data(space)
+      .enter()
+        .append('text')
+        .attr('class','tag')
+        .text((s)=>s)
+        .attr('x',function(s,i){
+
+          let textWidth = this.getComputedTextLength()
+
+          if(offX + textWidth < width){
+            offX += (i == 0) ? textWidth : textWidth + 10
+          }else{
+            offX = 30 + textWidth
+            offY += 20
+          }
+
+          posY.push(offY)
+
+          console.log(s+'-'+textWidth+'-'+offX);
+          return offX - textWidth
+
+        })
+
+        .attr('y',(s,i) => posY[i])
+
 
     //projTip
     blocks.on('mouseover', function(d){
@@ -149,11 +208,12 @@ function update(data){
       let projectNode = d3.select(this)
       let projectCoords = [projectNode.attr('x')|0,projectNode.attr('y')|0]
 
-
+      //findout people who participated in the project
       let relatedPeople = people.filter(function(person){
         return project.people.indexOf(person) != -1
       })
 
+      //calculate people coordinates
       let peopleCoords = []
 
       relatedPeople.each(function(d){
@@ -201,8 +261,8 @@ function update(data){
       relatedProjects.each(function(d){
         let node = d3.select(this)
         let coords = [
-          parseFloat(node.attr('x')) + parseFloat(node.attr('width')) / 2,
-          node.attr('y')|0 + rowHeight,
+          parseFloat(node.attr('x')),
+          parseFloat(node.attr('y')),
         ]
         projectsCoords.push(coords)
       })

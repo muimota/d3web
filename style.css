@@ -5,3 +5,13 @@
   font-size: 12px ;
   pointer-events: none;
 }
+
+.tag{
+  font-family:'Helvetica';
+  fill:blue;
+  text-anchor:start;
+  cursor: pointer;
+}
+.tag:hover{
+  fill: red;
+}
