@@ -6,7 +6,11 @@ A test vis made with d3 and packed with webpack
 ``npm install``
 
 ## develop
-``npm start``
+``npm dev``
 
-## compile by hand 
+## compile by hand
 ``npx webpack src/main.js --output dist/bundle.js``
+
+# Interaction
+
+*
