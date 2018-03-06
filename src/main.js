@@ -161,11 +161,6 @@ function update(data){
       })
     }
 
-    spaceTags.on('click',function(tag){
-
-      let node = d3.select(this)
-
-
     //projTip
     blocks.on('mouseover', function(d){
 
