@@ -9,6 +9,7 @@ circle{
   cursor: pointer;
 }
 
+
 .tag{
   font-family:'Helvetica';
   font-size: 12px;
@@ -18,4 +19,12 @@ circle{
 }
 .tag:hover{
   fill: red;
+}
+
+.active{
+  fill:green;
+  font-weight: bold;
+}
+.related{
+  fill:orange;
 }

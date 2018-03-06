@@ -2,6 +2,7 @@
 
 import * as d3 from 'd3'
 import {getTags,createTagElems} from './tagUtils.js'
+import {DataModel} from './DataModel.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
@@ -27,12 +28,16 @@ var personTip = g.append("text")
 var everybody
 var links, tags
 
+var dm
 d3.json("data_merger.json",update)
 
 //on load
 function update(data){
 
   console.log(data);
+  dm = new DataModel(data)
+
+  console.log(dm.filter({'atmosphere':['luz']}).tags);
 
   let projects = d3.values(data.projects)
   //remove work with no startYear
@@ -135,13 +140,26 @@ function update(data){
     console.log(atmosphere);
     console.log(materiality);
 
-    let spaceTags  = g.append('g')
+
     let atmosTags  = g.append('g')
     let materTags  = g.append('g')
 
-    createTagElems(spaceTags,space,300)
+    let spaceTags = createTagElems(g.append('g'),space,300)
     createTagElems(atmosTags,atmosphere,420)
     createTagElems(materTags,materiality,590)
+
+    spaceTags.on('click',function(tag){
+
+      let node = d3.select(this)
+
+      let relatedTags = dm.filter({'space':[tag]}).tags['space']
+
+      spaceTags.classed('active',false)
+      node.classed('active',true)
+
+      spaceTags.classed('related',d => relatedTags.includes(d))
+      node.classed('related',false)
+    })
 
     //projTip
     blocks.on('mouseover', function(d){
