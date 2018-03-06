@@ -161,6 +161,19 @@ function update(data){
       })
     }
 
+    spaceTags.on('click',function(tag){
+
+      let node = d3.select(this)
+
+      let relatedTags = dm.filter({'space':[tag]}).tags['space']
+
+      spaceTags.classed('active',false)
+      node.classed('active',true)
+
+      spaceTags.classed('related',d => relatedTags.includes(d))
+      node.classed('related',false)
+    })
+
     //projTip
     blocks.on('mouseover', function(d){
 
