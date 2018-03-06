@@ -161,6 +161,7 @@ function update(data){
       })
     }
 
+
     //projTip
     blocks.on('mouseover', function(d){
 
