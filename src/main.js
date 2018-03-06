@@ -1,7 +1,7 @@
 'use strict'
 
 import * as d3 from 'd3'
-import {getTags,createTagElems} from './tagUtils.js'
+import {createTagElems} from './tagUtils.js'
 import {DataModel} from './DataModel.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
@@ -29,6 +29,7 @@ var everybody
 var links, tags
 
 var dm
+
 d3.json("data_merger.json",update)
 
 //on load
@@ -131,35 +132,34 @@ function update(data){
 
 
     //generate SVG tags
+    let d3tags = {
+      'space':createTagElems(g.append('g'),dm.tags['space'],300),
+      'atmosphere':createTagElems(g.append('g'),dm.tags['atmosphere'],420),
+      'materiality':createTagElems(g.append('g'),dm.tags['materiality'],590)
+    }
 
-    let space = getTags('space',projects)
-    let atmosphere = getTags('atmosphere',projects)
-    let materiality = getTags('materiality',projects)
+    function clickHandler(tag,d3elem,tagCat){
 
-    console.log(space);
-    console.log(atmosphere);
-    console.log(materiality);
+      let node = d3.select(d3elem)
+      let query = {}
+      query[tagCat] = [tag]
 
+      let relatedTags = dm.filter(query).tags
 
-    let atmosTags  = g.append('g')
-    let materTags  = g.append('g')
+      for(let tagCats in d3tags){
+        d3tags[tagCats].classed('active',false)
+        d3tags[tagCats].classed('related',d => relatedTags[tagCats].includes(d))
+      }
 
-    let spaceTags = createTagElems(g.append('g'),space,300)
-    createTagElems(atmosTags,atmosphere,420)
-    createTagElems(materTags,materiality,590)
-
-    spaceTags.on('click',function(tag){
-
-      let node = d3.select(this)
-
-      let relatedTags = dm.filter({'space':[tag]}).tags['space']
-
-      spaceTags.classed('active',false)
       node.classed('active',true)
-
-      spaceTags.classed('related',d => relatedTags.includes(d))
       node.classed('related',false)
-    })
+    }
+
+    for(let tagCats in d3tags){
+      d3tags[tagCats].on('click',function(tag){
+        clickHandler(tag,this,tagCats)
+      })
+    }
 
     //projTip
     blocks.on('mouseover', function(d){
