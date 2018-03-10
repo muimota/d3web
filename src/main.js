@@ -38,9 +38,8 @@ function update(data){
   console.log(data);
   dm = new DataModel(data)
 
-  console.log(dm.filter({'atmosphere':['luz']}).tags);
 
-  let projects = d3.values(data.projects)
+  let projects = d3.values(dm.projects)
   //remove work with no startYear
   projects = projects.filter(d => d.hasOwnProperty('startYear') &&
               d.hasOwnProperty('endYear') && d.startYear != null && d.endYear != null

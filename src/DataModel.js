@@ -19,6 +19,14 @@ class DataModel{
     return tagsDict
 
   }
+
+  get projects(){
+    return this.data.projects
+  }
+
+  get references(){
+    return this.data.references
+  }
   //select projects based on the
   filter(tagsDict){
 
