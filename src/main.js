@@ -28,6 +28,7 @@ var personTip = g.append("text")
 var everybody
 var links, tags
 
+var query = {}
 var dm
 
 d3.json("data_merger.json",update)
@@ -140,18 +141,38 @@ function update(data){
     function clickHandler(tag,d3elem,tagCat){
 
       let node = d3.select(d3elem)
-      let query = {}
-      query[tagCat] = [tag]
+
+      if( tagCat in query ){
+
+        let tags = query[tagCat]
+        let index = tags.indexOf(tag)
+
+        //if is included
+        if( index != -1){
+          tags.splice(index,1)
+
+          if(tags.length == 0){
+            delete query[tagCat]
+          }
+
+        }else{
+          tags.push(tag)
+        }
+      }else{
+        query[tagCat] = [tag]
+      }
+
 
       let relatedTags = dm.filter(query).tags
 
+      console.log(query)
+      console.log(relatedTags);
+
       for(let tagCats in d3tags){
-        d3tags[tagCats].classed('active',false)
+        d3tags[tagCats].classed('active',d => tagCats in query && query[tagCats].includes(d))
         d3tags[tagCats].classed('related',d => relatedTags[tagCats].includes(d))
       }
 
-      node.classed('active',true)
-      node.classed('related',false)
     }
 
     for(let tagCats in d3tags){

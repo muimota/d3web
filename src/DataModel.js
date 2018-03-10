@@ -30,6 +30,14 @@ class DataModel{
   //select projects based on the
   filter(tagsDict){
 
+    //tagQuery is an empty object
+    if(Object.keys(tagsDict).length === 0){
+      //TODO:return a copy
+      let data = Object({},this.data)
+
+      return this
+    }
+
     let projects = Object.values(this.data.projects)
 
     let selectedProjects = projects.filter( p => {
@@ -37,17 +45,17 @@ class DataModel{
       for(let tagKey in tagsDict){
 
         if( !p.hasOwnProperty(tagKey)){
-          continue
+          return false
         }
 
         let tags = tagsDict[tagKey]
 
         for(let tag of tags){
-          if(p[tagKey].includes(tag)){
-            return true
+          if(!p[tagKey].includes(tag)){
+            return false
           }
         }
-        return false
+        return true
       }
     })
 
