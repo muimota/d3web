@@ -142,6 +142,10 @@ function update(data){
 
       let node = d3.select(d3elem)
 
+      if(node.classed('disabled')){
+        query = {}
+      }
+
       if( tagCat in query ){
 
         let tags = query[tagCat]
