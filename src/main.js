@@ -162,15 +162,16 @@ function update(data){
         query[tagCat] = [tag]
       }
 
-
-      let relatedTags = dm.filter(query).tags
+      let filterModel = dm.filter(query)
+      let relatedTags = filterModel.tags
 
       console.log(query)
-      console.log(relatedTags);
+      console.log(filterModel.projects)
+      console.log(relatedTags)
 
       for(let tagCats in d3tags){
-        d3tags[tagCats].classed('active',d => tagCats in query && query[tagCats].includes(d))
-        d3tags[tagCats].classed('related',d => relatedTags[tagCats].includes(d))
+        d3tags[tagCats].classed('selected',d => tagCats in query && query[tagCats].includes(d))
+        d3tags[tagCats].classed('disabled',d => ! relatedTags[tagCats].includes(d))
       }
 
     }

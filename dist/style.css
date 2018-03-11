@@ -13,7 +13,7 @@ circle{
 .tag{
   font-family:'Helvetica';
   font-size: 12px;
-  fill:blue;
+  fill:#333;
   text-anchor:start;
   cursor: pointer;
 }
@@ -21,10 +21,13 @@ circle{
   fill: red;
 }
 
-.active{
+.disabled{
+  fill:#999;
+  cursor: default;
+}
+
+
+.selected{
   fill:green;
   font-weight: bold;
-}
-.related{
-  fill:orange;
 }
