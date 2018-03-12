@@ -3,6 +3,7 @@
 import * as d3 from 'd3'
 import {createTagElems} from './tagUtils.js'
 import {DataModel} from './DataModel.js'
+import {createBlocks} from './projects.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
@@ -45,18 +46,23 @@ function update(data){
   projects = projects.filter(d => d.hasOwnProperty('startYear') &&
               d.hasOwnProperty('endYear') && d.startYear != null && d.endYear != null
             && d.startYear > 0 && d.endYear > 0)
+
   //team {member:[projectIds ..]}
   let team = {}
+
   //project with same startDate endDate add a year so it has 1 year duration
   projects.forEach((p,i) => {
+
     if ( p.startYear == p.endYear ){
       p.endYear ++
     }
 
     let projectTeam = []
+
     for (let department in p.team){
       projectTeam = projectTeam.concat(p.team[department])
     }
+
     //remove duplicates in team
     projectTeam = Array.from(new Set(projectTeam))
     p.people = projectTeam
@@ -75,59 +81,34 @@ function update(data){
   })
   everybody.sort()
 
+  //time based order
   projects.sort((a,b) => a.startYear - b.startYear)
   let domainExtent = [d3.min(projects,d=>d.startYear),d3.max(projects,d=>d.endYear)]
+  let yoffset = 150
 
   //define el domino de x
   yearX.domain(domainExtent);
 
+  let blocks = createBlocks(g,projects,yearX,yoffset)
   //dibuja la linea inferior
   g.append("g")
      .attr("class", "axis axis--x")
-     .attr("transform", "translate(0,150)")
+     .attr("transform", `translate(0,${yoffset})`)
      .call(d3.axisTop(yearX).tickFormat(d3.format('04')).ticks(domainExtent[1]-domainExtent[0]));
 
 
-  let rowHeight = 10
-  let yoffset  = 150
-  let rows  = [domainExtent[0]]
+  peopleX.domain([0,everybody.length])
 
-  //projects blocks
+  //add tags and links
+  links = g.append('g')
 
-  let blocks = g.selectAll('rect')
-    .data(projects)
+  let people = g.selectAll('circle')
+    .data(everybody)
     .enter()
-      .append('rect')
-      .attr('id',d => d.id )
-      .attr('x' ,d => yearX(d.startYear) + 1)
-      .attr('y' ,
-        function(d){
-          let i = 0
-          while(i < rows.length && rows[i] > d.startYear){
-            i ++
-          }
-          if(rows[i] > d.startYear){
-            rows.push(0)
-            i ++
-          }
-          rows[i] = d.endYear
-          return i * rowHeight + 5 + yoffset
-        })
-      .attr('width', d => yearX(d.endYear) -  yearX(d.startYear) - 1 )
-      .attr('height', rowHeight - 1)
-
-    peopleX.domain([0,everybody.length])
-
-    //add tags and links
-    links = g.append('g')
-
-    let people = g.selectAll('circle')
-      .data(everybody)
-      .enter()
-        .append('circle')
-        .attr('r', d => 3)
-        .attr('cx',(d,i) => peopleX(i))
-        .attr('cy',(d,i) => 10 + (i % 3) * 6 )
+      .append('circle')
+      .attr('r', d => 3)
+      .attr('cx',(d,i) => peopleX(i))
+      .attr('cy',(d,i) => 10 + (i % 3) * 6 )
 
 
 
@@ -138,6 +119,7 @@ function update(data){
       'materiality':createTagElems(g.append('g'),dm.tags['materiality'],590)
     }
 
+    //tag
     function clickHandler(tag,d3elem,tagCat){
 
       let node = d3.select(d3elem)
@@ -154,11 +136,9 @@ function update(data){
         //if is included
         if( index != -1){
           tags.splice(index,1)
-
           if(tags.length == 0){
             delete query[tagCat]
           }
-
         }else{
           tags.push(tag)
         }
@@ -169,14 +149,18 @@ function update(data){
       let filterModel = dm.filter(query)
       let relatedTags = filterModel.tags
 
-      console.log(query)
-      console.log(filterModel.projects)
-      console.log(relatedTags)
 
       for(let tagCats in d3tags){
         d3tags[tagCats].classed('selected',d => tagCats in query && query[tagCats].includes(d))
         d3tags[tagCats].classed('disabled',d => ! relatedTags[tagCats].includes(d))
       }
+
+      d3tags['space'].each(
+        function (d){
+          let node = d3.select(this)
+          console.log(node.attr('x'));
+        }
+      ).attr()
 
     }
 
@@ -185,6 +169,7 @@ function update(data){
         clickHandler(tag,this,tagCats)
       })
     }
+
 
     //projTip
     blocks.on('mouseover', function(d){
