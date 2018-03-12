@@ -1,10 +1,9 @@
 //projects blocks
 import * as d3 from 'd3'
 
-function createBlocks(gElem,projects,yearX){
+function createBlocks(gElem,projects,yearX,yoffset){
 
   let rowHeight = 10
-  let yoffset  = 150
 
   let rows = [d3.min(projects,d=>d.startYear)]
 

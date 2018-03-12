@@ -112,64 +112,96 @@ function update(data){
 
 
 
-    //generate SVG tags
-    let d3tags = {
-      'space':createTagElems(g.append('g'),dm.tags['space'],300),
-      'atmosphere':createTagElems(g.append('g'),dm.tags['atmosphere'],420),
-      'materiality':createTagElems(g.append('g'),dm.tags['materiality'],590)
+  //generate SVG tags
+  let d3tags = {
+    'space':createTagElems(g.append('g'),dm.tags['space'],300),
+    'atmosphere':createTagElems(g.append('g'),dm.tags['atmosphere'],420),
+    'materiality':createTagElems(g.append('g'),dm.tags['materiality'],590)
+  }
+
+  //tag
+  function clickHandler(tag,d3elem,tagCat){
+
+    let node = d3.select(d3elem)
+
+    if(node.classed('disabled')){
+      query = {}
     }
 
-    //tag
-    function clickHandler(tag,d3elem,tagCat){
+    if( tagCat in query ){
 
-      let node = d3.select(d3elem)
+      let tags = query[tagCat]
+      let index = tags.indexOf(tag)
 
-      if(node.classed('disabled')){
-        query = {}
-      }
-
-      if( tagCat in query ){
-
-        let tags = query[tagCat]
-        let index = tags.indexOf(tag)
-
-        //if is included
-        if( index != -1){
-          tags.splice(index,1)
-          if(tags.length == 0){
-            delete query[tagCat]
-          }
-        }else{
-          tags.push(tag)
+      //if is included
+      if( index != -1){
+        tags.splice(index,1)
+        if(tags.length == 0){
+          delete query[tagCat]
         }
       }else{
-        query[tagCat] = [tag]
+        tags.push(tag)
       }
-
-      let filterModel = dm.filter(query)
-      let relatedTags = filterModel.tags
-
-
-      for(let tagCats in d3tags){
-        d3tags[tagCats].classed('selected',d => tagCats in query && query[tagCats].includes(d))
-        d3tags[tagCats].classed('disabled',d => ! relatedTags[tagCats].includes(d))
-      }
-
-      d3tags['space'].each(
-        function (d){
-          let node = d3.select(this)
-          console.log(node.attr('x'));
-        }
-      ).attr()
-
+    }else{
+      query[tagCat] = [tag]
     }
+
+    let filterModel = dm.filter(query)
+    let relatedTags = filterModel.tags
+
+
+    for(let tagCats in d3tags){
+      d3tags[tagCats].classed('selected',d => tagCats in query && query[tagCats].includes(d))
+      d3tags[tagCats].classed('disabled',d => ! relatedTags[tagCats].includes(d))
+    }
+
+    //lines
+
+    links.selectAll('path').remove()
+
+    if(Object.keys(query).length > 0){
+      let line = ""
+      for(let tagCat of dm.tagKeys){
+
+        let tagsCoord = []
+
+        d3tags[tagCat].filter(
+          t=>relatedTags[tagCat].includes(t)
+        ).each(function(t){
+          let node = d3.select(this)
+          tagsCoord.push([
+            parseFloat(node.attr('x')),
+            parseFloat(node.attr('y'))
+          ])
+        })
+        //sort in x coords
+        tagsCoord.sort((a,b)=>a[1] - b[1] + a[0] - b[0])
+        //console.log(tagsCoord)
+
+
+          for(let i = 0;i<tagsCoord.length;i++){
+            let draw = (i==0 && tagCat == dm.tagKeys[0]) ? 'M' : 'L'
+            let tagCoord = tagsCoord[i]
+            line += `${draw}${tagCoord[0]},${tagCoord[1]}`
+
+          }
+
+        
+      }
+      //g.select('path').remove()
+      links.append('path')
+        .attr('d',line)
+        .attr('fill','none')
+        .attr('stroke','blue')
+    }
+
+  }
 
     for(let tagCats in d3tags){
       d3tags[tagCats].on('click',function(tag){
         clickHandler(tag,this,tagCats)
       })
     }
-
 
     //projTip
     blocks.on('mouseover', function(d){
@@ -221,7 +253,7 @@ function update(data){
 
       let node = d3.select(this)
       let relatedProjects = blocks.filter(function(d){
-        return d.people.indexOf(person) != -1
+        return d.people.includes(person)
       })
       blocks.attr('opacity',1)
       relatedProjects.attr('opacity',0.5)
@@ -236,33 +268,37 @@ function update(data){
 
 
     people.on('mouseout',function(person){
-      //links.selectAll('path').remove()
+      links.selectAll('path').remove()
+      blocks.attr('opacity',1)
+      personTip.transition()
+        .duration(200)
+        .style("opacity", 0)
     })
 
-    people.on('click',function(person){
+people.on('click',function(person){
 
 
-      let personNode = d3.select(this)
-      let personCoords = [personNode.attr('cx')|0,personNode.attr('cy')|0]
-      let projectsCoords = []
+  let personNode = d3.select(this)
+  let personCoords = [personNode.attr('cx')|0,personNode.attr('cy')|0]
+  let projectsCoords = []
 
-      let relatedProjects = blocks.filter(function(d){
-        return d.people.indexOf(person) != -1
-      })
-      relatedProjects.attr('opacity',0.5)
+  let relatedProjects = blocks.filter(function(d){
+    return d.people.indexOf(person) != -1
+  })
+  relatedProjects.attr('opacity',0.5)
 
-      relatedProjects.each(function(d){
-        let node = d3.select(this)
-        let coords = [
-          parseFloat(node.attr('x')),
-          parseFloat(node.attr('y')),
-        ]
-        projectsCoords.push(coords)
-      })
-      updateLink(personCoords,projectsCoords)
-    })
-
+  relatedProjects.each(function(d){
+    let node = d3.select(this)
+    let coords = [
+      parseFloat(node.attr('x')),
+      parseFloat(node.attr('y')),
+    ]
+    projectsCoords.push(coords)
+  })
+  updateLink(personCoords,projectsCoords)
+})
 }
+
 
 function updateLink(srcCoord,dstCoords){
 
