@@ -15,18 +15,12 @@ var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var yearX   = d3.scaleLinear().range([30,width])
-var peopleX = d3.scaleLinear().range([30,width])
 
 var projTip = g.append("text")
     .attr("class", "tooltip")
     .style("opacity", 0)
 
-var personTip = g.append("text")
-    .attr("class", "tooltip")
-    .style("opacity", 0)
 
-
-var everybody
 var links, tags
 
 var d3tags
@@ -58,29 +52,7 @@ function update(data){
       p.endYear ++
     }
 
-    let projectTeam = []
-
-    for (let department in p.team){
-      projectTeam = projectTeam.concat(p.team[department])
-    }
-
-    //remove duplicates in team
-    projectTeam = Array.from(new Set(projectTeam))
-    p.people = projectTeam
-
-    // update team
-    for(let member of projectTeam){
-
-      if(!(member in team)){
-        team[member] = []
-      }
-
-      team[member].push(p.id)
-
-    }
-    everybody = Object.keys(team)
   })
-  everybody.sort()
 
   //time based order
   projects.sort((a,b) => a.startYear - b.startYear)
@@ -97,21 +69,8 @@ function update(data){
      .attr("transform", `translate(0,${yoffset})`)
      .call(d3.axisTop(yearX).tickFormat(d3.format('04')).ticks(domainExtent[1]-domainExtent[0]));
 
-
-  peopleX.domain([0,everybody.length])
-
   //add tags and links
   links = g.append('g')
-
-  /*
-  let people = g.selectAll('circle')
-    .data(everybody)
-    .enter()
-      .append('circle')
-      .attr('r', d => 3)
-      .attr('cx',(d,i) => peopleX(i))
-      .attr('cy',(d,i) => 10 + (i % 3) * 6 )
-  */
 
   //generate SVG tags
   d3tags = {
@@ -231,7 +190,7 @@ function tagLine(query){
         for(let i = 0;i<tagsCoord.length;i++){
           let draw = (i==0 && tagCat == dm.tagKeys[0]) ? 'M' : 'L'
           let tagCoord = tagsCoord[i]
-          line += `${draw}${tagCoord[0]},${tagCoord[1]}`
+          line += `${draw}${tagCoord[0]},${tagCoord[1]-4}`
 
         }
 
