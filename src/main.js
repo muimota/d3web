@@ -29,6 +29,7 @@ var personTip = g.append("text")
 var everybody
 var links, tags
 
+var d3tags
 var query = {}
 var dm
 
@@ -113,7 +114,7 @@ function update(data){
 
 
   //generate SVG tags
-  let d3tags = {
+  d3tags = {
     'space':createTagElems(g.append('g'),dm.tags['space'],300),
     'atmosphere':createTagElems(g.append('g'),dm.tags['atmosphere'],420),
     'materiality':createTagElems(g.append('g'),dm.tags['materiality'],590)
@@ -155,46 +156,16 @@ function update(data){
       d3tags[tagCats].classed('disabled',d => ! relatedTags[tagCats].includes(d))
     }
 
-    //lines
-
-    links.selectAll('path').remove()
-
-    if(Object.keys(query).length > 0){
-      let line = ""
-      for(let tagCat of dm.tagKeys){
-
-        let tagsCoord = []
-
-        d3tags[tagCat].filter(
-          t=>relatedTags[tagCat].includes(t)
-        ).each(function(t){
-          let node = d3.select(this)
-          tagsCoord.push([
-            parseFloat(node.attr('x')),
-            parseFloat(node.attr('y'))
-          ])
-        })
-        //sort in x coords
-        tagsCoord.sort((a,b)=>a[1] - b[1] + a[0] - b[0])
-        //console.log(tagsCoord)
+    tagLine(query)
 
 
-          for(let i = 0;i<tagsCoord.length;i++){
-            let draw = (i==0 && tagCat == dm.tagKeys[0]) ? 'M' : 'L'
-            let tagCoord = tagsCoord[i]
-            line += `${draw}${tagCoord[0]},${tagCoord[1]}`
+    let relatedProjects = filterModel.projects
 
-          }
-
-        
-      }
-      //g.select('path').remove()
-      links.append('path')
-        .attr('d',line)
-        .attr('fill','none')
-        .attr('stroke','blue')
-    }
-
+    blocks.attr('opacity',1)
+    let filteredProjects = blocks.filter(
+        p=> relatedProjects.includes(p))
+    console.log(filteredProjects);
+    filteredProjects.attr('opacity',0.4)
   }
 
     for(let tagCats in d3tags){
@@ -299,6 +270,50 @@ people.on('click',function(person){
 })
 }
 
+//lines
+
+function tagLine(query){
+
+  links.selectAll('path').remove()
+
+  let relatedTags = dm.filter(query).tags
+
+  if(Object.keys(query).length > 0){
+    let line = ""
+    for(let tagCat of dm.tagKeys){
+
+      let tagsCoord = []
+
+      d3tags[tagCat].filter(
+        t=>relatedTags[tagCat].includes(t)
+      ).each(function(t){
+        let node = d3.select(this)
+        tagsCoord.push([
+          parseFloat(node.attr('x')),
+          parseFloat(node.attr('y'))
+        ])
+      })
+      //sort in x coords
+      tagsCoord.sort((a,b)=>a[1] - b[1] + a[0] - b[0])
+      //console.log(tagsCoord)
+
+
+        for(let i = 0;i<tagsCoord.length;i++){
+          let draw = (i==0 && tagCat == dm.tagKeys[0]) ? 'M' : 'L'
+          let tagCoord = tagsCoord[i]
+          line += `${draw}${tagCoord[0]},${tagCoord[1]}`
+
+        }
+
+
+    }
+    //g.select('path').remove()
+    links.append('path')
+      .attr('d',line)
+      .attr('fill','none')
+      .attr('stroke','blue')
+  }
+}
 
 function updateLink(srcCoord,dstCoords){
 
