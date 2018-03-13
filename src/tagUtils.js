@@ -11,6 +11,7 @@ function createTagElems(gElem,tagArray,offY = 280){
   let width = 800
   let offX = 30
   let posY = []
+  let lastWord = 0
 
   let selection = gElem.selectAll('text')
     .data(tagArray)
@@ -23,16 +24,17 @@ function createTagElems(gElem,tagArray,offY = 280){
         let textWidth = this.getComputedTextLength()
 
         if(offX + textWidth < width){
-          offX += (i == 0) ? textWidth : textWidth + 10
+          offX += (i == 0) ? textWidth / 2 : textWidth / 2 + lastWord / 2 + 10
         }else{
-          offX = 30 + textWidth
+          offX = 30 + textWidth / 2
           offY += 13
         }
 
+        lastWord = textWidth
         posY.push(offY)
 
         //console.log(s+'-'+textWidth+'-'+offX);
-        return offX - textWidth
+        return offX 
 
       })
 

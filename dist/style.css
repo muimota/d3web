@@ -14,7 +14,7 @@ circle{
   font-family:'Helvetica';
   font-size: 12px;
   fill:#333;
-  text-anchor:start;
+  text-anchor:middle;
   cursor: pointer;
 }
 .tag:hover{
