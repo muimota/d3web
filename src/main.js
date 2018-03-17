@@ -27,7 +27,7 @@ var d3tags
 var query = {}
 var dm
 
-d3.json("data_merger.json",update)
+d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
 
 //on load
 function update(data){
@@ -186,36 +186,18 @@ function tagLine(query){
       tagsCoord.sort((a,b)=>a[1] - b[1] + a[0] - b[0])
       //console.log(tagsCoord)
 
+      for(let i = 0;i<tagsCoord.length;i++){
+        let draw = (i==0 && tagCat == dm.tagKeys[0]) ? 'M' : 'L'
+        let tagCoord = tagsCoord[i]
+        line += `${draw}${tagCoord[0]},${tagCoord[1]-4}`
 
-        for(let i = 0;i<tagsCoord.length;i++){
-          let draw = (i==0 && tagCat == dm.tagKeys[0]) ? 'M' : 'L'
-          let tagCoord = tagsCoord[i]
-          line += `${draw}${tagCoord[0]},${tagCoord[1]-4}`
-
-        }
-
+      }
 
     }
-    //g.select('path').remove()
+
     links.append('path')
       .attr('d',line)
       .attr('fill','none')
       .attr('stroke','blue')
   }
-}
-
-function updateLink(srcCoord,dstCoords){
-
-  let line = ""
-  for(let dstCoord of dstCoords){
-    line += `M${srcCoord[0]},${srcCoord[1]}`
-    line += `L${dstCoord[0]},${dstCoord[1]}`
-  }
-  //g.select('path').remove()
-  links.selectAll('path').remove()
-  links.append('path')
-    .attr('d',line)
-    .attr('fill','none')
-    .attr('stroke','blue')
-
 }
