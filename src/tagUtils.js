@@ -1,11 +1,4 @@
 
-//extracts tags from the JSON
-function getTags(tagName,projects){
-  let tagArray = []
-  projects.filter( p => p.hasOwnProperty(tagName)).map(p => tagArray = tagArray.concat(p[tagName]))
-  return Array.from(new Set(tagArray)).sort()
-}
-
 function createTagElems(gElem,tagArray,offY = 280){
 
   let width = 800
@@ -34,7 +27,7 @@ function createTagElems(gElem,tagArray,offY = 280){
         posY.push(offY)
 
         //console.log(s+'-'+textWidth+'-'+offX);
-        return offX 
+        return offX
 
       })
 
@@ -42,4 +35,4 @@ function createTagElems(gElem,tagArray,offY = 280){
     return selection
 }
 
-export {getTags,createTagElems}
+export {createTagElems}
