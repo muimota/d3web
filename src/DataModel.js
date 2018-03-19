@@ -3,6 +3,16 @@ class DataModel{
   constructor(_data){
     this.data = _data
     this.tagKeys = ['space','atmosphere','materiality']
+    this.references = {}
+    for(let refId in this.data.references){
+      let reference = this.data.references[refId]
+      if(reference.type in this.references){
+        this.references[reference.type].push(reference)
+      }else{
+        this.references[reference.type] = [reference]
+      }
+    }
+    this.refKeys = Object.keys(this.references)
   }
 
   get tags(){
@@ -20,14 +30,21 @@ class DataModel{
 
   }
 
+  get tagArray(){
+    let tagsDict = this.tags;
+    let tagArray = []
+    for( let tagKey of this.tagKeys){
+      tagArray = tagArray.concat(tagsDict[tagKey])
+    }
+    return Array.from(new Set(tagArray)).sort()
+
+  }
+
   get projects(){
     return this.data.projects
   }
 
-  get references(){
-    return this.data.references
-  }
-  //select projects based on the
+  //select projects based on tags
   filter(tagsDict){
 
     //tagQuery is an empty object
