@@ -26,8 +26,20 @@ circle{
   cursor: default;
 }
 
-
 .selected{
   fill:green;
   font-weight: bold;
+}
+
+rect.reference{
+  fill:#999;
+}
+
+rect.reference.selected{
+  fill:purple;
+}
+
+rect.reference:hover{
+  stroke:purple;
+  cursor: pointer;
 }

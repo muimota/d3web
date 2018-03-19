@@ -35,8 +35,10 @@ function update(data){
   console.log(data);
   dm = new DataModel(data)
 
+  let references = Object.values(dm.references)
+  let typologies = new Set()
 
-  let projects = d3.values(dm.projects)
+  let projects = Object.values(dm.projects)
   //remove work with no startYear
   projects = projects.filter(d => d.hasOwnProperty('startYear') &&
               d.hasOwnProperty('endYear') && d.startYear != null && d.endYear != null
@@ -79,7 +81,34 @@ function update(data){
     'materiality':createTagElems(g.append('g'),dm.tags['materiality'],450)
   }
 
-  //tag
+  //references
+  let offY = 570
+  for(let refId in dm.references){
+
+    let references = dm.references[refId]
+    let gRef = g.append('g').selectAll('rect')
+    .data(references)
+    .enter()
+    .append('rect')
+      .attr('x',(r,i)=>30 + i*12 )
+      .attr('y',offY)
+      .attr('width',10)
+      .attr('height',10)
+      .attr('class','reference')
+
+    offY += 12
+
+    gRef.on('click',function(ref){
+      console.log(ref)
+      let node = d3.select(this)
+
+      node.classed('selected',true)
+    })
+
+
+  }
+
+  //tag click handler
   function clickHandler(tag,d3elem,tagCat){
 
     let node = d3.select(d3elem)

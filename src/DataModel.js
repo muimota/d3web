@@ -44,7 +44,8 @@ class DataModel{
     return this.data.projects
   }
 
-  //select projects based on tags
+  //select projects based on a query
+  //{tagCategory1:[tags..],tagCategory2:[tags..]}
   filter(tagsDict){
 
     //tagQuery is an empty object
@@ -81,9 +82,27 @@ class DataModel{
 
     return new DataModel(data)
   }
-  //gets Tags that relate in some way
-  queryTags(projects){
+  //filters projects that have all the tags (could be in different categories)
+  filterRef(reftags){
 
+    let projects = Object.values(this.data.projects)
+    let selectedProjects = projects.filter( p => {
+
+      let rtags = reftags.slice()
+
+      for( let tagKey of this.tagKeys){
+        if(tagKey in p){
+          rtags = rtags.filter(tag=> !p[tagKey].includes(tag))
+        }
+      }
+
+      return rtags.length == 0
+    })
+    console.log(selectedProjects);
+    let data = Object({},this.data)
+    data.projects = selectedProjects
+
+    return new DataModel(data)
   }
 }
 
