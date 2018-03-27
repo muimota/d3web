@@ -38,7 +38,9 @@ class DataModel{
     for( let tagKey of this.tagKeys){
       let tagArray = []
       projects.filter( p => p.hasOwnProperty(tagKey)).map(p => tagArray = tagArray.concat(p[tagKey]))
-      tagsDict[tagKey] =  Array.from(new Set(tagArray)).sort()
+//http://www.jstips.co/en/javascript/sorting-strings-with-accented-characters/
+      tagsDict[tagKey] =  Array.from(new Set(tagArray)).sort(
+        (a, b) => a.localeCompare(b))
     }
 
     return tagsDict
