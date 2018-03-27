@@ -8,7 +8,16 @@
 circle{
   cursor: pointer;
 }
+/*blocks*/
 
+rect.project{
+  fill:black;
+}
+
+
+rect.project.disabled{
+  fill:#CCC;
+}
 
 .tag{
   font-family:'Helvetica';
@@ -31,14 +40,18 @@ circle{
   font-weight: bold;
 }
 
+/* reference */
 rect.reference{
-  fill:#999;
+  fill:black;
 }
 
 rect.reference.selected{
   fill:purple;
 }
-
+rect.reference.disabled{
+  fill:#EEE;
+  cursor: default;
+}
 rect.reference:hover{
   stroke:purple;
   cursor: pointer;

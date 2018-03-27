@@ -12,7 +12,6 @@ function createBlocks(gElem,projects,yearX,yoffset){
     .data(projects)
     .enter()
       .append('rect')
-      .attr('id',d => d.id )
       .attr('x' ,d => yearX(d.startYear) + 1)
       .attr('y' ,
         function(d){
@@ -29,6 +28,7 @@ function createBlocks(gElem,projects,yearX,yoffset){
         })
       .attr('width', d => yearX(d.endYear) -  yearX(d.startYear) - 1 )
       .attr('height', rowHeight - 1)
+      .classed('project',true)
   return blocks
 }
 

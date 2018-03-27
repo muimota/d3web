@@ -24,6 +24,7 @@ var projTip = g.append("text")
 var links, tags
 
 var d3tags
+var gRef = {}
 var query = {}
 var dm
 
@@ -85,9 +86,8 @@ function update(data){
   let offY = 570
   for(let refId in dm.references){
 
-    let references = dm.references[refId]
-    let gRef = g.append('g').selectAll('rect')
-    .data(references)
+    gRef[refId] = g.append('g').selectAll('rect')
+    .data(dm.references[refId])
     .enter()
     .append('rect')
       .attr('x',(r,i)=>30 + i*12 )
@@ -98,14 +98,13 @@ function update(data){
 
     offY += 12
 
-    gRef.on('click',function(ref){
+    gRef[refId].on('click',function(ref){
       console.log(ref)
       let node = d3.select(this)
-
-      node.classed('selected',true)
+      node.classed('selected',! node.classed('selected'))
+      let projects = dm.filterRef(ref.tags).projects
+      console.log(projects)
     })
-
-
   }
 
   //tag click handler
@@ -138,15 +137,27 @@ function update(data){
     let filterModel = dm.filter(query)
     let relatedTags = filterModel.tags
 
+    console.log(filterModel.references);
 
     for(let tagCats in d3tags){
       d3tags[tagCats].classed('selected',d => tagCats in query && query[tagCats].includes(d))
       d3tags[tagCats].classed('disabled',d => ! relatedTags[tagCats].includes(d))
     }
 
+    for(let refId in dm.references){
+      gRef[refId].classed('selected',false)
+    }
+    let references =  filterModel.references
+    for(let refId in references){
+      gRef[refId].classed('disabled',
+        r => !references[refId].includes(r))
+    }
+
+
     tagLine(query)
 
-    blocks.attr('opacity',1)
+    blocks.classed('disabled',true)
+    //highlight filtered projects
     if(Object.keys(query).length > 0){
 
       let relatedProjects = Object.values(filterModel.projects)
@@ -154,7 +165,7 @@ function update(data){
       let filteredProjects = blocks.filter(
           p=> relatedProjects.includes(p))
       console.log(filteredProjects);
-      filteredProjects.attr('opacity',0.4)
+      filteredProjects.classed('disabled',false)
     }
   }
 
@@ -163,6 +174,8 @@ function update(data){
         clickHandler(tag,this,tagCats)
       })
     }
+
+
 
 
     //projTip
