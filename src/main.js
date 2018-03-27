@@ -145,7 +145,7 @@ function update(data){
     }
 
     for(let refId in dm.references){
-      gRef[refId].classed('selected',false)
+      gRef[refId].classed('disabled',true)
     }
     let references =  filterModel.references
     for(let refId in references){
