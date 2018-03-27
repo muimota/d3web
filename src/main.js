@@ -33,7 +33,7 @@ d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
 function update(data){
 
   console.log(data);
-  dm = new DataModel(data)
+  dm = DataModel.import(data)
 
   let references = Object.values(dm.references)
   let typologies = new Set()

@@ -1,20 +1,35 @@
 class DataModel{
 
+  /*basic structure has projects, references, data
+  {projects:{projId:{projData}.. }
+   references:{refId:{refData}}
+  data:{refId|projId:{extraData}}}}
+  */
+  static import(_data){
+    let data = _data
+
+    //organize references by category
+    let references = {}
+    for(let refId in data.references){
+      let reference = data.references[refId]
+      if(reference.type in references){
+        references[reference.type].push(reference)
+      }else{
+        references[reference.type] = [reference]
+      }
+    }
+
+    data.references = references
+    return new DataModel(data)
+  }
+
   constructor(_data){
     this.data = _data
     this.tagKeys = ['space','atmosphere','materiality']
-    this.references = {}
-    for(let refId in this.data.references){
-      let reference = this.data.references[refId]
-      if(reference.type in this.references){
-        this.references[reference.type].push(reference)
-      }else{
-        this.references[reference.type] = [reference]
-      }
-    }
-    this.refKeys = Object.keys(this.references)
+
   }
 
+  //get dicitonary with tag in each category without duplicates
   get tags(){
 
     let tagsDict = {}
@@ -30,6 +45,7 @@ class DataModel{
 
   }
 
+  //array of tags without duplicates
   get tagArray(){
     let tagsDict = this.tags;
     let tagArray = []
@@ -40,8 +56,14 @@ class DataModel{
 
   }
 
+  //return projects dict
   get projects(){
     return this.data.projects
+  }
+
+  //return projects dict
+  get references(){
+    return this.data.references
   }
 
   //select projects based on a query
@@ -51,13 +73,14 @@ class DataModel{
     //tagQuery is an empty object
     if(Object.keys(tagsDict).length === 0){
       //TODO:return a copy
-      let data = Object({},this.data)
+      let data = Object.assign({},this.data)
 
       return this
     }
 
     let projects = Object.values(this.data.projects)
 
+    //select project that have the ALL the tag of the query
     let selectedProjects = projects.filter( p => {
 
       for(let tagKey in tagsDict){
@@ -77,10 +100,46 @@ class DataModel{
       }
     })
 
-    let data = Object({},this.data)
-    data.projects = selectedProjects
+    let data = Object.assign({},this.data)
+    data.projects = {}
+    selectedProjects.forEach(p=> data.projects[p.id] = p)
+    data.references = this.selectedReferences(selectedProjects)
 
-    return new DataModel(data)
+    let dm = new DataModel(data)
+
+    return dm
+  }
+
+  //returns a dict with all the related references
+  selectedReferences(selectedProjects){
+    //extract array of tags from the selectedProjects
+    let tags = []
+    for(let project of selectedProjects){
+        for(let tagKey of this.tagKeys){
+          if(tagKey in project){
+            tags = tags.concat(project[tagKey])
+          }
+        }
+    }
+    //remove duplicates
+    tags =  Array.from(new Set(tags))
+
+    //remove references that don't have ALL tags
+    let selectedReferences = {}
+    for(let refKey in this.references){
+
+      for(let reference of this.references[refKey]){
+        //every ALL
+          if(tags.some(t=>reference.tags.includes(t))){
+              if(!(refKey in selectedReferences)){
+                selectedReferences[refKey] = []
+              }
+              selectedReferences[refKey].push(reference)
+          }
+      }
+    }
+
+    return selectedReferences
   }
   //filters projects that have all the tags (could be in different categories)
   filterRef(reftags){
@@ -98,10 +157,11 @@ class DataModel{
 
       return rtags.length == 0
     })
-    console.log(selectedProjects);
-    let data = Object({},this.data)
-    data.projects = selectedProjects
 
+    let data = Object({},this.data)
+    data.projects = {}
+    selectedProjects.forEach(p=> data.projects[p.id] = p)
+    data.references = this.selectedReferences(selectedProjects)
     return new DataModel(data)
   }
 }
