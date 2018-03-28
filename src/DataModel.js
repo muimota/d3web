@@ -77,7 +77,7 @@ class DataModel{
       //TODO:return a copy
       let data = Object.assign({},this.data)
 
-      return this
+      return new DataModel(data)
     }
 
     let projects = Object.values(this.data.projects)
@@ -85,6 +85,7 @@ class DataModel{
     //select project that have the ALL the tag of the query
     let selectedProjects = projects.filter( p => {
 
+    
       for(let tagKey in tagsDict){
 
         if( !p.hasOwnProperty(tagKey)){
@@ -98,8 +99,9 @@ class DataModel{
             return false
           }
         }
-        return true
+
       }
+      return true
     })
 
     let data = Object.assign({},this.data)
