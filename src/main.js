@@ -26,7 +26,7 @@ var links, tags
 var d3tags
 var gRef = {}
 var query = {}
-var dm
+var dm,filterModel
 
 d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
 
@@ -85,7 +85,7 @@ function update(data){
     tagY += bbox.height + 20
     d3tags[tagKey] = elem
   }
-  
+
   //references
   for(let refId in dm.references){
 
@@ -136,8 +136,8 @@ function update(data){
     }else{
       query[tagCat] = [tag]
     }
-
-    let filterModel = dm.filter(query)
+    console.log(query);
+    filterModel = dm.filter(query)
     let relatedTags = filterModel.tags
 
     console.log(filterModel.references);
@@ -210,7 +210,7 @@ function tagLine(query){
 
   links.selectAll('path').remove()
 
-  let relatedTags = dm.filter(query).tags
+  let relatedTags = filterModel.tags
 
   if(Object.keys(query).length > 0){
     let line = ""
