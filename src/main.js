@@ -76,14 +76,17 @@ function update(data){
   links = g.append('g')
 
   //generate SVG tags
-  d3tags = {
-    'space':createTagElems(g.append('g'),dm.tags['space'],200),
-    'atmosphere':createTagElems(g.append('g'),dm.tags['atmosphere'],300),
-    'materiality':createTagElems(g.append('g'),dm.tags['materiality'],450)
+  d3tags = {}
+  let tagY = 200
+  for(let tagKey of dm.tagKeys){
+    let node = g.append('g')
+    let elem = createTagElems(node,dm.tags[tagKey],tagY)
+    let bbox = node.node().getBBox()
+    tagY += bbox.height + 20
+    d3tags[tagKey] = elem
   }
-
+  
   //references
-  let offY = 570
   for(let refId in dm.references){
 
     gRef[refId] = g.append('g').selectAll('rect')
@@ -91,12 +94,12 @@ function update(data){
     .enter()
     .append('rect')
       .attr('x',(r,i)=>30 + i*12 )
-      .attr('y',offY)
+      .attr('y',tagY)
       .attr('width',10)
       .attr('height',10)
       .attr('class','reference')
 
-    offY += 12
+    tagY += 12
 
     gRef[refId].on('click',function(ref){
       console.log(ref)
