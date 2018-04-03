@@ -134,7 +134,8 @@ class DataModel{
 
       for(let reference of this.references[refKey]){
         //every ALL
-          if(tags.some(t=>reference.tags.includes(t))){
+
+          if(reference.tags && tags.some(t=>reference.tags.includes(t))){
               if(!(refKey in selectedReferences)){
                 selectedReferences[refKey] = []
               }
