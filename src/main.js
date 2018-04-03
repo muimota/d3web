@@ -148,7 +148,10 @@ function update(data){
     }
 
     for(let refId in dm.references){
+      let delay = d3.randomUniform(0, 1)()
       gRef[refId].classed('disabled',true)
+      gRef[refId].style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+      gRef[refId].style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
     }
     let references =  filterModel.references
     for(let refId in references){
@@ -161,15 +164,24 @@ function update(data){
 
     blocks.classed('disabled',true)
     //highlight filtered projects
+
+    let filteredProjects
+
     if(Object.keys(query).length > 0){
 
       let relatedProjects = Object.values(filterModel.projects)
 
-      let filteredProjects = blocks.filter(
+      filteredProjects = blocks.filter(
           p=> relatedProjects.includes(p))
-      console.log(filteredProjects);
-      filteredProjects.classed('disabled',false)
+
+
+    }else{
+      filteredProjects = blocks
     }
+    filteredProjects.classed('disabled',false)
+    filteredProjects.style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+    filteredProjects.style('transition-duration',d=>`${d3.randomUniform(.3,.6)()}s`)
+
   }
 
     for(let tagCats in d3tags){

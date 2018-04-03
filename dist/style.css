@@ -12,6 +12,7 @@ circle{
 
 rect.project{
   fill:black;
+  transition: all .5s ease-out;
 }
 
 
@@ -25,6 +26,7 @@ rect.project.disabled{
   fill:#333;
   text-anchor:middle;
   cursor: pointer;
+  transition: all .25s ease-out;
 }
 .tag:hover{
   fill: red;
@@ -43,6 +45,7 @@ rect.project.disabled{
 /* reference */
 rect.reference{
   fill:black;
+  transition: all .5s ease-out;
 }
 
 rect.reference.selected{
