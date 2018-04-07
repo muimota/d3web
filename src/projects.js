@@ -22,10 +22,14 @@ function timeBlocks(blocks,projects,yearX,yoffset){
             i ++
           }
           rows[i] = d.endYear
-          return i * rowHeight + 5 + yoffset
+          if(d.type != 'RCR'){
+            return -35 -i * rowHeight / 2 + 5 + yoffset
+          }else{
+            return i * rowHeight + 5 + yoffset
+          }
         })
       .attr('width', d => yearX(d.endYear) -  yearX(d.startYear) - 1 )
-      .attr('height', rowHeight - 1)
+      .attr('height', p=> (p.type == 'RCR') ? rowHeight - 1 : rowHeight / 2 - 1)
       .classed('project',true)
   return blocks
 }
