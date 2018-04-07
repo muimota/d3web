@@ -5,7 +5,7 @@ function timeBlocks(blocks,projects,yearX,yoffset){
 
   let rowHeight = 10
 
-  let rows = [d3.min(projects,d=>d.startYear)]
+  let rows = [[d3.min(projects,d=>d.startYear)],[d3.min(projects,d=>d.startYear)]]
 
 
   blocks = blocks
@@ -14,14 +14,18 @@ function timeBlocks(blocks,projects,yearX,yoffset){
       .attr('y' ,
         function(d){
           let i = 0
-          while(i < rows.length && rows[i] > d.startYear){
+          let cat = 0
+          if(d.type != 'RCR'){
+            cat = 1
+          }
+          while(i < rows[cat].length && rows[cat][i] > d.startYear){
             i ++
           }
-          if(rows[i] > d.startYear){
-            rows.push(0)
+          if(rows[cat][i] > d.startYear){
+            rows[cat].push(0)
             i ++
           }
-          rows[i] = d.endYear
+          rows[cat][i] = d.endYear
           if(d.type != 'RCR'){
             return -35 -i * rowHeight / 2 + 5 + yoffset
           }else{
@@ -50,15 +54,16 @@ function surfaceBlocks(blocks,projects,scale){
     return i
   }
 
-  let counter = [0,0,0,0,0,0]
+  let counter = [[0,0,0,0,0,0],[0,0,0,0,0,0]]
   let sizes   = [0.9,1,2,3,4,5,]
   let positions = []
 
   blocks.data(projects)
     .each(p=>{
       let si = _si(p)
-      positions.push(counter[si])
-      counter[si]++
+      let cat = (p.type == 'RCR') ? 0:1
+      positions.push(counter[cat][si])
+      counter[cat][si]++
     })
     .attr('x',(p,i)=>{
       let si = _si(p)
@@ -88,17 +93,20 @@ function typoBlocks(blocks,projects,scale,typologies){
   //surfaceindex, converts surface to it corresponging range
 
 
-  let counter = []
+  let counter = [[],[]]
+
   for(let i=0;i<typologies.length;i++){
-    counter.push(0)
+    counter[0].push(0)
+    counter[1].push(0)
   }
   let positions = []
 
   blocks.data(projects)
     .each(p=>{
       let ti = typologies.indexOf(p.typology)
-      positions.push(counter[ti])
-      counter[ti]++
+      let cat = (p.type == 'RCR') ? 0:1
+      positions.push(counter[cat][ti])
+      counter[cat][ti]++
     })
     .attr('x',(p,i)=>{
       let ti = typologies.indexOf(p.typology)
