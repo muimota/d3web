@@ -27,6 +27,24 @@ class DataModel{
     this.data = _data
     this.tagKeys = ['space','atmosphere','materiality']
 
+    this.noTypology = "sin"
+
+    let typologies = new Set()
+    Object.values(this.data.projects).forEach(p=> {
+      if(!('typology' in p)){
+        p.typology = this.noTypology
+      }
+      typologies.add(p.typology)
+    })
+    let undeftypo = typologies.has(this.noTypology)
+    typologies.delete(this.noTypology)
+
+    this.data.typologies = Array.from(typologies).sort()
+    if(undeftypo){
+      this.data.typologies.push(this.noTypology)
+    }
+
+    console.log(this.data.typologies);
   }
 
   //get dicitonary with tag in each category without duplicates
@@ -68,6 +86,9 @@ class DataModel{
     return this.data.references
   }
 
+  get typologies(){
+    return this.data.typologies
+  }
   //select projects based on a query
   //{tagCategory1:[tags..],tagCategory2:[tags..]}
   filter(tagsDict){
@@ -85,7 +106,7 @@ class DataModel{
     //select project that have the ALL the tag of the query
     let selectedProjects = projects.filter( p => {
 
-    
+
       for(let tagKey in tagsDict){
 
         if( !p.hasOwnProperty(tagKey)){
