@@ -3,7 +3,7 @@
 import * as d3 from 'd3'
 import {createTagElems} from './tagUtils.js'
 import {DataModel} from './DataModel.js'
-import {timeBlocks,clearBlocks,changeBlocks} from './projects.js'
+import {timeBlocks,clearBlocks,surfaceBlocks} from './projects.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
@@ -15,6 +15,8 @@ var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var yearX   = d3.scaleLinear().range([30,width])
+var surfX   = d3.scaleLinear().range([30,width])
+
 
 var projTip = g.append("text")
     .attr("class", "tooltip")
@@ -23,6 +25,9 @@ var projTip = g.append("text")
 
 var links, tags
 
+var timeScale
+var surfaceScale
+
 var d3tags,blocks
 var gRef = {}
 var query = {}
@@ -30,8 +35,8 @@ var dm,filterModel
 
 
 
-//d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
-d3.json("data_merger.json",update)
+d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
+//d3.json("data_merger.json",update)
 
 
 
@@ -70,7 +75,6 @@ function update(data){
 
   //define el domino de x
   yearX.domain(domainExtent);
-
   //generate blocks
   blocks =   g.selectAll('rect')
       .data(projects)
@@ -80,20 +84,40 @@ function update(data){
   blocks = timeBlocks(blocks,projects,yearX,yoffset)
 
   //dibuja la linea inferior
-  g.append("g")
+  timeScale = g.append("g")
      .attr("class", "axis axis--x")
      .attr("transform", `translate(0,${yoffset})`)
      .call(d3.axisTop(yearX).tickFormat(d3.format('04')).ticks(domainExtent[1]-domainExtent[0]));
 
+  let surfTags = ['sin dim','<100m²','100-500m²','100-1000m²','1000-5000m²','>5000m²']
+  surfX.domain([0,surfTags.length])
+
+  let surfScale = g.append('g').selectAll('text')
+    .data(surfTags)
+    .enter()
+    .append('text')
+    .attr('x',(t,i) => surfX(i))
+    .text(t=>t)
+    .attr('y',70)
+    .attr('class','scale')
+    .style('opacity',0)
+
+
    d3.selectAll('p.map_modes  a').on('click',function(){
      let node = d3.select(this)
      let clickId = node.attr('id')
+     d3.event.stopPropagation()
      switch(clickId){
        case 'time':
          timeBlocks(blocks,projects,yearX,yoffset)
+         timeScale.style('opacity',1)
+         surfScale.style('opacity',0)
+
        break
        case 'surface':
-         changeBlocks(blocks,Object.values(dm.projects))
+         surfaceBlocks(blocks,projects,surfX)
+         timeScale.style('opacity', 0)
+         surfScale.style('opacity',1)
        break
      }
 

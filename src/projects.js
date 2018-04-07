@@ -34,15 +34,49 @@ function timeBlocks(blocks,projects,yearX,yoffset){
   return blocks
 }
 
-function changeBlocks(blocks,projects){
+function surfaceBlocks(blocks,projects,scale){
 
-    blocks.data(projects)
-      .attr('x',0)
-      .attr('y',() => d3.randomUniform(0,4)()*10)
-      .attr('width', 10 )
-      .attr('height', 10)
+  //block height block width
+  let bh = 5, bw = 5
+  //surfaceindex, converts surface to it corresponging range
+  function _si(p){
+    let surfaces = [0,100,500,1000,5000]
+    if(!('surface' in p)){
+      return 0
+    }
+    let i
+    for(i= 0;i<surfaces.length && p.surface>surfaces[i];i++){}
 
+    return i
+  }
 
+  let counter = [0,0,0,0,0,0]
+  let sizes   = [0.9,1,2,3,4,5,]
+  let positions = []
+
+  blocks.data(projects)
+    .each(p=>{
+      let si = _si(p)
+      positions.push(counter[si])
+      counter[si]++
+    })
+    .attr('x',(p,i)=>{
+      let si = _si(p)
+      let x = positions[i] % 5
+      return scale(si) + x * (bw * sizes[si]+ 1)
+    })
+    .attr('y',(p,i)=>{
+      let si = _si(p)
+      let y = Math.floor(positions[i] / 5)
+
+      if(p.type == 'RCR'){
+        return 80 + y * (bw + 1)
+      }else{
+        return 40 - (y * (bw + 1))
+      }
+    })
+    .attr('width', p=>bw * sizes[_si(p)] )
+    .attr('height', bh)
   return blocks
 }
 
@@ -66,4 +100,4 @@ function clearBlocks(blocks){
   setTimeout(()=>console.log('log'),Math.round(totalTime * 1000))
   return blocks
 }
-export {timeBlocks,clearBlocks,changeBlocks}
+export {timeBlocks,clearBlocks,surfaceBlocks}
