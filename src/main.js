@@ -3,7 +3,7 @@
 import * as d3 from 'd3'
 import {createTagElems} from './tagUtils.js'
 import {DataModel} from './DataModel.js'
-import {createBlocks} from './projects.js'
+import {timeBlocks,clearBlocks,changeBlocks} from './projects.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
@@ -23,12 +23,18 @@ var projTip = g.append("text")
 
 var links, tags
 
-var d3tags
+var d3tags,blocks
 var gRef = {}
 var query = {}
 var dm,filterModel
 
-d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
+
+
+//d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
+d3.json("data_merger.json",update)
+
+
+
 
 //on load
 function update(data){
@@ -65,12 +71,33 @@ function update(data){
   //define el domino de x
   yearX.domain(domainExtent);
 
-  let blocks = createBlocks(g,projects,yearX,yoffset)
+  //generate blocks
+  blocks =   g.selectAll('rect')
+      .data(projects)
+      .enter()
+        .append('rect')
+
+  blocks = timeBlocks(blocks,projects,yearX,yoffset)
+
   //dibuja la linea inferior
   g.append("g")
      .attr("class", "axis axis--x")
      .attr("transform", `translate(0,${yoffset})`)
      .call(d3.axisTop(yearX).tickFormat(d3.format('04')).ticks(domainExtent[1]-domainExtent[0]));
+
+   d3.selectAll('p.map_modes  a').on('click',function(){
+     let node = d3.select(this)
+     let clickId = node.attr('id')
+     switch(clickId){
+       case 'time':
+         timeBlocks(blocks,projects,yearX,yoffset)
+       break
+       case 'surface':
+         changeBlocks(blocks,Object.values(dm.projects))
+       break
+     }
+
+   })
 
   //add tags and links
   links = g.append('g')
@@ -211,7 +238,7 @@ function update(data){
       let node = d3.select(this)
       projTip.transition()
         .duration(200)
-        .style("opacity", 0)
+        .style('opacity', 0)
 
     })
 }

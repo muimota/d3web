@@ -1,17 +1,15 @@
 //projects blocks
 import * as d3 from 'd3'
 
-function createBlocks(gElem,projects,yearX,yoffset){
+function timeBlocks(blocks,projects,yearX,yoffset){
 
   let rowHeight = 10
 
   let rows = [d3.min(projects,d=>d.startYear)]
 
 
-  let blocks = gElem.selectAll('rect')
+  blocks = blocks
     .data(projects)
-    .enter()
-      .append('rect')
       .attr('x' ,d => yearX(d.startYear) + 1)
       .attr('y' ,
         function(d){
@@ -32,4 +30,36 @@ function createBlocks(gElem,projects,yearX,yoffset){
   return blocks
 }
 
-export {createBlocks}
+function changeBlocks(blocks,projects){
+
+    blocks.data(projects)
+      .attr('x',0)
+      .attr('y',() => d3.randomUniform(0,4)()*10)
+      .attr('width', 10 )
+      .attr('height', 10)
+
+
+  return blocks
+}
+
+function clearBlocks(blocks){
+  let totalTime = 0
+
+
+  blocks.style('opacity', 0)
+  blocks.style('transition-delay',
+    d=>{
+      let time  = d3.randomUniform(0,.6)()
+      totalTime = Math.max(time,totalTime)
+      return `${time}s`
+    })
+  blocks.style('transition-duration',
+    d=>{
+      let time = d3.randomUniform(0,.6)()
+      totalTime = Math.max(time,totalTime)
+      return `${time}s`
+    })
+  setTimeout(()=>console.log('log'),Math.round(totalTime * 1000))
+  return blocks
+}
+export {timeBlocks,clearBlocks,changeBlocks}
