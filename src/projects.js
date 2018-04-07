@@ -77,6 +77,47 @@ function surfaceBlocks(blocks,projects,scale){
     })
     .attr('width', p=>bw * sizes[_si(p)] )
     .attr('height', bh)
+
+  return blocks
+}
+
+function typoBlocks(blocks,projects,scale,typologies){
+
+  //block height block width
+  let bh = 7, bw = 7
+  //surfaceindex, converts surface to it corresponging range
+
+
+  let counter = []
+  for(let i=0;i<typologies.length;i++){
+    counter.push(0)
+  }
+  let positions = []
+
+  blocks.data(projects)
+    .each(p=>{
+      let ti = typologies.indexOf(p.typology)
+      positions.push(counter[ti])
+      counter[ti]++
+    })
+    .attr('x',(p,i)=>{
+      let ti = typologies.indexOf(p.typology)
+      let x = positions[i] % 5
+      return scale(ti) + x * (bw + 1)
+    })
+    .attr('y',(p,i)=>{
+      let ti = typologies.indexOf(p.typology)
+      let y = Math.floor(positions[i] / 5)
+
+      if(p.type == 'RCR'){
+        return 80 + y * (bw + 1)
+      }else{
+        return 40 - (y * (bw + 1))
+      }
+    })
+    .attr('width', bw)
+    .attr('height', bh)
+
   return blocks
 }
 
@@ -100,4 +141,4 @@ function clearBlocks(blocks){
   setTimeout(()=>console.log('log'),Math.round(totalTime * 1000))
   return blocks
 }
-export {timeBlocks,clearBlocks,surfaceBlocks}
+export {timeBlocks,clearBlocks,surfaceBlocks,typoBlocks}

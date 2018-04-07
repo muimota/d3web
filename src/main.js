@@ -3,7 +3,7 @@
 import * as d3 from 'd3'
 import {createTagElems} from './tagUtils.js'
 import {DataModel} from './DataModel.js'
-import {timeBlocks,clearBlocks,surfaceBlocks} from './projects.js'
+import {timeBlocks,clearBlocks,surfaceBlocks,typoBlocks} from './projects.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
@@ -16,7 +16,7 @@ var g = svg.append("g")
 
 var yearX   = d3.scaleLinear().range([30,width])
 var surfX   = d3.scaleLinear().range([30,width])
-
+var typoX   = d3.scaleLinear().range([30,width])
 
 var projTip = g.append("text")
     .attr("class", "tooltip")
@@ -35,8 +35,8 @@ var dm,filterModel
 
 
 
-d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
-//d3.json("data_merger.json",update)
+//d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
+d3.json("data_merger.json",update)
 
 
 
@@ -102,7 +102,22 @@ function update(data){
     .attr('class','scale')
     .style('opacity',0)
 
+  typoX.domain([0,dm.typologies.length])
 
+  let typoScale = g.append('g').selectAll('text')
+    .data(['actividades','cultural','deportivo','educativo',
+    'público','hotel','ópera','pabellón','restaurante','visual',
+    'viviendas','Sin'])
+    .enter()
+    .append('text')
+    .attr('x',(t,i) => typoX(i))
+    .text(t=>t)
+    .attr('y',70)
+    .attr('class','scale')
+    .style('opacity',0)
+
+
+//interactivity
    d3.selectAll('p.map_modes  a').on('click',function(){
      let node = d3.select(this)
      let clickId = node.attr('id')
@@ -112,12 +127,19 @@ function update(data){
          timeBlocks(blocks,projects,yearX,yoffset)
          timeScale.style('opacity',1)
          surfScale.style('opacity',0)
-
+         typoScale.style('opacity',0)
        break
        case 'surface':
          surfaceBlocks(blocks,projects,surfX)
          timeScale.style('opacity', 0)
          surfScale.style('opacity',1)
+         typoScale.style('opacity',0)
+       break
+       case 'typology':
+         typoBlocks(blocks,projects,typoX,dm.typologies)
+         timeScale.style('opacity',0)
+         surfScale.style('opacity',0)
+         typoScale.style('opacity',1)
        break
      }
 
