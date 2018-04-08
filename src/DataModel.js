@@ -65,17 +65,6 @@ class DataModel{
 
   }
 
-  //array of tags without duplicates
-  get tagArray(){
-    let tagsDict = this.tags;
-    let tagArray = []
-    for( let tagKey of this.tagKeys){
-      tagArray = tagArray.concat(tagsDict[tagKey])
-    }
-    return Array.from(new Set(tagArray)).sort()
-
-  }
-
   //return projects dict
   get projects(){
     return this.data.projects
