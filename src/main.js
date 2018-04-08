@@ -7,7 +7,7 @@ import {timeBlocks,clearBlocks,surfaceBlocks,typoBlocks} from './projects.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
-    margin = {top: 20, right: 40, bottom: 40, left: 80},
+    margin = {top: 0 , right: 0, bottom: 40, left: 130},
     width = svg.attr("width") - margin.left - margin.right,
     height = svg.attr("height") - margin.top - margin.bottom;
 
@@ -34,6 +34,20 @@ var query = {}
 var dm,filterModel
 
 
+//add description labels
+let labels = [
+  ['RCR Lab A',57],['RCR Arquitectes',87],
+  ['espacio-lugar-territorio',180],['cualidades - atmósferas',225],['sentido - materialidad',282],
+  ['Publicaciones',333],['Obras',347],['Eventos',359],['Fontarquitextura',372 ]
+]
+svg.append('g')
+.selectAll('text')
+.data(labels)
+.enter()
+.append('text')
+.text(l=> l[0])
+.attr('x',110).attr('y',l=>l[1])
+.attr('class','label')
 
 //d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
 d3.json("data_merger.json",update)
@@ -95,7 +109,7 @@ function update(data){
       .append('text')
       .attr('x',(t,i) => yearX(t))
       .text(t=>t)
-      .attr('y',70)
+      .attr('y',73)
       .attr('class','scale')
 
 
@@ -160,7 +174,7 @@ function update(data){
 
   //generate SVG tags
   d3tags = {}
-  let tagY = 200
+  let tagY = 180
   for(let tagKey of dm.tagKeys){
     let node = g.append('g')
     let elem = createTagElems(node,dm.tags[tagKey],tagY)

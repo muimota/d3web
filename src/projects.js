@@ -27,9 +27,9 @@ function timeBlocks(blocks,projects,yearX,yoffset){
           }
           rows[cat][i] = d.endYear
           if(d.type != 'RCR'){
-            return -35 -i * rowHeight / 2 + 5 + yoffset
+            return yoffset -30 - (i * rowHeight / 2)
           }else{
-            return i * rowHeight + 5 + yoffset
+            return i * rowHeight  + yoffset
           }
         })
       .attr('width', d => yearX(d.endYear) -  yearX(d.startYear) - 1 )
@@ -77,7 +77,7 @@ function surfaceBlocks(blocks,projects,scale){
       if(p.type == 'RCR'){
         return 80 + y * (bw + 1)
       }else{
-        return 40 - (y * (bw + 1))
+        return 50 - (y * (bw + 1))
       }
     })
     .attr('width', p=>bw * sizes[_si(p)] )
@@ -120,7 +120,7 @@ function typoBlocks(blocks,projects,scale,typologies){
       if(p.type == 'RCR'){
         return 80 + y * (bw + 1)
       }else{
-        return 40 - (y * (bw + 1))
+        return 50 - (y * (bw + 1))
       }
     })
     .attr('width', bw)

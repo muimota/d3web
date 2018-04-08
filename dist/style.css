@@ -22,7 +22,7 @@ rect.project.disabled{
 
 .tag{
   font-family:'Helvetica';
-  font-size: 12px;
+  font-size: 10px;
   fill:#333;
   text-anchor:middle;
   cursor: pointer;
@@ -66,6 +66,15 @@ rect.reference:hover{
   font-size: 10px;
   fill:#333;
   text-anchor:start;
+  cursor: pointer;
+  transition: all .25s ease-out;
+}
+
+.label{
+  font-family:'Helvetica';
+  font-size: 10px;
+  fill:#333;
+    text-anchor:end;
   cursor: pointer;
   transition: all .25s ease-out;
 }
