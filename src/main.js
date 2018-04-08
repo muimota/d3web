@@ -234,7 +234,11 @@ function update(data){
     }else{
       query[tagCat] = [tag]
     }
-    console.log(query);
+
+    displayQuery(query)
+  }
+
+  function displayQuery(query){
     filterModel = dm.filter(query)
     let relatedTags = filterModel.tags
 
