@@ -3,7 +3,7 @@ import * as d3 from 'd3'
 
 function timeBlocks(blocks,projects,yearX,yoffset){
 
-  let rowHeight = 10
+  let rowHeight = 7
 
   let rows = [[d3.min(projects,d=>d.startYear)],[d3.min(projects,d=>d.startYear)]]
 
@@ -41,7 +41,7 @@ function timeBlocks(blocks,projects,yearX,yoffset){
 function surfaceBlocks(blocks,projects,scale){
 
   //block height block width
-  let bh = 5, bw = 5
+  let bh = 7, bw = 7
   //surfaceindex, converts surface to it corresponging range
   function _si(p){
     let surfaces = [0,100,500,1000,5000]
@@ -55,7 +55,7 @@ function surfaceBlocks(blocks,projects,scale){
   }
 
   let counter = [[0,0,0,0,0,0],[0,0,0,0,0,0]]
-  let sizes   = [0.9,1,2,3,4,5,]
+  let sizes   = [1,1,2,2.4,3.2,4.5,]
   let positions = []
 
   blocks.data(projects)

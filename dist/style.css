@@ -63,7 +63,7 @@ rect.reference:hover{
 /* surface */
 .scale{
   font-family:'Helvetica';
-  font-size: 12px;
+  font-size: 10px;
   fill:#333;
   text-anchor:start;
   cursor: pointer;

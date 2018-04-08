@@ -84,10 +84,20 @@ function update(data){
   blocks = timeBlocks(blocks,projects,yearX,yoffset)
 
   //dibuja la linea inferior
-  timeScale = g.append("g")
-     .attr("class", "axis axis--x")
-     .attr("transform", `translate(0,${yoffset})`)
-     .call(d3.axisTop(yearX).tickFormat(d3.format('04')).ticks(domainExtent[1]-domainExtent[0]));
+  let timeTags = []
+  for(let year = domainExtent[0];year<domainExtent[1];year ++){
+    timeTags.push(year)
+  }
+
+  timeScale = g.append('g').selectAll('text')
+      .data(timeTags)
+      .enter()
+      .append('text')
+      .attr('x',(t,i) => yearX(t))
+      .text(t=>t)
+      .attr('y',70)
+      .attr('class','scale')
+
 
   let surfTags = ['sin dim','<100m²','100-500m²','100-1000m²','1000-5000m²','>5000m²']
   surfX.domain([0,surfTags.length])
@@ -160,19 +170,20 @@ function update(data){
   }
 
   //references
+  let bw = 7,bh=7
   for(let refId in dm.references){
 
     gRef[refId] = g.append('g').selectAll('rect')
     .data(dm.references[refId])
     .enter()
     .append('rect')
-      .attr('x',(r,i)=>30 + i*12 )
+      .attr('x',(r,i)=>30 + i*(bw + 1 ) )
       .attr('y',tagY)
-      .attr('width',10)
-      .attr('height',10)
+      .attr('width',bw)
+      .attr('height',bh)
       .attr('class','reference')
 
-    tagY += 12
+    tagY += bh + 6
 
     gRef[refId].on('click',function(ref){
       console.log(ref)
