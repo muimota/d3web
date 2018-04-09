@@ -49,8 +49,8 @@ svg.append('g')
     .attr('x',110).attr('y',l=>l[1])
     .attr('class','label')
 
-d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
-//d3.json("data_merger.json",update)
+//d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
+d3.json("data_merger.json",update)
 
 
 

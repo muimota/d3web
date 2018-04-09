@@ -43,7 +43,21 @@
   float:left;
   overflow:hidden;
 }
-
+.cell p.title{
+  margin:1px;
+  font-weight:400;
+  font-size:15px
+}
+.cell p.subtitle{
+  margin:0;
+  font-weight:200;
+  font-size:12px
+}
+.cell p.description{
+  margin:0;
+  font-weight:200;
+  font-size:10px
+}
 .image{
   width:40%;
   height:100%;

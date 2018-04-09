@@ -18,8 +18,10 @@ function updateGUI(model){
   for(let project of Object.values(model.projects)){
     proj_html +=
       `<div class="cell">
-          <div class="image"></div>
-          ${project.shortname}
+          <img class="image" src="images/${project.id}.jpg"></img>
+          <p class="title">${project.shortname}</p>
+          <p class="subtitle">${project.typology}</p>
+          <p class="description">${project.data}</p>
       </div>`
   }
   $('#col-projects').html(proj_html)
@@ -30,8 +32,10 @@ function updateGUI(model){
   for(let reference of references){
     ref_html +=
       `<div class="cell">
-          <div class="image"></div>
-          ${reference.shortname}
+          <img class="image" src="images/${reference.id}.jpg"></img>
+          <p class="title">${reference.shortname}</p>
+          <p class="subtitle">${reference.type}</p>
+          <p class="description">${reference.data}</p>
       </div>`
   }
   $('#col-references').html(ref_html)
