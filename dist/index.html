@@ -4,12 +4,41 @@
 		<meta charset="utf-8">
 		<title>RCR </title>
     <link rel="stylesheet" href="style.css">
-
+		<link rel="stylesheet" href="vis.css">
 	</head>
 	<body>
-		<p class="map_modes"><a id="time" href="#">time</a> - <a id="surface" href="#">surface</a> - <a id="typology" href="#">typology</a></p>
-     <svg id='svgview' width='960' height='500' ></svg>
+		<div class="container">
+			<p class="map_modes"><a id="time" href="#">time</a> - <a id="surface" href="#">surface</a> - <a id="typology" href="#">typology</a></p>
+     	<svg id='svgview' width='960' height='500' ></svg>
+			<div class="explore">
+				<div class="row">
+					<div class="col col-taxo">
+						<h3>Taxonomía</h3>
+					</div>
+					<div class="col">
+						<h3>Projects</h3>
+					</div>
+					<div class="col">
+						<h3>References</h3>
+					</div>
+				</div>
+				<div class="cell-holder">
+					<div class="col col-taxo" id="col-taxo">
 
+
+					</div>
+					<div class="col" id="col-projects">
+						<div class="cell">
+							<div class="image"></div>
+							texto
+						</div>
+
+					</div>
+					<div class="col" id="col-references"></div>
+				</div>
+
+			</div>
+	 </div>
   </body>
 	<script type="text/javascript" src="bundle.js"></script>
 </html>

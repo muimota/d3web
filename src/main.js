@@ -4,6 +4,7 @@ import * as d3 from 'd3'
 import {createTagElems} from './tagUtils.js'
 import {DataModel} from './DataModel.js'
 import {timeBlocks,clearBlocks,surfaceBlocks,typoBlocks} from './projects.js'
+import {updateGUI} from './explore.js'
 //(c) 2018 Martin Nadal martin@muimota.net
 
 var svg = d3.select("#svgview"),
@@ -341,6 +342,8 @@ function update(data){
         resetSelection()
       }
       displayQuery(filterModel)
+      updateGUI(filterModel)
+
     }
     //tag click handler
     function clickHandler(tag,d3elem,tagCat){

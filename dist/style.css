@@ -1,83 +1,53 @@
-.tooltip {
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+.container{
+  margin: 1em auto;
+  width:960px;
 
-  text-align: center;
-  text-anchor: middle;
-  font-size: 12px ;
-  pointer-events: none;
-}
-circle{
-  cursor: pointer;
-}
-/*blocks*/
-
-rect.project{
-  fill:black;
-  transition: all .5s ease-out;
 }
 
-
-rect.project.disabled{
-  fill:#CCC;
+.explore{
+  width:80%;
+  margin:auto;
+  height: 500px;
+  background-color: rgba(0,0,0,.15);
+  font-family: 'Ubuntu Condensed', sans-serif;
+  padding: 20px;
+}
+.row{
+  display: table;
+  width:100%;
+}
+.col{
+  float:left;
+  width:35%;
+  margin: 0 2%;
+}
+.col-taxo{
+  width:15%
+}
+#col-taxo,#col-projects,#col-references{
+  height:420px;
+}
+.col li{
+  list-style: none;
+}
+.cell-holder{
+  height:420px;
+  overflow: auto;
+}
+.cell{
+  margin: 5px 0;
+  height:80px;
+  width:100%;
+  background-color: rgba(0,0,0,.20);
+  float:left;
+  overflow:hidden;
 }
 
-rect.project.selected{
-  fill:red;
-}
-.tag{
-  font-family:'Helvetica';
-  font-size: 10px;
-  fill:#333;
-  text-anchor:middle;
-  cursor: pointer;
-  transition: all .25s ease-out;
-}
-.tag:hover{
-  fill: red;
-}
-
-.disabled{
-  fill:#999;
-  cursor: default;
-}
-
-.selected{
-  fill:green;
-  font-weight: bold;
-}
-
-/* reference */
-rect.reference{
-  fill:black;
-  transition: all .5s ease-out;
-}
-
-rect.reference.selected{
-  fill:red;
-}
-rect.reference.disabled{
-  fill:#EEE;
-  cursor: default;
-}
-rect.reference:hover{
-  stroke:purple;
-  cursor: pointer;
-}
-
-/* surface */
-.scale{
-  font-family:'Helvetica';
-  font-size: 10px;
-  fill:#333;
-  text-anchor:start;
-  cursor: pointer;
-  transition: all .25s ease-out;
-}
-
-.label{
-  font-family:'Helvetica';
-  font-size: 10px;
-  fill:#333;
-    text-anchor:end;
-  cursor: pointer;
-  transition: all .25s ease-out;
+.image{
+  width:40%;
+  height:100%;
+  background-color: rgba(255,0,0,.20);
+  float:left;
+  margin-right: 5px;
 }

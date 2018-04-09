@@ -1,0 +1,83 @@
+.tooltip {
+
+  text-align: center;
+  text-anchor: middle;
+  font-size: 12px ;
+  pointer-events: none;
+}
+circle{
+  cursor: pointer;
+}
+/*blocks*/
+
+rect.project{
+  fill:black;
+  transition: all .5s ease-out;
+}
+
+
+rect.project.disabled{
+  fill:#CCC;
+}
+
+rect.project.selected{
+  fill:red;
+}
+.tag{
+  font-family:'Helvetica';
+  font-size: 10px;
+  fill:#333;
+  text-anchor:middle;
+  cursor: pointer;
+  transition: all .25s ease-out;
+}
+.tag:hover{
+  fill: red;
+}
+
+.disabled{
+  fill:#999;
+  cursor: default;
+}
+
+.selected{
+  fill:green;
+  font-weight: bold;
+}
+
+/* reference */
+rect.reference{
+  fill:black;
+  transition: all .5s ease-out;
+}
+
+rect.reference.selected{
+  fill:red;
+}
+rect.reference.disabled{
+  fill:#EEE;
+  cursor: default;
+}
+rect.reference:hover{
+  stroke:purple;
+  cursor: pointer;
+}
+
+/* surface */
+.scale{
+  font-family:'Helvetica';
+  font-size: 10px;
+  fill:#333;
+  text-anchor:start;
+  cursor: pointer;
+  transition: all .25s ease-out;
+}
+
+.label{
+  font-family:'Helvetica';
+  font-size: 10px;
+  fill:#333;
+    text-anchor:end;
+  cursor: pointer;
+  transition: all .25s ease-out;
+}
