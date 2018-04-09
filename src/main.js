@@ -30,7 +30,6 @@ var surfaceScale
 
 var d3tags,blocks
 var gRef = {}
-var query = {}
 var dm,filterModel
 
 
@@ -41,16 +40,16 @@ let labels = [
   ['Publicaciones',333],['Obras',347],['Eventos',359],['Fontarquitextura',372 ]
 ]
 svg.append('g')
-.selectAll('text')
-.data(labels)
-.enter()
-.append('text')
-.text(l=> l[0])
-.attr('x',110).attr('y',l=>l[1])
-.attr('class','label')
+  .selectAll('text')
+  .data(labels)
+    .enter()
+    .append('text')
+    .text(l=> l[0])
+    .attr('x',110).attr('y',l=>l[1])
+    .attr('class','label')
 
-//d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
-d3.json("data_merger.json",update)
+d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
+//d3.json("data_merger.json",update)
 
 
 
@@ -187,7 +186,8 @@ function update(data){
   let bw = 7,bh=7
   for(let refId in dm.references){
 
-    gRef[refId] = g.append('g').selectAll('rect')
+    gRef[refId] = g.append('g')
+    .selectAll('rect')
     .data(dm.references[refId])
     .enter()
     .append('rect')
@@ -202,50 +202,20 @@ function update(data){
     gRef[refId].on('click',function(ref){
       console.log(ref)
       let node = d3.select(this)
+      if(node.classed('disabled')){
+        resetSelection()
+      }
       node.classed('selected',! node.classed('selected'))
-      let projects = dm.filterRef(ref.tags).projects
-      console.log(projects)
+      updateQuery()
     })
   }
 
-  //tag click handler
-  function clickHandler(tag,d3elem,tagCat){
 
-    let node = d3.select(d3elem)
+  function displayQuery(filterModel){
 
-    if(node.classed('disabled')){
-      query = {}
-    }
-
-    if( tagCat in query ){
-
-      let tags = query[tagCat]
-      let index = tags.indexOf(tag)
-
-      //if is included
-      if( index != -1){
-        tags.splice(index,1)
-        if(tags.length == 0){
-          delete query[tagCat]
-        }
-      }else{
-        tags.push(tag)
-      }
-    }else{
-      query[tagCat] = [tag]
-    }
-
-    displayQuery(query)
-  }
-
-  function displayQuery(query){
-    filterModel = dm.filter(query)
     let relatedTags = filterModel.tags
 
-    console.log(filterModel.references);
-
     for(let tagCats in d3tags){
-      d3tags[tagCats].classed('selected',d => tagCats in query && query[tagCats].includes(d))
       d3tags[tagCats].classed('disabled',d => ! relatedTags[tagCats].includes(d))
     }
 
@@ -255,42 +225,25 @@ function update(data){
       gRef[refId].style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
       gRef[refId].style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
     }
+
     let references =  filterModel.references
     for(let refId in references){
       gRef[refId].classed('disabled',
         r => !references[refId].includes(r))
     }
-
-
-    tagLine(query)
+    //tagLine(query)
 
     blocks.classed('disabled',true)
     //highlight filtered projects
 
-    let filteredProjects
+    let filteredProjects = Object.values(filterModel.projects)
+    let filteredBlocks = blocks.filter(p=>filteredProjects.includes(p))
 
-    if(Object.keys(query).length > 0){
-
-      let relatedProjects = Object.values(filterModel.projects)
-
-      filteredProjects = blocks.filter(
-          p=> relatedProjects.includes(p))
-
-
-    }else{
-      filteredProjects = blocks
-    }
-    filteredProjects.classed('disabled',false)
-    filteredProjects.style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
-    filteredProjects.style('transition-duration',d=>`${d3.randomUniform(.3,.6)()}s`)
+    filteredBlocks.classed('disabled',false)
+    filteredBlocks.style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+    filteredBlocks.style('transition-duration',d=>`${d3.randomUniform(.3,.6)()}s`)
 
   }
-
-    for(let tagCats in d3tags){
-      d3tags[tagCats].on('click',function(tag){
-        clickHandler(tag,this,tagCats)
-      })
-    }
 
 
 
@@ -316,6 +269,90 @@ function update(data){
         .style('opacity', 0)
 
     })
+
+    function resetSelection(){
+      d3.selectAll('.selected').classed('selected',false)
+
+      updateQuery()
+    }
+
+
+
+    blocks.on('click', function(p){
+      let node  = d3.select(this)
+      if(node.classed('disabled')){
+        resetSelection()
+      }
+      node.classed('selected',!node.classed('selected'))
+      //calculo de los tags
+      updateQuery()
+
+    })
+
+    for(let tagCats in d3tags){
+      d3tags[tagCats].on('click',function(tag){
+        clickHandler(tag,this,tagCats)
+        updateQuery()
+      })
+    }
+
+    /* updates the query based on the UI */
+
+    function updateQuery(){
+
+      let projects   = []
+
+      blocks.each(function(project){
+        let node = d3.select(this)
+        if(node.classed('selected')){
+          projects.push(project)
+        }
+      })
+
+      let query      = {}
+
+      for(let tagKey of dm.tagKeys){
+        d3tags[tagKey].each(function(tag){
+          let node = d3.select(this)
+          if(node.classed('selected')){
+            if(!(tagKey in query)){
+              query[tagKey] = []
+            }
+            query[tagKey].push(tag)
+          }
+        })
+      }
+
+      let references = []
+
+      for(let refId in dm.references){
+        gRef[refId].each(function(reference){
+          let node = d3.select(this)
+          if(node.classed('selected')){
+            references.push(reference)
+          }
+        })
+      }
+
+      let filterModel = dm.filter(query).filterRef(references)
+
+      if(Object.keys(filterModel.projects).length == 0){
+        filterModel = dm
+        resetSelection()
+      }
+      displayQuery(filterModel)
+    }
+    //tag click handler
+    function clickHandler(tag,d3elem,tagCat){
+
+      let node = d3.select(d3elem)
+      if(node.classed('disabled')){
+        resetSelection()
+      }
+      node.classed('selected',! node.classed('selected'))
+      updateQuery()
+    }
+
 }
 
 //connects related Tags with line
@@ -323,7 +360,7 @@ function update(data){
 function tagLine(query){
 
   links.selectAll('path').remove()
-
+  filterModel = dm.filter(query)
   let relatedTags = filterModel.tags
 
   if(Object.keys(query).length > 0){

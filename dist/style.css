@@ -20,6 +20,9 @@ rect.project.disabled{
   fill:#CCC;
 }
 
+rect.project.selected{
+  fill:red;
+}
 .tag{
   font-family:'Helvetica';
   font-size: 10px;
@@ -49,7 +52,7 @@ rect.reference{
 }
 
 rect.reference.selected{
-  fill:purple;
+  fill:red;
 }
 rect.reference.disabled{
   fill:#EEE;
