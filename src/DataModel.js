@@ -8,6 +8,19 @@ class DataModel{
   static import(_data){
     let data = _data
 
+    for(let project of Object.values(data.projects)){
+      if(data.data[project.id] && data.data[project.id].memory){
+        project.data = data.data[project.id].memory
+      }
+    }
+
+    for(let reference of Object.values(data.references)){
+      if(data.data[reference.id] && data.data[reference.id].description){
+        reference.data = data.data[reference.id].description
+      }
+    }
+
+    delete(data.data)
     //organize references by category
     let references = {}
     for(let refId in data.references){
