@@ -162,7 +162,9 @@ class DataModel{
     let reftags = []
     let counts  = {}
 
-
+    if(references.length == 0){
+      return new DataModel(this.data)
+    }
     for(let reference of references){
       //suponemos que no hay tags repetidos
       for(let tag of reference.tags){
