@@ -5,6 +5,7 @@ function updateGUI(model){
 
   //taxonomy
   let tags = [].concat.apply([],Object.values(model.tags)).sort()
+  tags = Array.from(new Set(tags))
   let taxo_html = ""
   for(let tag of tags){
     taxo_html+=`<li>${tag}</li>`
