@@ -1,15 +1,55 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
 .container{
-  margin: 1em auto;
+  margin: 100px auto;
   width:960px;
 
 }
+.top-nav span.title{
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color:#0E6A64;
+  font-size: 25px;
+  font-weight: 600;
+}
 
+div.top-nav{
+  height: 50px;
+}
+div.topmenu{
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color:white;
+  margin-left: 5px;
+  background:#149A8B;
+  text-align: center;
+  padding: 10px;
+  width:120px;
+  float:right;
+}
+
+ul.map_modes{
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 12px;
+  list-style-type: none;
+  margin: 0 0 0 160px;
+  padding: 0;
+}
+ul.map_modes li{
+  display: inline;
+  margin-right: 5px;
+}
+ul.map_modes a,ul.map_modes a:visited{
+  text-decoration: none;
+  color:black;
+}
+ul.map_modes a:hover,ul.map_modes a.active{
+  text-decoration: underline;
+}
 .explore{
+  position:relative;
+  top:00px;
   width:80%;
   margin:auto;
   height: 500px;
-  background-color: rgba(0,0,0,.15);
+  background-color: rgba(180,180,180,.85);
   font-family: 'Ubuntu Condensed', sans-serif;
   padding: 20px;
 }

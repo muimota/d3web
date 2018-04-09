@@ -142,8 +142,11 @@ function update(data){
 
 
 //interactivity
-   d3.selectAll('p.map_modes  a').on('click',function(){
+   d3.selectAll('.map_modes  a').on('click',function(){
      let node = d3.select(this)
+     d3.selectAll('.map_modes  a').classed('active',false)
+     node.classed('active',true)
+
      let clickId = node.attr('id')
      d3.event.stopPropagation()
      switch(clickId){
