@@ -44,7 +44,7 @@ class DataModel{
       this.data.typologies.push(this.noTypology)
     }
 
-    console.log(this.data.typologies);
+    //console.log(this.data.typologies);
   }
 
   //get dicitonary with tag in each category without duplicates
@@ -157,8 +157,46 @@ class DataModel{
     return selectedReferences
   }
   //filters projects that have all the tags (could be in different categories)
-  filterRef(reftags){
+  filterRef(references){
 
+    let reftags = []
+    let counts  = {}
+
+
+    for(let reference of references){
+      //suponemos que no hay tags repetidos
+      for(let tag of reference.tags){
+        counts[tag] = counts[tag] ? counts[tag] + 1 : 1
+      }
+    }
+
+    for(let tag in counts){
+      if(counts[tag] == references.length){
+        reftags.push(tag)
+      }
+    }
+    //references that has all the reftags
+    //flatten list https://stackoverflow.com/a/10865042/2205297
+    let selectedReferences = [].concat.apply([],Object.values(this.data.references))
+    selectedReferences = selectedReferences.filter(r=>{
+      for(let tag of reftags){
+        if(r.tags.includes(tag)){
+          return true
+        }
+      }
+      return false
+    })
+
+
+    /*
+    //intersección de todas las tags
+    for(let reference of references){
+      reftags = reftags.concat(reference.tags)
+    }
+
+
+    reftags = Array.from(new Set(reftags))
+*/
     let projects = Object.values(this.data.projects)
     let selectedProjects = projects.filter( p => {
 
@@ -170,13 +208,16 @@ class DataModel{
         }
       }
 
-      return rtags.length == 0
+      return rtags.length < reftags.length
     })
 
     let data = Object({},this.data)
     data.projects = {}
     selectedProjects.forEach(p=> data.projects[p.id] = p)
-    data.references = this.selectedReferences(selectedProjects)
+    data.references = {}
+    selectedReferences.forEach(r=>
+      data.references[r.type] = data.references[r.type] ? data.references[r.type].concat([r]) : [r]
+    )
     return new DataModel(data)
   }
 }
