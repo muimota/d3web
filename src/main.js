@@ -143,8 +143,17 @@ function update(data){
 
 
 //interactivity
+  d3.select('#explora').on('click',()=>{
+    console.log('click!');
+    d3.select('#explora_cover').style('display','block')
+  })
+
+  d3.select('#explora_cover').on('click',()=>
+    d3.select('#explora_cover').style('display','none'))
+
    d3.selectAll('.map_modes  a').on('click',function(){
      let node = d3.select(this)
+      d3.event.preventDefault();
      d3.selectAll('.map_modes  a').classed('active',false)
      node.classed('active',true)
 
@@ -231,6 +240,10 @@ function update(data){
       gRef[refId].style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
     }
 
+    blocks.style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+    blocks.style('transition-duration',d=>`${d3.randomUniform(.3,.6)()}s`)
+
+
     let references =  filterModel.references
     for(let refId in references){
       gRef[refId].classed('disabled',
@@ -245,8 +258,6 @@ function update(data){
     let filteredBlocks = blocks.filter(p=>filteredProjects.includes(p))
 
     filteredBlocks.classed('disabled',false)
-    filteredBlocks.style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
-    filteredBlocks.style('transition-duration',d=>`${d3.randomUniform(.3,.6)()}s`)
 
   }
 

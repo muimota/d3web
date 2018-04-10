@@ -12,7 +12,7 @@
 			<div class="top-nav">
 				<span class="title">Arch-RCR Lab·3</span>
 				<div class="topmenu">Conecta</div>
-				<div class="topmenu">Explora</div>
+				<div id="explora" class="topmenu">Explora</div>
 			</div>
 			<ul class="map_modes">
 				<li><a id="time" class="active" href="#">Fecha</a></li>
@@ -20,37 +20,41 @@
 				<li><a id="typology" href="#">Tipología</a></li>
 			</ul>
      	<svg id='svgview' width='960' height='500' ></svg>
-			<div class="explore">
-				<div class="row">
-					<div class="col col-taxo">
-						<h3>Taxonomía</h3>
-					</div>
-					<div class="col">
-						<h3>Proyectos</h3>
-					</div>
-					<div class="col">
-						<h3>Referencias</h3>
-					</div>
-				</div>
-				<div class="cell-holder">
-					<div class="col col-taxo" id="col-taxo">
-
-
-					</div>
-					<div class="col" id="col-projects">
-						<div class="cell">
-							<div class="image"></div>
-							<p class="title">titulo</p>
-							<p class="subtitle">etiquetas</p>
-							<p class="description">description</p>
+		</div>
+		<div id="explora_cover" class="cover">
+			<div class="container">
+				<div class="explore">
+					<div class="row">
+						<div class="col col-taxo">
+							<h3>Taxonomía</h3>
 						</div>
-
+						<div class="col">
+							<h3>Proyectos</h3>
+						</div>
+						<div class="col">
+							<h3>Referencias</h3>
+						</div>
 					</div>
-					<div class="col" id="col-references"></div>
-				</div>
+					<div class="cell-holder">
+						<div class="col col-taxo" id="col-taxo">
 
+
+						</div>
+						<div class="col" id="col-projects">
+							<div class="cell">
+								<div class="image"></div>
+								<p class="title">titulo</p>
+								<p class="subtitle">etiquetas</p>
+								<p class="description">description</p>
+							</div>
+
+						</div>
+						<div class="col" id="col-references"></div>
+					</div>
+				</div>
 			</div>
-	 </div>
+		</div>
+
   </body>
 	<script type="text/javascript" src="bundle.js"></script>
 </html>
