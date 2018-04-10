@@ -61,6 +61,7 @@ function update(data){
   console.log(data);
   dm = DataModel.import(data)
 
+  updateGUI(dm)
   let references = Object.values(dm.references)
   let typologies = new Set()
 
