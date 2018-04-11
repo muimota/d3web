@@ -350,7 +350,10 @@ function update(data){
         })
       }
 
-      let filterModel = dm.filter(query).filterRef(references)
+      let filterModel = dm
+        .filter(query)
+        .filterRef(references)
+        .filterProj(projects)
 
       if(Object.keys(filterModel.projects).length == 0){
         filterModel = dm

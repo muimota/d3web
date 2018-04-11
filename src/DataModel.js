@@ -169,6 +169,87 @@ class DataModel{
 
     return selectedReferences
   }
+
+  //filters projects that have all the tags (could be in different categories)
+  filterProj(projects){
+
+    let projtags = {}
+    let counts  = {}
+
+    if(projects.length == 0){
+      return new DataModel(this.data)
+    }
+
+    //tag counter
+    for(let project of projects){
+      for(let tagKey of this.tagKeys){
+        if(tagKey in project){
+          if(!(tagKey in counts)){
+            counts[tagKey] = {}
+          }
+          for(let tag of project[tagKey]){
+            counts[tagKey][tag] = counts[tagKey][tag] ? counts[tagKey][tag] + 1 : 1
+          }
+        }
+      }
+    }
+
+    //tags that are in ALL the input projects (intersection)
+    for(let tagKey in counts){
+      for(let tag in counts[tagKey])
+        if(counts[tagKey][tag] == projects.length){
+          if(!(tagKey in projtags)){
+            projtags[tagKey] = []
+          }
+          projtags[tagKey].push(tag)
+        }
+    }
+
+    //projects must have any the projtags
+    let selectedProjects = Object.values(this.data.projects)
+    selectedProjects = selectedProjects.filter( p => {
+
+
+      for( let tagKey in projtags){
+        if(tagKey in p){
+          for(let tag of projtags[tagKey]){
+            if(p[tagKey].includes(tag)){
+              return true
+            }
+          }
+        }
+      }
+      return false
+
+    })
+
+    let reftags = [].concat.apply([],Object.values(projtags))
+    reftags = Array.from(new Set(reftags))
+  
+    //remove references that don't have ALL tags
+    let selectedReferences = [].concat.apply([],Object.values(this.data.references))
+    selectedReferences = selectedReferences.filter(r=>{
+      for(let tag of reftags){
+        if(r.tags.includes(tag)){
+          return true
+        }
+      }
+      return false
+    })
+
+    let data = Object({},this.data)
+
+    data.projects = {}
+    selectedProjects.forEach(p=> data.projects[p.id] = p)
+    data.references = {}
+
+    selectedReferences.forEach(r=>
+      data.references[r.type] = data.references[r.type] ? data.references[r.type].concat([r]) : [r]
+    )
+
+    return new DataModel(data)
+  }
+
   //filters projects that have all the tags (could be in different categories)
   filterRef(references){
 
@@ -203,15 +284,6 @@ class DataModel{
     })
 
 
-    /*
-    //intersección de todas las tags
-    for(let reference of references){
-      reftags = reftags.concat(reference.tags)
-    }
-
-
-    reftags = Array.from(new Set(reftags))
-*/
     let projects = Object.values(this.data.projects)
     let selectedProjects = projects.filter( p => {
 
