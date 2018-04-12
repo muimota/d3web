@@ -29,14 +29,16 @@ var links, tags
 var timeScale
 var surfaceScale
 
+
 var d3tags,blocks
 var gRef = {}
 var dm,filterModel
 
+var yoffset = 93
 
 //add description labels
 let labels = [
-  ['RCR Lab A',57],['RCR Arquitectes',87],
+  ['RCR Lab A',yoffset - 16],['RCR Arquitectes',yoffset + 9],
   ['espacio-lugar-territorio',180],['cualidades - atmósferas',225],['sentido - materialidad',282],
   ['Publicaciones',333],['Obras',347],['Eventos',359],['Fontarquitextura',372 ]
 ]
@@ -86,7 +88,6 @@ function update(data){
   //time based order
   projects.sort((a,b) => a.startYear - b.startYear)
   let domainExtent = [d3.min(projects,d=>d.startYear),d3.max(projects,d=>d.endYear)]
-  let yoffset = 93
 
   //define el domino de x
   yearX.domain(domainExtent);
@@ -233,7 +234,7 @@ function update(data){
     })
 
     //add tags and links
-    links = g.append('g')
+    links = g.append('g').attr('pointer-events','none')
 
   }
 

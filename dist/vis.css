@@ -76,7 +76,7 @@ rect.reference:hover{
 .label{
   font-family:'Helvetica';
   font-size: 10px;
-  fill:#333;
+  fill:#999;
     text-anchor:end;
   cursor: pointer;
   transition: all .25s ease-out;

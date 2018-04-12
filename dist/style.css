@@ -40,10 +40,11 @@ ul.map_modes li{
 }
 ul.map_modes a,ul.map_modes a:visited{
   text-decoration: none;
-  color:black;
+  color:#999;
 }
 ul.map_modes a:hover,ul.map_modes a.active{
   text-decoration: underline;
+  color:black;
 }
 
 #explora_cover{
