@@ -97,10 +97,7 @@ class DataModel{
 
     //tagQuery is an empty object
     if(Object.keys(tagsDict).length === 0){
-      //TODO:return a copy
-      let data = Object.assign({},this.data)
-
-      return new DataModel(data)
+      return this
     }
 
     let projects = Object.values(this.data.projects)
@@ -177,7 +174,7 @@ class DataModel{
     let counts  = {}
 
     if(projects.length == 0){
-      return new DataModel(this.data)
+      return this
     }
 
     //tag counter
@@ -225,7 +222,7 @@ class DataModel{
 
     let reftags = [].concat.apply([],Object.values(projtags))
     reftags = Array.from(new Set(reftags))
-  
+
     //remove references that don't have ALL tags
     let selectedReferences = [].concat.apply([],Object.values(this.data.references))
     selectedReferences = selectedReferences.filter(r=>{
@@ -257,7 +254,7 @@ class DataModel{
     let counts  = {}
 
     if(references.length == 0){
-      return new DataModel(this.data)
+      return this
     }
     for(let reference of references){
       //suponemos que no hay tags repetidos
