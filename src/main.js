@@ -86,7 +86,7 @@ function update(data){
   //time based order
   projects.sort((a,b) => a.startYear - b.startYear)
   let domainExtent = [d3.min(projects,d=>d.startYear),d3.max(projects,d=>d.endYear)]
-  let yoffset = 80
+  let yoffset = 93
 
   //define el domino de x
   yearX.domain(domainExtent);
@@ -110,7 +110,7 @@ function update(data){
       .append('text')
       .attr('x',(t,i) => yearX(t))
       .text(t=>t)
-      .attr('y',73)
+      .attr('y',yoffset - 5.5)
       .attr('class','scale')
 
 
@@ -123,7 +123,7 @@ function update(data){
     .append('text')
     .attr('x',(t,i) => surfX(i))
     .text(t=>t)
-    .attr('y',70)
+    .attr('y',yoffset - 5.5)
     .attr('class','scale')
     .style('opacity',0)
 
@@ -137,15 +137,20 @@ function update(data){
     .append('text')
     .attr('x',(t,i) => typoX(i))
     .text(t=>t)
-    .attr('y',70)
+    .attr('y',yoffset - 5.5)
     .attr('class','scale')
     .style('opacity',0)
 
 
 //interactivity
+  let t = d3.transition().duration(1500).ease(d3.easeCubicOut)
+
   d3.select('#explora').on('click',()=>{
-    console.log('click!');
-    d3.select('#explora_cover').style('display','block')
+    d3.select('#explora_cover')
+      .style('display','block').style('opacity',0)
+      .transition(1500).style('opacity',1)
+  })
+
   d3.select('#conecta').on('click',()=>{
     if(links.attr('display') == 'none'){
       links.attr('display','inline')
@@ -173,24 +178,21 @@ function update(data){
          typoScale.style('opacity',0)
        break
        case 'surface':
-         surfaceBlocks(blocks,projects,surfX)
+         surfaceBlocks(blocks,projects,surfX,yoffset)
          timeScale.style('opacity', 0)
          surfScale.style('opacity',1)
          typoScale.style('opacity',0)
        break
        case 'typology':
-         typoBlocks(blocks,projects,typoX,dm.typologies)
+         typoBlocks(blocks,projects,typoX,dm.typologies,yoffset)
          timeScale.style('opacity',0)
          surfScale.style('opacity',0)
          typoScale.style('opacity',1)
        break
      }
-
      updateQuery()
    })
 
-  //add tags and links
-  links = g.append('g')
 
   //generate SVG tags
   d3tags = {}

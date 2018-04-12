@@ -27,9 +27,9 @@ function timeBlocks(blocks,projects,yearX,yoffset){
           }
           rows[cat][i] = d.endYear
           if(d.type != 'RCR'){
-            return yoffset -30 - (i * rowHeight / 2)
+            return yoffset - 25 - (i * rowHeight / 2)
           }else{
-            return i * rowHeight  + yoffset
+            return yoffset + 3 + i * rowHeight
           }
         })
       .attr('width', d => yearX(d.endYear) -  yearX(d.startYear) - 1 )
@@ -38,7 +38,7 @@ function timeBlocks(blocks,projects,yearX,yoffset){
   return blocks
 }
 
-function surfaceBlocks(blocks,projects,scale){
+function surfaceBlocks(blocks,projects,scale,yoffset){
 
   //block height block width
   let bh = 7, bw = 7
@@ -75,9 +75,9 @@ function surfaceBlocks(blocks,projects,scale){
       let y = Math.floor(positions[i] / 5)
 
       if(p.type == 'RCR'){
-        return 80 + y * (bw + 1)
+        return yoffset + 3 + y * (bw + 1)
       }else{
-        return 50 - (y * (bw + 1))
+        return yoffset - 28 - (y * (bw + 1))
       }
     })
     .attr('width', p=>bw * sizes[_si(p)] )
@@ -86,7 +86,7 @@ function surfaceBlocks(blocks,projects,scale){
   return blocks
 }
 
-function typoBlocks(blocks,projects,scale,typologies){
+function typoBlocks(blocks,projects,scale,typologies,yoffset){
 
   //block height block width
   let bh = 7, bw = 7
@@ -118,9 +118,9 @@ function typoBlocks(blocks,projects,scale,typologies){
       let y = Math.floor(positions[i] / 5)
 
       if(p.type == 'RCR'){
-        return 80 + y * (bw + 1)
+        return yoffset + 3 + y * (bw + 1)
       }else{
-        return 50 - (y * (bw + 1))
+        return yoffset - 28 - (y * (bw + 1))
       }
     })
     .attr('width', bw)
