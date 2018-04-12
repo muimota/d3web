@@ -24,6 +24,7 @@ div.topmenu{
   padding: 10px;
   width:120px;
   float:right;
+  user-select: none;
 }
 
 ul.map_modes{

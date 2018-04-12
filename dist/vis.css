@@ -21,7 +21,7 @@ rect.project.disabled{
 }
 
 rect.project.selected{
-  fill:red;
+  fill:#198A78;
 }
 .tag{
   font-family:'Helvetica';
@@ -32,7 +32,7 @@ rect.project.selected{
   transition: all .25s ease-out;
 }
 .tag:hover{
-  fill: red;
+  fill: #115750;
 }
 
 .disabled{
@@ -41,7 +41,7 @@ rect.project.selected{
 }
 
 .selected{
-  fill:green;
+  fill:#198A78;
   font-weight: bold;
 }
 
@@ -52,14 +52,14 @@ rect.reference{
 }
 
 rect.reference.selected{
-  fill:red;
+  fill: #198A78;
 }
 rect.reference.disabled{
-  fill:#EEE;
+  fill: #EEE;
   cursor: default;
 }
 rect.reference:hover{
-  stroke:purple;
+  stroke: #198A78;;
   cursor: pointer;
 }
 

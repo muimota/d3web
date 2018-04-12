@@ -146,6 +146,12 @@ function update(data){
   d3.select('#explora').on('click',()=>{
     console.log('click!');
     d3.select('#explora_cover').style('display','block')
+  d3.select('#conecta').on('click',()=>{
+    if(links.attr('display') == 'none'){
+      links.attr('display','inline')
+    }else{
+      links.attr('display','none')
+    }
   })
 
   d3.select('#explora_cover').on('click',()=>
@@ -180,6 +186,7 @@ function update(data){
        break
      }
 
+     updateQuery()
    })
 
   //add tags and links
@@ -222,6 +229,10 @@ function update(data){
       node.classed('selected',! node.classed('selected'))
       updateQuery()
     })
+
+    //add tags and links
+    links = g.append('g')
+
   }
 
 
@@ -249,7 +260,7 @@ function update(data){
       gRef[refId].classed('disabled',
         r => !references[refId].includes(r))
     }
-    //tagLine(query)
+
 
     blocks.classed('disabled',true)
     //highlight filtered projects
@@ -361,7 +372,7 @@ function update(data){
       }
       displayQuery(filterModel)
       updateGUI(filterModel)
-
+      tagLine(filterModel)
     }
     //tag click handler
     function clickHandler(tag,d3elem,tagCat){
@@ -378,43 +389,91 @@ function update(data){
 
 //connects related Tags with line
 
-function tagLine(query){
+function tagLine(filterModel){
+
 
   links.selectAll('path').remove()
-  filterModel = dm.filter(query)
+
   let relatedTags = filterModel.tags
 
-  if(Object.keys(query).length > 0){
-    let line = ""
-    for(let tagCat of dm.tagKeys){
+  if(filterModel == dm){
+    return
+  }
 
-      let tagsCoord = []
+  let line = ""
 
-      d3tags[tagCat].filter(
-        t=>relatedTags[tagCat].includes(t)
-      ).each(function(t){
-        let node = d3.select(this)
-        tagsCoord.push([
-          parseFloat(node.attr('x')),
-          parseFloat(node.attr('y'))
-        ])
-      })
-      //sort in x coords
-      tagsCoord.sort((a,b)=>a[1] - b[1] + a[0] - b[0])
-      //console.log(tagsCoord)
+  let tagsCoord = []
+  let projects  = Object.values(filterModel.projects)
 
-      for(let i = 0;i<tagsCoord.length;i++){
-        let draw = (i==0 && tagCat == dm.tagKeys[0]) ? 'M' : 'L'
-        let tagCoord = tagsCoord[i]
-        line += `${draw}${tagCoord[0]},${tagCoord[1]-4}`
+  blocks.filter(p=>projects.includes(p))
+  .each(function(t){
+    let node = d3.select(this)
+    let x = parseFloat(node.attr('x')) + parseFloat(node.attr('width')) / 2
+    let y = parseFloat(node.attr('y')) + parseFloat(node.attr('height')) / 2 + 3
 
-      }
+    tagsCoord.push([x,y])
+  })
 
+  tagsCoord.sort((a,b)=>a[1] - b[1] + a[0] - b[0])
+  let draw = 'M'
+  for(let i = 0;i<tagsCoord.length;i++){
+    let tagCoord = tagsCoord[i]
+    line += `${draw}${tagCoord[0]},${tagCoord[1]-4}`
+    draw = 'L'
+  }
+
+
+
+  for(let tagCat of dm.tagKeys){
+
+    tagsCoord = []
+
+    d3tags[tagCat].filter(
+      t=>relatedTags[tagCat].includes(t)
+    ).each(function(t){
+      let node = d3.select(this)
+      tagsCoord.push([
+        parseFloat(node.attr('x')),
+        parseFloat(node.attr('y'))
+      ])
+    })
+    //sort in x coords
+    tagsCoord.sort((a,b)=>a[1] - b[1] + a[0] - b[0])
+
+    for(let tagCoord of tagsCoord){
+      line += `L${tagCoord[0]},${tagCoord[1]-4}`
     }
+  }
+
+  let references = filterModel.references
+  tagsCoord = []
+  for(let refId in references){
+    gRef[refId].filter(r=>references[refId].includes(r))
+    .each(function(r){
+      let node = d3.select(this)
+      tagsCoord.push([
+        parseFloat(node.attr('x')) + 3.5,
+        parseFloat(node.attr('y')) + 3.5
+      ])
+    })
+  }
+
+
+
+  //sort in x coords
+  tagsCoord.sort((a,b)=>a[1] - b[1] + a[0] - b[0])
+
+  for(let i = 0;i<tagsCoord.length;i++){
+    let tagCoord = tagsCoord[i]
+    line += `L${tagCoord[0]},${tagCoord[1]}`
+
+  }
 
     links.append('path')
       .attr('d',line)
       .attr('fill','none')
-      .attr('stroke','blue')
-  }
+      .attr('stroke-width',1.6)
+      .attr('opacity',0.7)
+      .attr('stroke','#198A78')
+
 }
