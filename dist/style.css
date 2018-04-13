@@ -120,3 +120,16 @@ ul.map_modes a:hover,ul.map_modes a.active{
   float:left;
   margin-right: 5px;
 }
+
+div.tooltip {
+  display:none;
+  position: absolute;
+  background-color: white;
+  z-index: 1;
+  text-align: center;
+  width: 120px;
+  padding: 2px;
+  font: 12px sans-serif;
+  border: thin solid;
+  pointer-events: none;
+}

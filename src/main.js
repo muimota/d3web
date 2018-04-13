@@ -51,6 +51,12 @@ svg.append('g')
     .attr('x',110).attr('y',l=>l[1])
     .attr('class','label')
 
+var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip").text('')
+    .style('top','300px')
+    .style('left','200px')
+    //.style('display','none')
+
 //d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
 d3.json("data_merger.json",update)
 
@@ -233,11 +239,36 @@ function update(data){
       updateQuery()
     })
 
-    //add tags and links
-    links = g.append('g').attr('pointer-events','none')
 
   }
 
+  //tooltip
+  //tooltip
+  function mouseover(d){
+
+    let node = d3.select(this)
+    tooltip
+    .style('display','block')
+    .text(d.shortname)
+    .style("left", (d3.event.pageX - 60) + "px")
+    .style("top",  (d3.event.pageY + 20) + "px");
+
+  }
+
+  function mouseout(){
+    tooltip.style('display','none')
+  }
+
+  blocks.on('mouseover',mouseover)
+  blocks.on('mouseout',mouseout)
+
+  for(let refId in dm.references){
+    gRef[refId].on('mouseover',mouseover)
+    gRef[refId].on('mouseout',mouseout)
+  }
+
+  //add tags and links
+  links = g.append('g').attr('pointer-events','none')
 
   function displayQuery(filterModel){
 
@@ -278,27 +309,7 @@ function update(data){
 
 
 
-    //projTip
-    blocks.on('mouseover', function(d){
 
-      let node = d3.select(this)
-      //console.log(node.attr('x')+ node.attr('width') | 0)
-      projTip.transition()
-        .duration(200)
-        .style("opacity", .9)
-
-      projTip.html(d.shortname)
-        .attr('x',parseFloat(node.attr('x')) + parseFloat(node.attr('width')) / 2)
-        .attr('y',50)
-    })
-
-    blocks.on('mouseout', function(d){
-      let node = d3.select(this)
-      projTip.transition()
-        .duration(200)
-        .style('opacity', 0)
-
-    })
 
     function resetSelection(){
       d3.selectAll('.selected').classed('selected',false)
