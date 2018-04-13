@@ -268,7 +268,9 @@ function update(data){
   }
 
   //add tags and links
-  links = g.append('g').attr('pointer-events','none')
+  links = g.append('g')
+    .attr('pointer-events','none')
+    .attr('display','none')
 
   function displayQuery(filterModel){
 
@@ -489,5 +491,6 @@ function tagLine(filterModel){
       .attr('stroke-width',1.6)
       .attr('opacity',0.7)
       .attr('stroke','#198A78')
+
 
 }
