@@ -69,7 +69,7 @@ function update(data){
   console.log(data);
   dm = DataModel.import(data)
 
-  updateGUI(dm)
+  updateGUI(dm,{})
   let references = Object.values(dm.references)
   let typologies = new Set()
 
@@ -166,7 +166,7 @@ function update(data){
     }
   })
 
-  d3.select('#explora_cover').on('click',()=>
+  d3.select('#close_icon').on('click',()=>
     d3.select('#explora_cover').style('display','none'))
 
    d3.selectAll('.map_modes  a').on('click',function(){
@@ -387,7 +387,7 @@ function update(data){
         resetSelection()
       }
       displayQuery(filterModel)
-      updateGUI(filterModel)
+      updateGUI(filterModel,query)
       tagLine(filterModel)
     }
     //tag click handler

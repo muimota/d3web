@@ -59,7 +59,7 @@ rect.reference.disabled{
   cursor: default;
 }
 rect.reference:hover{
-  stroke: #198A78;;
+  stroke: #198A78;
   cursor: pointer;
 }
 
