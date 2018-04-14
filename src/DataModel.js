@@ -129,13 +129,31 @@ class DataModel{
       return true
     })
 
+    let reftags = [].concat.apply([],Object.values(tagsDict))
+    reftags = Array.from(new Set(reftags))
+
+    //remove references that don't have any of tags
+    let selectedReferences = [].concat.apply([],Object.values(this.data.references))
+    selectedReferences = selectedReferences.filter(r=>{
+      for(let tag of reftags){
+        if(r.tags.includes(tag)){
+          return true
+        }
+      }
+      return false
+    })
+
     let data = Object.assign({},this.data)
     data.projects = {}
     selectedProjects.forEach(p=> data.projects[p.id] = p)
-    data.references = this.selectedReferences(selectedProjects)
-
+    data.references = {}
+    selectedReferences.forEach(r=>
+      data.references[r.type] = data.references[r.type] ? data.references[r.type].concat([r]) : [r]
+    )
     let dm = new DataModel(data)
+    //recalculate tags
     let tags = dm.getTags()
+
     for(let tagCat in tags){
       tags[tagCat] = tags[tagCat].filter(
         t=>!(tagCat in data.tags) || data.tags[tagCat].includes(t))
