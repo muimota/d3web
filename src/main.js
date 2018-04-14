@@ -388,7 +388,7 @@ function update(data){
         resetSelection()
       }
       displayQuery(filterModel)
-      updateGUI(filterModel,query)
+      updateGUI(filterModel,query,projects,references)
       tagLine(filterModel)
     }
     //tag click handler
