@@ -138,8 +138,7 @@ function update(data){
 
   let typoScale = g.append('g').selectAll('text')
     .data(['actividades','cultural','deportivo','educativo',
-    'público','hotel','ópera','pabellón','restaurante','visual',
-    'viviendas','Sin'])
+  'efímero','público','hoteles','pabellón','restaurante','visual','viviendas'])
     .enter()
     .append('text')
     .attr('x',(t,i) => typoX(i))
