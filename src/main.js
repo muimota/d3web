@@ -40,7 +40,7 @@ var yoffset = 93
 let labels = [
   ['RCR Lab A',yoffset - 16],['RCR Arquitectes',yoffset + 9],
   ['espacio-lugar-territorio',180],['cualidades - atmósferas',225],['sentido - materialidad',282],
-  ['Publicaciones',333],['Obras',347],['Eventos',359],['Fontarquitextura',372 ]
+  ['Publicaciones',333],['Obras',347],['Eventos',372],['Fontarquitextura',359 ]
 ]
 svg.append('g')
   .selectAll('text')
