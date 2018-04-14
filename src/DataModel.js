@@ -33,6 +33,7 @@ class DataModel{
     }
 
     data.references = references
+    data.filters = {'projects':[],'tags':{},'references':{}}
     let dm = new DataModel(data)
     dm.data.tags = dm.getTags()
     return dm
@@ -216,7 +217,6 @@ class DataModel{
     let selectedProjects = Object.values(this.data.projects)
     selectedProjects = selectedProjects.filter( p => {
 
-
       for( let tagKey in projtags){
         if(tagKey in p){
           for(let tag of projtags[tagKey]){
@@ -274,6 +274,8 @@ class DataModel{
       }
     }
 
+    //reftags = tags common to ALL references
+
     for(let tag in counts){
       if(counts[tag] == references.length){
         reftags.push(tag)
@@ -281,8 +283,8 @@ class DataModel{
     }
 
     //intersection with previous tags
-    let tags = [].concat.apply([],Object.values(this.data.tags))
-    reftags = reftags.filter(t=>tags.includes(t))
+    let plaintags = [].concat.apply([],Object.values(this.data.tags))
+    reftags = reftags.filter(t=>plaintags.includes(t))
     //references that has any the reftags
     //flatten list https://stackoverflow.com/a/10865042/2205297
     let selectedReferences = [].concat.apply([],Object.values(this.data.references))
@@ -295,21 +297,26 @@ class DataModel{
       return false
     })
 
+    //calculate the categorized tags
+    let tags = Object.assign({},this.data.tags)
+    for(let tagCat in tags){
+      tags[tagCat] = tags[tagCat].filter(t=>reftags.includes(t))
+    }
 
     let projects = Object.values(this.data.projects)
 
     //projects with ALL tags
     let selectedProjects = projects.filter( p => {
 
-      let rtags = reftags.slice()
-
-      for( let tagKey of this.tagKeys){
-        if(tagKey in p){
-          rtags = rtags.filter(tag=> !p[tagKey].includes(tag))
+      for(let tagCat in tags){
+        for(let tag of tags[tagCat]){
+          if(tagCat in p && p[tagCat].includes(tag)){
+              return true
+          }
         }
       }
 
-      return rtags.length < reftags.length
+      return false
     })
 
     let data = Object({},this.data)
@@ -319,8 +326,9 @@ class DataModel{
     selectedReferences.forEach(r=>
       data.references[r.type] = data.references[r.type] ? data.references[r.type].concat([r]) : [r]
     )
+    data.tags = tags
     let dm = new DataModel(data)
-    dm.data = this.data.tags
+
     return dm
   }
 }
