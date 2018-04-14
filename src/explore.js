@@ -30,7 +30,7 @@ function updateGUI(model,query){
     let subtitle = `${project.typology} - ${project.surface}m² - ${project.type}`
     let link = ('link' in project) ? project.link :'#'
     proj_html +=
-      `<a href="${link} target="_blank""><div class="cell">
+      `<a href="${link}" target="_blank"><div class="cell">
           <img class="image" src="images/${project.id}.jpg" ></img>
           <p class="title">${project.shortname}</p>
           <p class="subtitle">${subtitle}</p>
