@@ -57,8 +57,8 @@ var tooltip = d3.select("body").append("div")
     .style('left','200px')
     //.style('display','none')
 
-//d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
-d3.json("data_merger.json",update)
+d3.json("https://vue-http-ec65d.firebaseio.com/.json",update)
+//d3.json("data_merger.json",update)
 
 
 
@@ -275,8 +275,9 @@ function update(data){
 
     let relatedTags = filterModel.tags
 
-    for(let tagCats in d3tags){
-      d3tags[tagCats].classed('disabled',d => ! relatedTags[tagCats].includes(d))
+    for(let tagCat in d3tags){
+      d3tags[tagCat].classed('disabled',d =>
+        !(tagCat in relatedTags) || !relatedTags[tagCat].includes(d))
     }
 
     for(let refId in dm.references){
@@ -328,7 +329,7 @@ function update(data){
       node.classed('selected',!node.classed('selected'))
       //calculo de los tags
       updateQuery()
-
+      console.log(p);
     })
 
     for(let tagCats in d3tags){
@@ -377,9 +378,10 @@ function update(data){
       }
 
       let filterModel = dm
+        .filterProj(projects)
         .filter(query)
         .filterRef(references)
-        .filterProj(projects)
+
 
       if(Object.keys(filterModel.projects).length == 0){
         filterModel = dm
@@ -440,6 +442,10 @@ function tagLine(filterModel){
 
 
   for(let tagCat of dm.tagKeys){
+
+    if(!(tagCat in relatedTags)){
+      continue
+    }
 
     tagsCoord = []
 

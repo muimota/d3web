@@ -33,7 +33,9 @@ class DataModel{
     }
 
     data.references = references
-    return new DataModel(data)
+    let dm = new DataModel(data)
+    dm.data.tags = dm.getTags()
+    return dm
   }
 
   constructor(_data){
@@ -61,7 +63,7 @@ class DataModel{
   }
 
   //get dicitonary with tag in each category without duplicates
-  get tags(){
+  getTags(){
 
     let tagsDict = {}
     let projects = Object.values(this.data.projects)
@@ -78,6 +80,9 @@ class DataModel{
 
   }
 
+  get tags(){
+    return this.data.tags
+  }
   //return projects dict
   get projects(){
     return this.data.projects
@@ -105,7 +110,6 @@ class DataModel{
     //select project that have the ALL the tag of the query
     let selectedProjects = projects.filter( p => {
 
-
       for(let tagKey in tagsDict){
 
         if( !p.hasOwnProperty(tagKey)){
@@ -130,7 +134,12 @@ class DataModel{
     data.references = this.selectedReferences(selectedProjects)
 
     let dm = new DataModel(data)
-
+    let tags = dm.getTags()
+    for(let tagCat in tags){
+      tags[tagCat] = tags[tagCat].filter(
+        t=>!(tagCat in data.tags) || data.tags[tagCat].includes(t))
+    }
+    dm.data.tags = tags
     return dm
   }
 
@@ -173,10 +182,11 @@ class DataModel{
     let projtags = {}
     let counts  = {}
 
+
     if(projects.length == 0){
       return this
     }
-
+    console.log(projects);
     //tag counter
     for(let project of projects){
       for(let tagKey of this.tagKeys){
@@ -223,7 +233,7 @@ class DataModel{
     let reftags = [].concat.apply([],Object.values(projtags))
     reftags = Array.from(new Set(reftags))
 
-    //remove references that don't have ALL tags
+    //remove references that don't have any of tags
     let selectedReferences = [].concat.apply([],Object.values(this.data.references))
     selectedReferences = selectedReferences.filter(r=>{
       for(let tag of reftags){
@@ -243,8 +253,9 @@ class DataModel{
     selectedReferences.forEach(r=>
       data.references[r.type] = data.references[r.type] ? data.references[r.type].concat([r]) : [r]
     )
-
-    return new DataModel(data)
+    let dm = new DataModel(data)
+    dm.data.tags = projtags
+    return dm
   }
 
   //filters projects that have all the tags (could be in different categories)
@@ -257,7 +268,7 @@ class DataModel{
       return this
     }
     for(let reference of references){
-      //suponemos que no hay tags repetidos
+
       for(let tag of reference.tags){
         counts[tag] = counts[tag] ? counts[tag] + 1 : 1
       }
@@ -268,7 +279,11 @@ class DataModel{
         reftags.push(tag)
       }
     }
-    //references that has all the reftags
+
+    //intersection with previous tags
+    let tags = [].concat.apply([],Object.values(this.data.tags))
+    reftags = reftags.filter(t=>tags.includes(t))
+    //references that has any the reftags
     //flatten list https://stackoverflow.com/a/10865042/2205297
     let selectedReferences = [].concat.apply([],Object.values(this.data.references))
     selectedReferences = selectedReferences.filter(r=>{
@@ -282,6 +297,8 @@ class DataModel{
 
 
     let projects = Object.values(this.data.projects)
+
+    //projects with ALL tags
     let selectedProjects = projects.filter( p => {
 
       let rtags = reftags.slice()
@@ -302,7 +319,9 @@ class DataModel{
     selectedReferences.forEach(r=>
       data.references[r.type] = data.references[r.type] ? data.references[r.type].concat([r]) : [r]
     )
-    return new DataModel(data)
+    let dm = new DataModel(data)
+    dm.data = this.data.tags
+    return dm
   }
 }
 
