@@ -1,4 +1,6 @@
 
+import * as d3 from 'd3'
+
 function createTagElems(gElem,tagArray,offY = 280){
 
   let width = 810
@@ -32,6 +34,8 @@ function createTagElems(gElem,tagArray,offY = 280){
       })
 
       .attr('y',(s,i) => posY[i])
+      .style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+      .style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
     return selection
 }
 
