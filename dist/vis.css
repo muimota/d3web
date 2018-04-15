@@ -17,7 +17,7 @@ rect.project{
 
 
 rect.project.disabled{
-  fill:#CCC;
+  fill:#EEE;
 }
 
 rect.project.selected{
@@ -36,7 +36,7 @@ rect.project.selected{
 }
 
 .disabled{
-  fill:#999;
+  fill:#DDD;
   cursor: default;
 }
 
@@ -49,6 +49,7 @@ rect.project.selected{
 rect.reference{
   fill:black;
   transition: all .5s ease-out;
+  cursor: pointer
 }
 
 rect.reference.selected{
@@ -60,16 +61,15 @@ rect.reference.disabled{
 }
 rect.reference:hover{
   stroke: #198A78;
-  cursor: pointer;
 }
 
 /* surface */
 .scale{
   font-family:'Abel';
   font-size: 10px;
-  fill:#333;
+  fill:#999;
   text-anchor:start;
-  cursor: pointer;
+  cursor: default;
   transition: all .25s ease-out;
 }
 
@@ -77,7 +77,7 @@ rect.reference:hover{
   font-family:'Abel';
   font-size: 10px;
   fill:#999;
-    text-anchor:end;
-  cursor: pointer;
+  text-anchor:end;
+  cursor: default;
   transition: all .25s ease-out;
 }
