@@ -118,7 +118,7 @@ a .cell{
   margin: 5px 0;
   height:80px;
   width:340px;
-  background-color: rgba(255,255,255,.20);
+  background-color: rgba(255,255,255,.80);
   float:left;
   overflow:hidden;
 }
@@ -136,7 +136,7 @@ a .cell{
 .cell p.description{
   margin:0;
   font-weight:200;
-  font-size:8px
+  font-size:9px
 }
 .image{
   width:128px;
@@ -157,4 +157,12 @@ div.tooltip {
   font: 12px sans-serif;
   border: thin solid;
   pointer-events: none;
+}
+
+#reload{
+  float:right;
+}
+#reload img{
+  width:24px;
+  height:24px;
 }

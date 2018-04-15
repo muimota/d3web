@@ -321,6 +321,8 @@ function update(data){
 
     filteredBlocks.classed('disabled',false)
 
+    d3.select('#reload').on('click',resetSelection)
+
   }
 
 
