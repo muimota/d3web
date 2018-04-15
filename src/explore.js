@@ -1,7 +1,8 @@
 import $ from "jquery"
 
-function updateGUI(model,query){
+function updateGUI(model,query,selectedProjects = [],selectedReferences = []){
   console.log('updateGUI!');
+
 
   //taxonomy
   let tags = [].concat.apply([],Object.values(model.tags)).sort()
@@ -10,13 +11,17 @@ function updateGUI(model,query){
 
   let taxo_html = ""
 
-  taxo_html += '<h5>seleccionados</h5><ul>'
-  for(let tag of selectedTags){
-    taxo_html+=`<li>${tag}</li>`
-  }
-  taxo_html+='</ul>'
+  if(selectedTags.length > 0){
 
-  taxo_html += '<h5>relacionados</h5><ul>'
+    taxo_html += '<h5>Seleccionada</h5><ul>'
+    for(let tag of selectedTags){
+      taxo_html+=`<li>${tag}</li>`
+    }
+    taxo_html+='</ul>'
+
+  }
+
+  taxo_html += '<h5>Relacionada</h5><ul>'
   for(let tag of tags){
     taxo_html+=`<li>${tag}</li>`
   }
@@ -26,34 +31,72 @@ function updateGUI(model,query){
 
   //projects
   let proj_html = ""
-  for(let project of Object.values(model.projects)){
-    let subtitle = `${project.typology} - ${project.surface}m² - ${project.type}`
-    let link = ('link' in project) ? project.link :'#'
-    proj_html +=
-      `<a href="${link}" target="_blank"><div class="cell">
-          <img class="image" src="images/${project.id}.jpg" ></img>
-          <p class="title">${project.shortname}</p>
-          <p class="subtitle">${subtitle}</p>
-          <p class="description">${project.data}</p>
-      </div></a>`
+
+  if(selectedProjects.length > 0){
+
+    proj_html += '<h5>Seleccionados</h5><ul>'
+    for(let project of selectedProjects){
+      proj_html += displayProject(project)
+    }
+    proj_html +='</ul>'
   }
+
+  proj_html+='<h5>Relacionados</h5><ul>'
+
+  for(let project of Object.values(model.projects)){
+    if(!selectedProjects.includes(project)){
+      proj_html += displayProject(project)
+    }
+  }
+  proj_html +='</ul>'
+
   $('#col-projects').html(proj_html)
 
   //referemces
   let ref_html = ""
   let references = [].concat.apply([],Object.values(model.references))
 
-  for(let reference of references){
-    let link = ('link' in reference) ? reference.link :'#'
-    ref_html +=
-      `<a href="${link}" target="_blank"><div class="cell">
-          <img class="image" src="images/${reference.id}.jpg" ></img>
-          <p class="title">${reference.shortname}</p>
-          <p class="subtitle">${reference.type}</p>
-          <p class="description">${reference.data}</p>
-      </div></a>`
+  if(selectedReferences.length > 0){
+
+    ref_html += '<h5>Seleccionadas</h5><ul>'
+    for(let reference of selectedReferences){
+      ref_html += displayReference(reference)
+    }
+    ref_html+='</ul>'
   }
+  ref_html +='<h5>Relacionadas</h5><ul>'
+
+  for(let reference of references){
+    if(!selectedReferences.includes(reference)){
+      ref_html +=displayReference(reference)
+    }
+  }
+  ref_html += '</ul>'
   $('#col-references').html(ref_html)
 }
 
+function displayProject(project){
+  let subtitle = `${project.typology} - ${project.surface}m² - ${project.type}`
+  let link = ('link' in project) ? project.link :'#'
+  let proj_html =
+    `<a href="${link}" target="_blank"><div class="cell">
+        <img class="image" src="images/${project.id}.jpg" ></img>
+        <p class="title">${project.shortname}</p>
+        <p class="subtitle">${subtitle}</p>
+        <p class="description">${project.data}</p>
+    </div></a>`
+  return proj_html
+}
+
+function displayReference(reference){
+  let link = ('link' in reference) ? reference.link :'#'
+  let ref_html =
+    `<a href="${link}" target="_blank"><div class="cell">
+        <img class="image" src="images/${reference.id}.jpg" ></img>
+        <p class="title">${reference.shortname}</p>
+        <p class="subtitle">${reference.type}</p>
+        <p class="description">${reference.data}</p>
+    </div></a>`
+  return ref_html
+}
 export {updateGUI}
