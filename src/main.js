@@ -34,22 +34,8 @@ var d3tags,blocks
 var gRef = {}
 var dm,filterModel
 
-var yoffset = 93
 
-//add description labels
-let labels = [
-  ['RCR Lab A',yoffset - 16],['RCR Arquitectes',yoffset + 9],
-  ['espacio-lugar-territorio',180],['cualidades - atmósferas',225],['sentido - materialidad',282],
-  ['Publicaciones',333],['Obras',347],['Eventos',372],['Fontarquitextura',359 ]
-]
-svg.append('g')
-  .selectAll('text')
-  .data(labels)
-    .enter()
-    .append('text')
-    .text(l=> l[0])
-    .attr('x',110).attr('y',l=>l[1])
-    .attr('class','label')
+
 
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip").text('')
@@ -95,9 +81,10 @@ function update(data){
   projects.sort((a,b) => a.startYear - b.startYear)
   let domainExtent = [d3.min(projects,d=>d.startYear),d3.max(projects,d=>d.endYear)]
 
-  //define el domino de x
+  //define de x domain
   yearX.domain(domainExtent);
   //generate blocks
+  let yoffset = 93
   blocks =   g.selectAll('rect')
       .data(projects)
       .enter()
@@ -201,14 +188,29 @@ function update(data){
 
 
   //generate SVG tags
+
+  let labels = [
+    ['RCR Lab·A',yoffset - 16],['RCR Arquitectes',yoffset + 9],
+    ['espacio-lugar-territorio',undefined],['cualidades - atmósferas',undefined],['sentido - materialidad',undefined],
+    ['Publicaciones',undefined],['Eventos',undefined],['Fontarquitectura',undefined],['Obras',undefined ]
+  ]
+  let labelIndex = 2
   d3tags = {}
   let tagY = 180
+
   for(let tagKey of dm.tagKeys){
+
     let node = g.append('g')
     let elem = createTagElems(node,dm.tags[tagKey],tagY)
     let bbox = node.node().getBBox()
-    tagY += bbox.height + 20
+
+    labels[labelIndex][1] = tagY
+    labelIndex ++
+
+    tagY += bbox.height + 5
     d3tags[tagKey] = elem
+
+
   }
 
   //references
@@ -226,6 +228,9 @@ function update(data){
       .attr('height',bh)
       .attr('class','reference')
 
+    labels[labelIndex][1] = tagY + 6
+    labelIndex ++
+
     tagY += bh + 6
 
     gRef[refId].on('click',function(ref){
@@ -240,6 +245,16 @@ function update(data){
 
 
   }
+  //add description labels
+
+  svg.append('g')
+    .selectAll('text')
+    .data(labels)
+      .enter()
+      .append('text')
+      .text(l=> l[0])
+      .attr('x',110).attr('y',l=>l[1])
+      .attr('class','label')
 
   //tooltip
   //tooltip
