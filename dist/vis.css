@@ -24,7 +24,7 @@ rect.project.selected{
   fill:#198A78;
 }
 .tag{
-  font-family:'Helvetica';
+  font-family:'Abel';
   font-size: 10px;
   fill:#333;
   text-anchor:middle;
@@ -65,7 +65,7 @@ rect.reference:hover{
 
 /* surface */
 .scale{
-  font-family:'Helvetica';
+  font-family:'Abel';
   font-size: 10px;
   fill:#333;
   text-anchor:start;
@@ -74,7 +74,7 @@ rect.reference:hover{
 }
 
 .label{
-  font-family:'Helvetica';
+  font-family:'Abel';
   font-size: 10px;
   fill:#999;
     text-anchor:end;

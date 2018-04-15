@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Abel');
 .container{
   margin: 100px auto 0 auto;
   width:960px;
   position: relative;
 }
 .top-nav span.title{
-  font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Abel', sans-serif;
   color:#0E6A64;
   font-size: 25px;
   font-weight: 600;
@@ -16,7 +16,7 @@ div.top-nav{
 }
 div.topmenu{
   cursor: pointer;
-  font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Abel', sans-serif;
   color:white;
   margin-left: 5px;
   background:#149A8B;
@@ -28,7 +28,7 @@ div.topmenu{
 }
 
 ul.map_modes{
-  font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Abel', sans-serif;
   font-size: 12px;
   list-style-type: none;
   margin: 0 0 0 160px;
@@ -75,7 +75,7 @@ ul.map_modes a:hover,ul.map_modes a.active{
   width:920px;
   height: 100%;
   background-color: rgba(180,180,180,.85);
-  font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Abel', sans-serif;
   padding: 20px;
 }
 .row{
