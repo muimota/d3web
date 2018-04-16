@@ -25,7 +25,7 @@ rect.project.selected{
 }
 .tag{
   font-family:'Abel';
-  font-size: 10px;
+  font-size: 12px;
   fill:#333;
   text-anchor:middle;
   cursor: pointer;
@@ -63,7 +63,7 @@ rect.reference:hover{
 /* surface */
 .scale{
   font-family:'Abel';
-  font-size: 10px;
+  font-size: 12px;
   fill:#999;
   text-anchor:start;
   cursor: default;
@@ -72,7 +72,7 @@ rect.reference:hover{
 
 .label{
   font-family:'Abel';
-  font-size: 10px;
+  font-size: 12px;
   fill:#999;
   text-anchor:end;
   cursor: default;

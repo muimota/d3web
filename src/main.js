@@ -191,7 +191,7 @@ function update(data){
 
   let labels = [
     ['RCR Lab·A',yoffset - 16],['RCR Arquitectes',yoffset + 9],
-    ['espacio-lugar-territorio',undefined],['cualidades - atmósferas',undefined],['sentido - materialidad',undefined],
+    ['Espacio / Lugar / Territorio',undefined],['Cualidades / Atmósferas',undefined],['Sentido / Materialidad',undefined],
     ['Publicaciones',undefined],['Eventos',undefined],['Fontarquitectura',undefined],['Obras',undefined ]
   ]
   let labelIndex = 2
@@ -252,7 +252,7 @@ function update(data){
       .enter()
       .append('text')
       .text(l=> l[0])
-      .attr('x',110).attr('y',l=>l[1])
+      .attr('x',122).attr('y',l=>l[1])
       .attr('class','label')
 
   //tooltip
