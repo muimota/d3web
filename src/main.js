@@ -233,18 +233,16 @@ function update(data){
 
     tagY += bh + 6
 
+
     gRef[refId].on('click',function(ref){
       console.log(ref)
       let node = d3.select(this)
       d3.event.preventDefault()
-      if(node.classed('disabled')){
-        resetSelection()
-      }
-      node.classed('selected',! node.classed('selected'))
+
+      node.classed('selected',previewElem == this)
+      previewElem = null
       updateQuery()
     })
-
-
   }
   //add description labels
 
@@ -259,6 +257,7 @@ function update(data){
 
   //tooltip
   //tooltip
+  let previewElem
   function mouseover(d){
 
     let node = d3.select(this)
@@ -268,10 +267,32 @@ function update(data){
     .style("left", (d3.event.pageX - 60) + "px")
     .style("top",  (d3.event.pageY + 20) + "px");
 
+    if(node.classed('disabled') || previewElem == this){
+      return
+    }
+
+    node.style('transition-delay','0s')
+    node.style('transition-duration','0s')
+
+    if(!node.classed('selected')){
+      node.classed('selected',true)
+      previewElem = this
+    }
+    updateQuery()
   }
 
   function mouseout(){
     tooltip.style('display','none')
+    let node = d3.select(this)
+
+    if(node.classed('selected') && previewElem == this){
+      previewElem = null
+      node.classed('selected',false)
+    }
+    node.style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+    node.style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
+
+    updateQuery()
   }
 
   blocks.on('mouseover',mouseover)
@@ -299,12 +320,7 @@ function update(data){
     for(let refId in dm.references){
 
       gRef[refId].classed('disabled',true)
-      gRef[refId].style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
-      gRef[refId].style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
     }
-
-    blocks.style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
-    blocks.style('transition-duration',d=>`${d3.randomUniform(.3,.6)()}s`)
 
 
     let references =  filterModel.references
@@ -344,10 +360,9 @@ function update(data){
 
     blocks.on('click', function(p){
       let node  = d3.select(this)
-      if(node.classed('disabled')){
-        resetSelection()
-      }
-      node.classed('selected',!node.classed('selected'))
+
+      node.classed('selected',previewElem == this)
+      previewElem = null
       //calculo de los tags
       updateQuery()
       console.log(p);
@@ -355,15 +370,15 @@ function update(data){
 
     for(let tagCats in d3tags){
       d3tags[tagCats].on('click',function(tag){
-        clickHandler(tag,this,tagCats)
+        tagClick(tag,this,tagCats)
         updateQuery()
       })
       d3tags[tagCats].on('mouseover',function(tag){
-        mOverHandler(tag,this,tagCats)
+        tagMouseOver(tag,this,tagCats)
         updateQuery()
       })
       d3tags[tagCats].on('mouseout',function(tag){
-        mOutHandler(tag,this,tagCats)
+        tagMouseOut(tag,this,tagCats)
         updateQuery()
       })
     }
@@ -417,25 +432,25 @@ function update(data){
         resetSelection()
       }
       displayQuery(filterModel)
+      // TODO: move it to click callback
       updateGUI(filterModel,query,projects,references)
       tagLine(filterModel)
     }
     //tag click handler
     let previewTag = null
-    function clickHandler(tag,d3elem,tagCat){
+    function tagClick(tag,d3elem,tagCat){
 
       let node = d3.select(d3elem)
       if(previewTag == d3elem){
         node.classed('selected',true)
         previewTag = null
-        updateQuery()
       }else{
         node.classed('selected',false)
       }
       updateQuery()
     }
 
-    function mOverHandler(tag,d3elem,tagCat){
+    function tagMouseOver(tag,d3elem,tagCat){
 
       let node = d3.select(d3elem)
 
@@ -453,7 +468,7 @@ function update(data){
 
       updateQuery()
     }
-    function mOutHandler(tag,d3elem,tagCat){
+    function tagMouseOut(tag,d3elem,tagCat){
 
       let node = d3.select(d3elem)
 

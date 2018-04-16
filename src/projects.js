@@ -35,6 +35,8 @@ function timeBlocks(blocks,projects,yearX,yoffset){
       .attr('width', d => yearX(d.endYear) -  yearX(d.startYear) - 1 )
       .attr('height', p=> (p.type == 'RCR') ? rowHeight - 1 : rowHeight / 2 - 1)
       .classed('project',true)
+      .style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+      .style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
   return blocks
 }
 
@@ -82,6 +84,8 @@ function surfaceBlocks(blocks,projects,scale,yoffset){
     })
     .attr('width', p=>bw * sizes[_si(p)] )
     .attr('height', bh)
+    .style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+    .style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
 
   return blocks
 }
@@ -125,28 +129,10 @@ function typoBlocks(blocks,projects,scale,typologies,yoffset){
     })
     .attr('width', bw)
     .attr('height', bh)
+    .style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+    .style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
 
   return blocks
 }
 
-function clearBlocks(blocks){
-  let totalTime = 0
-
-
-  blocks.style('opacity', 0)
-  blocks.style('transition-delay',
-    d=>{
-      let time  = d3.randomUniform(0,.6)()
-      totalTime = Math.max(time,totalTime)
-      return `${time}s`
-    })
-  blocks.style('transition-duration',
-    d=>{
-      let time = d3.randomUniform(0,.6)()
-      totalTime = Math.max(time,totalTime)
-      return `${time}s`
-    })
-  setTimeout(()=>console.log('log'),Math.round(totalTime * 1000))
-  return blocks
-}
-export {timeBlocks,clearBlocks,surfaceBlocks,typoBlocks}
+export {timeBlocks,surfaceBlocks,typoBlocks}
