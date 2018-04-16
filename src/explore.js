@@ -1,8 +1,6 @@
 import $ from "jquery"
 
 function updateGUI(model,query,selectedProjects = [],selectedReferences = []){
-  console.log('updateGUI!');
-
 
   //taxonomy
   let tags = [].concat.apply([],Object.values(model.tags)).sort()
@@ -79,13 +77,15 @@ function displayProject(project){
   let subtitle = `${project.typology} - ${project.surface}m² - ${project.type}`
   let link = ('link' in project) ? project.link :'#'
   let proj_html =
-    `<a href="${link}" target="_blank"><div class="cell">
+    `<a href="${link}" target="_blank">
+      <div class="cell">
         <img class="image" src="images/${project.id}.jpg"
           onerror="this.src='not_found.jpg'">
         <p class="title">${project.shortname}</p>
         <p class="subtitle">${subtitle}</p>
         <p class="description">${project.data}</p>
-    </div></a>`
+      </div>
+    </a>`
   return proj_html
 }
 
@@ -94,7 +94,7 @@ function displayReference(reference){
   let ref_html =
     `<a href="${link}" target="_blank"><div class="cell">
         <img class="image" src="images/${reference.id}.jpg"
-        onerror="this.src='not_found.jpg' ></img>
+        onerror="this.src='not_found.jpg'" >
         <p class="title">${reference.shortname}</p>
         <p class="subtitle">${reference.type}</p>
         <p class="description">${reference.data}</p>
