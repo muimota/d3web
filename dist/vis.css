@@ -31,9 +31,6 @@ rect.project.selected{
   cursor: pointer;
   transition: all .25s ease-out;
 }
-.tag:hover{
-  fill: #115750;
-}
 
 .disabled{
   fill:#DDD;

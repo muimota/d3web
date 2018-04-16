@@ -157,7 +157,7 @@ function update(data){
 
    d3.selectAll('.map_modes  a').on('click',function(){
      let node = d3.select(this)
-      d3.event.preventDefault();
+     d3.event.preventDefault()
      d3.selectAll('.map_modes  a').classed('active',false)
      node.classed('active',true)
 
@@ -236,6 +236,7 @@ function update(data){
     gRef[refId].on('click',function(ref){
       console.log(ref)
       let node = d3.select(this)
+      d3.event.preventDefault()
       if(node.classed('disabled')){
         resetSelection()
       }
@@ -296,7 +297,7 @@ function update(data){
     }
 
     for(let refId in dm.references){
-      let delay = d3.randomUniform(0, 1)()
+
       gRef[refId].classed('disabled',true)
       gRef[refId].style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
       gRef[refId].style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
@@ -321,7 +322,10 @@ function update(data){
 
     filteredBlocks.classed('disabled',false)
 
-    d3.select('#reload').on('click',resetSelection)
+    d3.select('#reload').on('click',()=>{
+      d3.event.preventDefault()
+      resetSelection()
+    })
 
   }
 
@@ -352,6 +356,14 @@ function update(data){
     for(let tagCats in d3tags){
       d3tags[tagCats].on('click',function(tag){
         clickHandler(tag,this,tagCats)
+        updateQuery()
+      })
+      d3tags[tagCats].on('mouseover',function(tag){
+        mOverHandler(tag,this,tagCats)
+        updateQuery()
+      })
+      d3tags[tagCats].on('mouseout',function(tag){
+        mOutHandler(tag,this,tagCats)
         updateQuery()
       })
     }
@@ -409,13 +421,49 @@ function update(data){
       tagLine(filterModel)
     }
     //tag click handler
+    let previewTag = null
     function clickHandler(tag,d3elem,tagCat){
 
       let node = d3.select(d3elem)
-      if(node.classed('disabled')){
-        resetSelection()
+      if(previewTag == d3elem){
+        node.classed('selected',true)
+        previewTag = null
+        updateQuery()
+      }else{
+        node.classed('selected',false)
       }
-      node.classed('selected',! node.classed('selected'))
+      updateQuery()
+    }
+
+    function mOverHandler(tag,d3elem,tagCat){
+
+      let node = d3.select(d3elem)
+
+      if(node.classed('disabled') || previewTag == d3elem){
+        return
+      }
+
+      node.style('transition-delay','0s')
+      node.style('transition-duration','0s')
+
+      if(!node.classed('selected')){
+        node.classed('selected',true)
+        previewTag = d3elem
+      }
+
+      updateQuery()
+    }
+    function mOutHandler(tag,d3elem,tagCat){
+
+      let node = d3.select(d3elem)
+
+      if(node.classed('selected') && previewTag == d3elem){
+        previewTag = null
+        node.classed('selected',false)
+      }
+      node.style('transition-delay',d=>`${d3.randomUniform(0,.6)()}s`)
+      node.style('transition-duration',d=>`${d3.randomUniform(.3,.1)()}s`)
+
       updateQuery()
     }
 
