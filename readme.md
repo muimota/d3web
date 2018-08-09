@@ -1,7 +1,9 @@
 # d3web
 A test vis made with d3 and packed with webpack
 
+Martin Nadal 2018
 
+---
 ## install
 ``npm install``
 
